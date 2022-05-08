@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author ziad asem
@@ -22,6 +23,7 @@ public class AddNewLeague extends javax.swing.JFrame {
      */
     public AddNewLeague() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -37,14 +39,25 @@ public class AddNewLeague extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(400, 300));
+        setResizable(false);
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(63, 16, 82));
         jLabel1.setText("League name");
 
+        jButton1.setBackground(new java.awt.Color(109, 28, 145));
+        jButton1.setFont(new java.awt.Font("Cambria", 0, 32)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(240, 240, 240));
         jButton1.setText("save");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -55,28 +68,30 @@ public class AddNewLeague extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 58, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)))
+                        .addGap(105, 105, 105)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
+                        .addGap(119, 119, 119)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(112, 112, 112)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(60, 60, 60)
+                .addComponent(jButton1)
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -132,10 +147,10 @@ public class AddNewLeague extends javax.swing.JFrame {
             Connection con=DriverManager.getConnection( Config.hostName,
                  Config.username,Config.password);  
             Statement stmt=con.createStatement();  
-            ResultSet rs=stmt.executeQuery("SELECT MAX(id) FROM league");  
+            ResultSet rs=stmt.executeQuery("SELECT MAX(ID) FROM league");  
             int id =  0;
             while(rs.next()) {
-               id = rs.getInt(1) +1 ;
+               id = rs.getInt(1) + 1 ;
             }
             System.out.println(id);
             int insertingResult =stmt.executeUpdate("insert into league values(" +id+ ",'" +name+ "')"  );  
@@ -144,6 +159,7 @@ public class AddNewLeague extends javax.swing.JFrame {
              System.out.println(e);
              throw e;
         }  
+        
 
     }
 
