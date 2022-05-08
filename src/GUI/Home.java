@@ -12,6 +12,7 @@ import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
@@ -19,6 +20,8 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+
+// import Functions.SharedData;
 /**
  *
  * @author hosam
@@ -26,8 +29,14 @@ import javax.swing.table.TableCellRenderer;
  */
 public class Home extends javax.swing.JFrame {
     
+    
+   //******************** Declaration of Variables, to be used for the Entire Class ********************//
    private int currentLeagueID = 0 ;
    Object[][] _leaguesList ;
+   public String currentLeague_Name;
+        // Used for accessing SharedData class variables ...
+   // SharedData data = new SharedData();
+   //*****************************************************************//
 
     
           //******************** League Table Renderer ********************//
@@ -133,12 +142,14 @@ public class Home extends javax.swing.JFrame {
         jButton_addTeams = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(1440, 996));
         setName("mainframe"); // NOI18N
         setPreferredSize(new java.awt.Dimension(1024, 768));
+        setSize(new java.awt.Dimension(1024, 768));
 
         jScrollPane1.setMinimumSize(new java.awt.Dimension(1024, 720));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1024, 720));
@@ -148,7 +159,7 @@ public class Home extends javax.swing.JFrame {
 
             },
             new String [] {
-                "name", "year"
+                "Name", "Year"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -209,8 +220,13 @@ public class Home extends javax.swing.JFrame {
         jButton_addTeams.setText("Add Teams");
         jButton_addTeams.setToolTipText("");
         jButton_addTeams.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_addTeams.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_addTeamsActionPerformed(evt);
+            }
+        });
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jComboBox1.setForeground(new java.awt.Color(63, 16, 82));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,10 +234,12 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(63, 16, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("League");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/icons8_soccer_ball_100px.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -232,7 +250,15 @@ public class Home extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel_leagueName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(jButton_addTeams, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,16 +266,7 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jButton_latestNews, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15)
                         .addComponent(jButton_addLeague, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(47, 47, 47)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,10 +278,14 @@ public class Home extends javax.swing.JFrame {
                             .addComponent(jButton_latestNews)
                             .addComponent(jButton_addLeague)
                             .addComponent(jButton_addTeams))
-                        .addGap(62, 62, 62)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(17, 17, 17)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jLabel_leagueName, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -298,12 +319,17 @@ public class Home extends javax.swing.JFrame {
         try{
             // Changing the league label name corresponding to the selected league
             // Updating the League Table ...
-            jLabel_leagueName.setText(jComboBox1.getItemAt(jComboBox1.getSelectedIndex()));
+            currentLeague_Name = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
+            jLabel_leagueName.setText(currentLeague_Name);
             updateTeamsTable();
         }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e.toString());
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton_addTeamsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addTeamsActionPerformed
+        new Teams_Frame(currentLeague_Name, currentLeagueID).show();
+    }//GEN-LAST:event_jButton_addTeamsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -387,7 +413,7 @@ public class Home extends javax.swing.JFrame {
              }
             con.close(); 
             return teamsList;
-        }catch(Exception e){ 
+        }catch(SQLException e){ 
                 System.out.println(e);
                 throw e;
         }  
@@ -401,6 +427,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton_latestNews;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_leagueName;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableLeague;
