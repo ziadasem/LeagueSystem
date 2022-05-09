@@ -11,7 +11,7 @@ package GUI;
 public class MainClass {
     public static void main(String[] args) {
        try{
-        new GUI.Home().setVisible(true);
+       new GUI.Home().setVisible(true);
        }
        catch(Exception e){
            System.out.println("Error in main");

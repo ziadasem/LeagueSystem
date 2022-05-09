@@ -169,22 +169,25 @@ public class Teams_Frame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "name", "year"
+                "Name", "Year", "Coach Name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jTableTeams.setColumnSelectionAllowed(false);
         jTableTeams.setFocusable(false);
         jTableTeams.setIntercellSpacing(new java.awt.Dimension(0, 0));
         jTableTeams.setMinimumSize(new java.awt.Dimension(1024, 720));
         jTableTeams.setPreferredSize(new java.awt.Dimension(1024, 720));
         jTableTeams.setRowHeight(30);
+        jTableTeams.setSelectionForeground(new java.awt.Color(0, 120, 215));
+        jTableTeams.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableTeams.setShowVerticalLines(false);
         jTableTeams.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableTeams);
@@ -315,8 +318,7 @@ public class Teams_Frame extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton_Delete)
-                        .addGap(25, 25, 25))
+                        .addComponent(jButton_Delete))
                     .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -335,8 +337,8 @@ public class Teams_Frame extends javax.swing.JFrame {
                             .addComponent(jTextField_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
-                        .addComponent(jButton_Add)
-                        .addGap(101, 101, 101))))
+                        .addComponent(jButton_Add)))
+                .addGap(54, 54, 54))
         );
 
         // Removing inner borders inside the button
@@ -366,6 +368,50 @@ public class Teams_Frame extends javax.swing.JFrame {
     //*****************************************************************//
     //******************** NOT IMPLEMENTED YET ********************//
     //*****************************************************************//
+    
+    try{  
+            Connection con=DriverManager.getConnection( Config.hostName,
+                 Config.username,Config.password);
+            int row = jTableTeams.getSelectedRow();     // For Selected Row in the table
+            // Variable containing Coach ID to be deleted ...
+            int coachID = 0;
+            // Getting the name of the team to be deleted from the DataBase & Table ...
+            String teamName = jTableTeams.getValueAt(row, 0).toString();
+            // SQL Statement & Query for selecting the coach ID which to be DELETED from COACH Table.
+            Statement stmt0=con.createStatement();  
+            ResultSet rs0=stmt0.executeQuery("SELECT coachID from team where NAME=" + "'"+teamName+"'");
+            if(rs0.next())  // Necessary for the SQL Logic ...
+                coachID = rs0.getInt("COACHID");
+            // SQL Statement & Query for DELETING the team from the DataBase & Table ...
+            Statement stmt=con.createStatement();  
+            // Delete the (string) - in single quotations - using SQL Query ...
+            int rs=stmt.executeUpdate("DELETE from team where NAME =" + "'"+teamName+"'");
+            // SQL Statement & Query for DELETING the coach from the DataBase & Table ...
+            Statement stmt2=con.createStatement();  
+            int rs2=stmt2.executeUpdate("DELETE from coach where ID =" + coachID);
+            con.close();
+            // Updating & Showing the Teams Table Again ...
+        try{
+            updateTeamsTable();
+            }
+            catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
+            _leaguesList = new Object[][]{};
+            }
+        // Restarting the Team_Frame JFrame ...
+            this.dispose();
+            try{
+            Thread.sleep(250);
+            new Teams_Frame(jLabel_leagueName.getText(), ThiscurrentLeagueID).show();
+            }
+            catch(InterruptedException e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }catch(SQLException e){ 
+                System.out.println(e);
+                System.out.println("Error In Delete Team Function");
+        }         
     }//GEN-LAST:event_jButton_DeleteActionPerformed
 
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
@@ -407,7 +453,7 @@ public class Teams_Frame extends javax.swing.JFrame {
         }
         this.dispose();
         try{
-        Thread.sleep(500);
+        Thread.sleep(250);
         new Teams_Frame(jLabel_leagueName.getText(), ThiscurrentLeagueID).show();
         }
         catch(InterruptedException e)
@@ -531,7 +577,7 @@ public class Teams_Frame extends javax.swing.JFrame {
    }
             
             
-               private Object[][] getTeams() throws Exception{
+    private Object[][] getTeams() throws Exception{
         try{  
             Connection con=DriverManager.getConnection( Config.hostName,
                  Config.username,Config.password);  
@@ -539,9 +585,16 @@ public class Teams_Frame extends javax.swing.JFrame {
             ResultSet rs=stmt.executeQuery("select * from team where LEAGUEID =" +ThiscurrentLeagueID);  
             Object[][] teamsList = new Object[1000][1000];
             int index = 0 ;
+            int coachID = 0;
             while(rs.next()) { 
                 teamsList[index][0] = rs.getString("name");
                 teamsList[index][1] = rs.getInt("foundedyear");
+                coachID = rs.getInt("COACHID");
+                Statement stmt2=con.createStatement(); 
+                ResultSet rs2=stmt2.executeQuery("select * from coach where ID =" +coachID);
+                while(rs2.next()) { 
+                    teamsList[index][2] = rs2.getString("FIRSTNAME") + " " + rs2.getString("LASTNAME");
+                }
                 index ++ ;
              }
             con.close(); 

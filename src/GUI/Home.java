@@ -58,6 +58,7 @@ public class Home extends javax.swing.JFrame {
         // Necessary For Adding Rows
         // Method 1 For Adding
 
+
         try{
           _leaguesList= getLeagues();
           updateTeamsTable();
@@ -390,7 +391,8 @@ public class Home extends javax.swing.JFrame {
         }catch(Exception e){
           throw e ;
         }     
-        for (int i = 0 ;i < tblLeagueModel.getRowCount() ; i++ ){
+        // Fixed Bug (Duplicate Table Data Showing)
+        for (int i = tblLeagueModel.getRowCount() - 1 ;i >= 0 ; i-- ){
             tblLeagueModel.removeRow(i);
         }
         
