@@ -42,7 +42,6 @@ public class SignIn extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1440, 996));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(905, 524));
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
