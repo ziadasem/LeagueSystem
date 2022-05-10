@@ -40,9 +40,12 @@ public class SignIn extends javax.swing.JFrame {
         jPanel_TeamsClose = new javax.swing.JPanel();
         jLabel_TeamsClose = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, java.awt.Color.black, java.awt.Color.black));
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -73,7 +76,7 @@ public class SignIn extends javax.swing.JFrame {
         jSeparator1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/icons8_lock_50px_4.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/icons8_lock_50px_4.png"))); // NOI18N
 
         jButton_SignIn.setBackground(new java.awt.Color(0, 102, 102));
         jButton_SignIn.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -107,7 +110,7 @@ public class SignIn extends javax.swing.JFrame {
         });
 
         jLabel_TeamsClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel_TeamsClose.setForeground(new java.awt.Color(77, 20, 54));
+        jLabel_TeamsClose.setForeground(new java.awt.Color(170, 239, 239));
         jLabel_TeamsClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_TeamsClose.setText("X");
         jLabel_TeamsClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -159,23 +162,33 @@ public class SignIn extends javax.swing.JFrame {
                 .addComponent(jButton_SignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jButton_Guest, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         jButton_SignIn.setFocusPainted(false);
         jButton_Guest.setFocusPainted(false);
 
-        jPanel3.setBackground(new java.awt.Color(209, 181, 234));
+        jPanel3.setBackground(new java.awt.Color(170, 239, 239));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ball_Blue.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jLabel3.setPreferredSize(new java.awt.Dimension(435, 324));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 374, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 524, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(88, 88, 88))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -183,8 +196,9 @@ public class SignIn extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -267,6 +281,7 @@ public class SignIn extends javax.swing.JFrame {
     private javax.swing.JButton jButton_Guest;
     private javax.swing.JButton jButton_SignIn;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel_TeamsClose;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
