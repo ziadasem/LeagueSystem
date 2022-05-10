@@ -9,9 +9,11 @@ package GUI;
  * @author hosam
  */
 public class MainClass {
+
     public static void main(String[] args) {
        try{
-       new GUI.Home().setVisible(true);
+       // new GUI.Home().setVisible(true);
+       new GUI.SignIn().setVisible(true);
        }
        catch(Exception e){
            System.out.println("Error in main");
