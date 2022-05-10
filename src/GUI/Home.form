@@ -138,7 +138,7 @@
                       </Group>
                       <Component id="jLabel2" min="-2" pref="91" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="156" max="32767" attributes="0"/>
+                  <EmptySpace pref="155" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
