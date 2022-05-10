@@ -365,9 +365,6 @@ public class Teams_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel_TeamsCloseMouseReleased
 
     private void jButton_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeleteActionPerformed
-    //*****************************************************************//
-    //******************** NOT IMPLEMENTED YET ********************//
-    //*****************************************************************//
     
     try{  
             Connection con=DriverManager.getConnection( Config.hostName,
