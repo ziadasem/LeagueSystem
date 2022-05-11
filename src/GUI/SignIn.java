@@ -21,7 +21,7 @@ public class SignIn extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         jPanel2.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.60f));
-        jTextField_ID.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.20f));
+        //jTextField_ID.setBackground(new Color(0.0f, 0.0f, 0.0f, 0.20f));
     }
 
     /**
@@ -59,7 +59,7 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
-        jTextField_ID.setBackground(new java.awt.Color(51, 51, 51));
+        jTextField_ID.setBackground(new java.awt.Color(0, 0, 0));
         jTextField_ID.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
         jTextField_ID.setForeground(new java.awt.Color(204, 204, 204));
         jTextField_ID.setText("Admin ID");
@@ -126,13 +126,10 @@ public class SignIn extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel1)
-                        .addGap(91, 91, 91))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19))))
+                        .addComponent(jLabel1))
+                    .addComponent(jTextField_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
