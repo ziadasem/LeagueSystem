@@ -4,6 +4,9 @@
  */
 package Functions;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
+
 /**
  *
  * @author hosam
@@ -42,4 +45,36 @@ public class DataEntryChecking {
         }
         return true;
     }
+    
+    
+    public boolean isValid_Week(String temp)
+    {
+        if(temp.isEmpty())
+            return false;
+        if(temp.length()>2)
+            return false;
+        if(temp.startsWith("0"))
+            return false;
+        try{
+            Integer test = Integer.parseInt(temp);
+        }
+        catch(NumberFormatException nfe)
+            {return false;}
+        return true;
+    }
+    
+    public boolean isValid_Time(String temp)
+    {
+        if(temp.isEmpty())
+            return false;
+        try{
+            LocalTime.parse(temp);
+        }
+        catch(DateTimeParseException | NullPointerException e)
+        {
+            return false;
+        }
+        return true;
+    }
 }
+

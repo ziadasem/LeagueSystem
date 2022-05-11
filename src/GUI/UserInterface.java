@@ -25,6 +25,7 @@ public class UserInterface extends javax.swing.JFrame {
      */
     public UserInterface() {
         initComponents();
+        this.setLocationRelativeTo(null);
         playersTable.setVisible(false);
         //****************init*****************
         jScrollPane2.setBackground(new java.awt.Color(18,30,49));

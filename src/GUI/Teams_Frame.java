@@ -365,8 +365,11 @@ public class Teams_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel_TeamsCloseMouseReleased
 
     private void jButton_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeleteActionPerformed
-    
-    try{  
+    int reply = JOptionPane.showConfirmDialog(this, "Do you want to delete?", "Delete", JOptionPane.YES_NO_OPTION);
+    if(reply == JOptionPane.NO_OPTION)
+        return;
+    else if(reply == JOptionPane.YES_OPTION)
+        try{  
             Connection con=DriverManager.getConnection( Config.hostName,
                  Config.username,Config.password);
             int row = jTableTeams.getSelectedRow();     // For Selected Row in the table
@@ -388,27 +391,27 @@ public class Teams_Frame extends javax.swing.JFrame {
             int rs2=stmt2.executeUpdate("DELETE from coach where ID =" + coachID);
             con.close();
             // Updating & Showing the Teams Table Again ...
-        try{
-            updateTeamsTable();
-            }
-            catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
-            _leaguesList = new Object[][]{};
-            }
-        // Restarting the Team_Frame JFrame ...
-            this.dispose();
             try{
-            Thread.sleep(250);
-            new Teams_Frame(jLabel_leagueName.getText(), ThiscurrentLeagueID).show();
-            }
-            catch(InterruptedException e)
-            {
-                System.out.println(e.getMessage());
-            }
-        }catch(SQLException e){ 
-                System.out.println(e);
-                System.out.println("Error In Delete Team Function");
-        }         
+                updateTeamsTable();
+                }
+                catch(Exception e){
+                JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
+                _leaguesList = new Object[][]{};
+                }
+            // Restarting the Team_Frame JFrame ...
+                this.dispose();
+                try{
+                Thread.sleep(250);
+                new Teams_Frame(jLabel_leagueName.getText(), ThiscurrentLeagueID).show();
+                }
+                catch(InterruptedException e)
+                {
+                    System.out.println(e.getMessage());
+                }
+            }catch(SQLException e){ 
+                    System.out.println(e);
+                    System.out.println("Error In Delete Team Function");
+            }         
     }//GEN-LAST:event_jButton_DeleteActionPerformed
 
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed

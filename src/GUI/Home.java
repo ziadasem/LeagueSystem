@@ -139,7 +139,7 @@ public class Home extends javax.swing.JFrame {
             }
         };
         jLabel_leagueName = new javax.swing.JLabel();
-        jButton_latestNews = new javax.swing.JButton();
+        jButton_addMatches = new javax.swing.JButton();
         jButton_addLeague = new javax.swing.JButton();
         jButton_addTeams = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -147,6 +147,8 @@ public class Home extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel_TeamsClose = new javax.swing.JPanel();
         jLabel_TeamsClose = new javax.swing.JLabel();
+        jButton_editSquad = new javax.swing.JButton();
+        jButton_Standings = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1440, 768));
@@ -198,15 +200,15 @@ public class Home extends javax.swing.JFrame {
         jLabel_leagueName.setText("League");
         jLabel_leagueName.setPreferredSize(new java.awt.Dimension(130, 43));
 
-        jButton_latestNews.setBackground(new java.awt.Color(109, 28, 145));
-        jButton_latestNews.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
-        jButton_latestNews.setForeground(new java.awt.Color(240, 240, 240));
-        jButton_latestNews.setText("Latest News");
-        jButton_latestNews.setToolTipText("");
-        jButton_latestNews.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_latestNews.addActionListener(new java.awt.event.ActionListener() {
+        jButton_addMatches.setBackground(new java.awt.Color(109, 28, 145));
+        jButton_addMatches.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_addMatches.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_addMatches.setText("Add Matches");
+        jButton_addMatches.setToolTipText("");
+        jButton_addMatches.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_addMatches.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_latestNewsActionPerformed(evt);
+                jButton_addMatchesActionPerformed(evt);
             }
         });
 
@@ -273,6 +275,30 @@ public class Home extends javax.swing.JFrame {
             .addComponent(jLabel_TeamsClose, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jButton_editSquad.setBackground(new java.awt.Color(109, 28, 145));
+        jButton_editSquad.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_editSquad.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_editSquad.setText("Edit Squad");
+        jButton_editSquad.setToolTipText("");
+        jButton_editSquad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_editSquad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_editSquadActionPerformed(evt);
+            }
+        });
+
+        jButton_Standings.setBackground(new java.awt.Color(109, 28, 145));
+        jButton_Standings.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_Standings.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_Standings.setText("Standings");
+        jButton_Standings.setToolTipText("");
+        jButton_Standings.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_Standings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_StandingsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -295,13 +321,17 @@ public class Home extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(134, 134, 134)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton_Standings, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton_editSquad, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jButton_addTeams, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15)
-                        .addComponent(jButton_latestNews, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton_addMatches, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(15, 15, 15)
                         .addComponent(jButton_addLeague, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(48, Short.MAX_VALUE))))
@@ -318,27 +348,39 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jPanel_TeamsClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_latestNews)
+                            .addComponent(jButton_addMatches)
                             .addComponent(jButton_addLeague)
                             .addComponent(jButton_addTeams))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(155, Short.MAX_VALUE))
+                        .addGap(35, 35, 35)
+                        .addComponent(jButton_editSquad)
+                        .addGap(27, 27, 27)
+                        .addComponent(jButton_Standings))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(4, 4, 4)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         // Removing inner borders inside the button
-        jButton_latestNews.setFocusPainted(false);
+        jButton_addMatches.setFocusPainted(false);
         // Removing inner borders inside the button
         jButton_addLeague.setFocusPainted(false);
         // Removing inner borders inside the button
         jButton_addTeams.setFocusPainted(false);
+        // Removing inner borders inside the button
+        jButton_editSquad.setFocusPainted(false);
+        // Removing inner borders inside the button
+        jButton_Standings.setFocusPainted(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -357,9 +399,9 @@ public class Home extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_latestNewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_latestNewsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_latestNewsActionPerformed
+    private void jButton_addMatchesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addMatchesActionPerformed
+        new Matches_Frame(currentLeague_Name, currentLeagueID).show();
+    }//GEN-LAST:event_jButton_addMatchesActionPerformed
 
     private void jButton_addLeagueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addLeagueActionPerformed
         new AddNewLeague().show();
@@ -387,6 +429,16 @@ public class Home extends javax.swing.JFrame {
     private void jPanel_TeamsCloseMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_TeamsCloseMouseReleased
         this.dispose();
     }//GEN-LAST:event_jPanel_TeamsCloseMouseReleased
+
+    private void jButton_editSquadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_editSquadActionPerformed
+        new Squad_Frame(currentLeague_Name, currentLeagueID).show();
+    }//GEN-LAST:event_jButton_editSquadActionPerformed
+
+    private void jButton_StandingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_StandingsActionPerformed
+        //*****************************************************************//
+        //********************** NOT IMPLEMENTED YET **********************//
+        //*****************************************************************//
+    }//GEN-LAST:event_jButton_StandingsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -480,9 +532,11 @@ public class Home extends javax.swing.JFrame {
 
          
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_Standings;
     private javax.swing.JButton jButton_addLeague;
+    private javax.swing.JButton jButton_addMatches;
     private javax.swing.JButton jButton_addTeams;
-    private javax.swing.JButton jButton_latestNews;
+    private javax.swing.JButton jButton_editSquad;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -45,12 +45,14 @@ public class SignIn extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1400, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 768));
         setUndecorated(true);
-        setSize(new java.awt.Dimension(1440, 768));
+        setPreferredSize(new java.awt.Dimension(1280, 768));
+        setSize(new java.awt.Dimension(1280, 768));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
-        jPanel3.setMinimumSize(new java.awt.Dimension(1400, 660));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel3.setMinimumSize(new java.awt.Dimension(1280, 768));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1280, 768));
         jPanel3.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -60,6 +62,7 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
 
+        jTextField_ID.setEditable(false);
         jTextField_ID.setBackground(new java.awt.Color(0, 0, 0));
         jTextField_ID.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
         jTextField_ID.setForeground(new java.awt.Color(204, 204, 204));
@@ -161,7 +164,7 @@ public class SignIn extends javax.swing.JFrame {
         jButton_Guest.setFocusPainted(false);
 
         jPanel3.add(jPanel2);
-        jPanel2.setBounds(530, 120, 348, 399);
+        jPanel2.setBounds(480, 150, 348, 399);
 
         jLabel_TeamsClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel_TeamsClose.setForeground(new java.awt.Color(153, 153, 153));
@@ -174,26 +177,27 @@ public class SignIn extends javax.swing.JFrame {
             }
         });
         jPanel3.add(jLabel_TeamsClose);
-        jLabel_TeamsClose.setBounds(1360, 10, 25, 29);
+        jLabel_TeamsClose.setBounds(1240, 10, 30, 29);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Soccer Stadum.jpg"))); // NOI18N
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 6));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Soccer Stadium 1280x768.jpg"))); // NOI18N
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 5));
+        jLabel3.setMaximumSize(new java.awt.Dimension(1280, 780));
+        jLabel3.setMinimumSize(new java.awt.Dimension(1280, 780));
+        jLabel3.setPreferredSize(new java.awt.Dimension(1280, 768));
         jPanel3.add(jLabel3);
-        jLabel3.setBounds(0, 0, 1400, 700);
+        jLabel3.setBounds(0, -2, 1280, 770);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 658, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(2, 2, 2))
         );
 
@@ -235,6 +239,7 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField_IDActionPerformed
 
     private void jTextField_IDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField_IDMouseClicked
+       jTextField_ID.setEditable(true);
         jTextField_ID.setText("");
     }//GEN-LAST:event_jTextField_IDMouseClicked
 
