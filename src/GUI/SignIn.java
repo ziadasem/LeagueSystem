@@ -49,6 +49,7 @@ public class SignIn extends javax.swing.JFrame {
         setUndecorated(true);
         setSize(new java.awt.Dimension(1440, 768));
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 3));
         jPanel3.setMinimumSize(new java.awt.Dimension(1400, 660));
         jPanel3.setLayout(null);
 
@@ -176,6 +177,7 @@ public class SignIn extends javax.swing.JFrame {
         jLabel_TeamsClose.setBounds(1360, 10, 25, 29);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Soccer Stadum.jpg"))); // NOI18N
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102), 6));
         jPanel3.add(jLabel3);
         jLabel3.setBounds(0, 0, 1400, 700);
 
@@ -207,10 +209,13 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel_TeamsCloseMouseClicked
 
     private void jButton_GuestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_GuestActionPerformed
-        //*****************************************************************//
-        //******************** NOT IMPLEMENTED YET ********************//
-        //*****************************************************************//
-
+        try{
+       new GUI.UserInterface().setVisible(true);
+       this.dispose();
+       }
+       catch(Exception e){
+           System.out.println("Error in main");
+       }
     }//GEN-LAST:event_jButton_GuestActionPerformed
 
     private void jButton_SignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SignInActionPerformed
