@@ -13,6 +13,8 @@ import java.time.format.DateTimeParseException;
  */
 public class DataEntryChecking {
     private final char constraints[] = {'?', '!', '@', '#'};
+    private final String positionConstraints[] = { "GK", "CB", "LB", "RB", "CM", "AM", "DM", "LW", "RW", "ST", "CF" };
+    
     // private final String constraints_str = "?!@#";
     public boolean isValid_Team(String temp)
     {
@@ -34,6 +36,23 @@ public class DataEntryChecking {
     {
         if(temp.isEmpty())
             return false;
+        for(int i=0; i<constraints.length; i++)
+        {
+            if(temp.startsWith(Character.toString(constraints[i])))
+                return false;
+            if(temp.endsWith(Character.toString(constraints[i])))
+                return false;
+            if(temp.length()<2)
+                return false;
+        }
+        return true;
+    }
+    
+    public boolean isValid_firstName(String temp)
+    {
+        if(temp.isEmpty())
+            return false;
+        temp = temp.strip();
         for(int i=0; i<constraints.length; i++)
         {
             if(temp.startsWith(Character.toString(constraints[i])))
@@ -75,6 +94,20 @@ public class DataEntryChecking {
             return false;
         }
         return true;
+    }
+    
+    public boolean isValid_Position(String temp)
+    {
+        if(temp.isEmpty())
+           return false;
+        if(temp.length()>2)
+            return false;
+        for(int i=0; i<positionConstraints.length; i++)
+        {
+            if(temp.contains(positionConstraints[i]))
+                return true;
+        }
+        return false;
     }
 }
 

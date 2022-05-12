@@ -5,11 +5,19 @@
 package GUI;
 
 import Functions.Config;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 
 /**
@@ -17,29 +25,60 @@ import javax.swing.JOptionPane;
  * @author hosam
  */
 public class UserInterface extends javax.swing.JFrame {
+    
+    //******************** Declaration of Variables, to be used for the Entire Class ********************//
     private int currentLeagueID = 0 ;
-   Object[][] _leaguesList ;
-   public String currentLeague_Name;
+    Object[][] _leaguesList ;
+    public String currentLeague_Name;
+    //*****************************************************************//
+   
+            //******************** League Table Renderer ********************//
+        // Necessary For alligning Rows
+        DefaultTableCellRenderer tblLeagueRenderer = new DefaultTableCellRenderer();
+   
     /**
      * Creates new form NewJFrame
      */
     public UserInterface() {
+        super.setTitle("Home");
         initComponents();
         this.setLocationRelativeTo(null);
+        // Calling the rows center aligning function ...
+        // Aligning Rows to the center ...
+        setTableCellAlignment(SwingConstants.CENTER);
+        
         playersTable.setVisible(false);
         //****************init*****************
-        jScrollPane2.setBackground(new java.awt.Color(18,30,49));
+        jScrollPane_tableLeague.setBackground(new java.awt.Color(18,30,49));
         playersTable.setBackground(new java.awt.Color(18,30,49)); 
         //************************************
         try{
           _leaguesList= getLeagues();
+          updateTeamsTable();
         }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
             _leaguesList = new Object[][]{};
         }
         for (int i = 0 ;_leaguesList[i][1] != null ; i++){
-               jComboBox2.addItem(_leaguesList[i][1].toString());
+               jComboBox1.addItem(_leaguesList[i][1].toString());
         }
+        
+        //******************** League Table Properties ********************//
+        jTableLeague.getTableHeader().setFont(new Font("League", Font.BOLD,24));
+        //jTableLeague.setOpaque(false);
+        
+        // Setting Colmuns Width
+        jTableLeague.getColumnModel().getColumn(0).setPreferredWidth(150);
+        jTableLeague.getColumnModel().getColumn(1).setPreferredWidth(10);
+        jTableLeague.getColumnModel().getColumn(2).setPreferredWidth(50);
+        jTableLeague.getColumnModel().getColumn(3).setPreferredWidth(100);
+        
+        jTableLeague.getTableHeader().setBackground(new Color(63, 16, 82));
+        jTableLeague.getTableHeader().setForeground(new Color(108,147,59));
+        // Changing the League Table Color
+        jScrollPane_tableLeague.getViewport().setBackground(new Color(108, 147, 59));
+        //*****************************************************************//
+        
     }
     private Object[][] getLeagues() throws Exception{
         try{  
@@ -73,47 +112,77 @@ public class UserInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jScrollPane_tableLeague = new javax.swing.JScrollPane();
+        jTableLeague = new javax.swing.JTable()
+        {
+            public Component prepareRenderer(TableCellRenderer r, int rw, int col)
+            {
+                Component c = super.prepareRenderer(r, rw, col);
+                c.setBackground(new Color(87, 125, 41));
+                c.setFont(new Font("League", Font.BOLD,18));
+                // Setting Alternating Colors
+                if(rw %2 == 0)
+                c.setBackground(new Color(150, 150, 150));
+                return c;
+            }
+
+        }
+
+        ;
+        jComboBox1 = new javax.swing.JComboBox<>();
         playersTable = new javax.swing.JScrollPane();
         playerTable = new javax.swing.JTable();
         showPlayers = new javax.swing.JButton();
         jButton_SignIn = new javax.swing.JButton();
         jLabel_TeamsClose = new javax.swing.JLabel();
+        jLabel_leagueName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1440, 768));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1440, 768));
         setSize(new java.awt.Dimension(1440, 768));
         getContentPane().setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane_tableLeague.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(108, 147, 59), new java.awt.Color(108, 147, 59), new java.awt.Color(108, 147, 59), new java.awt.Color(108, 147, 59)));
+
+        jTableLeague.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Team", "Coach", "City", "Stadium"
             }
-        ));
-        jScrollPane2.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(30, 50, 730, 640);
-
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(930, 160, 210, 30);
+        jTableLeague.setFocusable(false);
+        jTableLeague.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        jTableLeague.setRowHeight(30);
+        jTableLeague.setRowSelectionAllowed(true);
+        jTableLeague.setSelectionForeground(new java.awt.Color(0, 120, 215));
+        jTableLeague.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTableLeague.setShowVerticalLines(false);
+        jTableLeague.getTableHeader().setReorderingAllowed(false);
+        jScrollPane_tableLeague.setViewportView(jTableLeague);
+
+        getContentPane().add(jScrollPane_tableLeague);
+        jScrollPane_tableLeague.setBounds(30, 100, 810, 480);
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(930, 160, 210, 30);
 
         playerTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -174,6 +243,13 @@ public class UserInterface extends javax.swing.JFrame {
         getContentPane().add(jLabel_TeamsClose);
         jLabel_TeamsClose.setBounds(1390, 10, 25, 29);
 
+        jLabel_leagueName.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
+        jLabel_leagueName.setForeground(new java.awt.Color(108, 147, 59));
+        jLabel_leagueName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_leagueName.setText("League");
+        getContentPane().add(jLabel_leagueName);
+        jLabel_leagueName.setBounds(30, 30, 730, 60);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Soccer Stadum.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1450, 768);
@@ -209,14 +285,44 @@ public class UserInterface extends javax.swing.JFrame {
           }
     }//GEN-LAST:event_jButton_SignInActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        int idIndex = jComboBox1.getSelectedIndex();
+        currentLeagueID = Integer.parseInt(_leaguesList[idIndex][0].toString()) ;
         
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+        try{
+            // Changing the league label name corresponding to the selected league
+            // Updating the League Table ...
+            currentLeague_Name = jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
+            jLabel_leagueName.setText(currentLeague_Name);
+            updateTeamsTable();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.toString());
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void showPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayersActionPerformed
         playersTable.setVisible(true);
     }//GEN-LAST:event_showPlayersActionPerformed
 
+    /** ******************** League Table Renderer Function ********************
+     * This function is for configuring the Table League Renderer which is
+     * Responsible for pairing each column to all its cells and then
+     * aligning each cell of each row to the center of its corresponding column
+     * Which will result that rows of the table is aligned in the center ...
+     * https://coderanch.com/t/680374/java/Center-Alignment-JTABLE-Records
+     */
+    
+         private void setTableCellAlignment(int alignment) {
+             tblLeagueRenderer.setHorizontalAlignment(alignment);
+             for (int i=0; i<jTableLeague.getColumnCount();i++){
+                jTableLeague.setDefaultRenderer(jTableLeague.getColumnClass(i),tblLeagueRenderer);
+                }
+            // repaint to show table cell changes
+            jTableLeague.updateUI();
+        }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -252,15 +358,55 @@ public class UserInterface extends javax.swing.JFrame {
             }
         });
     }
+        
+        
+    public void updateTeamsTable() throws Exception{
+       DefaultTableModel tblLeagueModel = (DefaultTableModel)jTableLeague.getModel();
+        Object[][] _testData ;
+        try{
+           _testData = getTeams();
+        }catch(Exception e){
+          throw e ;
+        }     
+        // Fixed Bug (Duplicate Table Data Showing)
+        for (int i = tblLeagueModel.getRowCount() - 1 ;i >= 0 ; i-- ){
+            tblLeagueModel.removeRow(i);
+        }
+        
+        for(int i=0; _testData[i][0] != null; i++)
+            tblLeagueModel.addRow(_testData[i]);
+   }
+   
+   private Object[][] getTeams() throws Exception{
+        try{  
+            Connection con=DriverManager.getConnection( Config.hostName,
+            Config.username,Config.password);  
+            Statement stmt=con.createStatement();  
+            ResultSet rs=stmt.executeQuery("select * from team where leagueid =" +currentLeagueID);  
+            Object[][] teamsList = new Object[1000][1000];
+            int index = 0 ;
+            while(rs.next()) { 
+                teamsList[index][0] = rs.getString("name");
+                teamsList[index][1] = rs.getInt("foundedyear");
+                index ++ ;
+             }
+            con.close(); 
+            return teamsList;
+        }catch(SQLException e){ 
+                System.out.println(e);
+                throw e;
+        }  
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_SignIn;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_TeamsClose;
+    private javax.swing.JLabel jLabel_leagueName;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane_tableLeague;
+    private javax.swing.JTable jTableLeague;
     private javax.swing.JTable playerTable;
     private javax.swing.JScrollPane playersTable;
     private javax.swing.JButton showPlayers;

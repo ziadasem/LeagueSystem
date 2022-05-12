@@ -70,6 +70,11 @@ public class Teams_Frame extends javax.swing.JFrame {
         //******************** League Table Properties ********************//
         jTableTeams.getTableHeader().setFont(new Font("League", Font.BOLD,22));
         jTableTeams.setOpaque(false);
+        // Setting Colmuns Width
+        jTableTeams.getColumnModel().getColumn(0).setPreferredWidth(150);
+        jTableTeams.getColumnModel().getColumn(1).setPreferredWidth(10);
+        jTableTeams.getColumnModel().getColumn(2).setPreferredWidth(75);
+        
         jTableTeams.getTableHeader().setBackground(new Color(63, 16, 82));
         jTableTeams.getTableHeader().setForeground(new Color(255,255,255));
         jTableTeams.setBackground(new Color(244, 244, 244));
@@ -99,17 +104,6 @@ public class Teams_Frame extends javax.swing.JFrame {
                 // Setting Alternating Colors
                 if(rw %2 == 0)
                 c.setBackground(new Color(225, 225, 225));
-                // Setting Colors Of First 3 Champions Qualified Teams
-                if((rw == 0 && col == 0) || (rw == 1 && col == 0) || (rw == 2 && col == 0))
-                c.setBackground(new Color(66, 133, 244));
-
-                // Setting Colors Of Second 2 2-Champions Qualified Teams
-                if((rw == 3 && col == 0) || (rw == 4 && col == 0))
-                c.setBackground(new Color(251, 150, 68));
-
-                // Setting color of last 3 (Descending Teams) ...
-                if((rw == jTableTeams.getRowCount() - 1 && col == 0) || (rw == jTableTeams.getRowCount() - 2 && col == 0) || (rw == jTableTeams.getRowCount() - 3 && col == 0))
-                c.setBackground(new Color(243, 64, 54));
                 return c;
             }
         };
@@ -180,7 +174,6 @@ public class Teams_Frame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTableTeams.setColumnSelectionAllowed(false);
         jTableTeams.setFocusable(false);
         jTableTeams.setIntercellSpacing(new java.awt.Dimension(0, 0));
         jTableTeams.setMinimumSize(new java.awt.Dimension(1024, 720));
@@ -512,10 +505,10 @@ public class Teams_Frame extends javax.swing.JFrame {
         }
     
     
-            private void addNewTeam(String teamName, int teamYear, String firstName, String lastName) throws Exception{
+        private void addNewTeam(String teamName, int teamYear, String firstName, String lastName) throws Exception{
         try{  
             Connection con=DriverManager.getConnection( Config.hostName,
-                 Config.username,Config.password);  
+            Config.username,Config.password);  
             Statement stmt=con.createStatement();  
             ResultSet rs=stmt.executeQuery("SELECT MAX(ID) FROM TEAM");  
             int id =  0;
@@ -524,7 +517,7 @@ public class Teams_Frame extends javax.swing.JFrame {
             }
             addNewCoach(firstName, lastName);
             System.out.println(id);
-            int insertingResult =stmt.executeUpdate("insert into TEAM values(" +id+ ",'" +teamName+ "'," +teamYear+ "," +ThiscurrentLeagueID+ "," +id+ ")" );  
+            int insertingResult =stmt.executeUpdate("insert into TEAM values(" +id+ ",'" +teamName+ "'," +teamYear+ "," +ThiscurrentLeagueID+ "," +id+ ",null)" );  
             con.close(); 
         }catch(Exception e){ 
              System.out.println(e);
@@ -560,8 +553,8 @@ public class Teams_Frame extends javax.swing.JFrame {
             
             
             
-            public void updateTeamsTable() throws Exception{
-       DefaultTableModel tblLeagueModel = (DefaultTableModel)jTableTeams.getModel();
+    public void updateTeamsTable() throws Exception{
+        DefaultTableModel tblLeagueModel = (DefaultTableModel)jTableTeams.getModel();
         Object[][] _testData ;
         try{
            _testData = getTeams();
@@ -580,7 +573,7 @@ public class Teams_Frame extends javax.swing.JFrame {
     private Object[][] getTeams() throws Exception{
         try{  
             Connection con=DriverManager.getConnection( Config.hostName,
-                 Config.username,Config.password);  
+            Config.username,Config.password);  
             Statement stmt=con.createStatement();  
             ResultSet rs=stmt.executeQuery("select * from team where LEAGUEID =" +ThiscurrentLeagueID);  
             Object[][] teamsList = new Object[1000][1000];

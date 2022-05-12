@@ -81,9 +81,11 @@ public class Matches_Frame extends javax.swing.JFrame {
         //******************** League Matches Properties ********************//
         jTableMatches.getTableHeader().setFont(new Font("League", Font.BOLD,22));
         jTableMatches.setOpaque(false);
+        // Setting Colmuns Width
         jTableMatches.getColumnModel().getColumn(0).setPreferredWidth(10);
         jTableMatches.getColumnModel().getColumn(1).setPreferredWidth(100);
         jTableMatches.getColumnModel().getColumn(2).setPreferredWidth(100);
+        
         jTableMatches.getTableHeader().setBackground(new Color(63, 16, 82));
         jTableMatches.getTableHeader().setForeground(new Color(255,255,255));
         jTableMatches.setBackground(new Color(244, 244, 244));
@@ -254,17 +256,12 @@ public class Matches_Frame extends javax.swing.JFrame {
                 jTextField_WeekMouseClicked(evt);
             }
         });
-        jTextField_Week.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_WeekActionPerformed(evt);
-            }
-        });
 
         jTextField_Time.setBackground(new java.awt.Color(209, 204, 192));
         jTextField_Time.setFont(new java.awt.Font("Cambria", 1, 22)); // NOI18N
         jTextField_Time.setForeground(new java.awt.Color(51, 51, 51));
         jTextField_Time.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_Time.setText("00:00");
+        jTextField_Time.setText("00:00!");
         jTextField_Time.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray));
         jTextField_Time.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -276,17 +273,12 @@ public class Matches_Frame extends javax.swing.JFrame {
         jTextField_homeTeam.setFont(new java.awt.Font("Cambria", 1, 22)); // NOI18N
         jTextField_homeTeam.setForeground(new java.awt.Color(51, 51, 51));
         jTextField_homeTeam.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_homeTeam.setText("Team 1 Name");
+        jTextField_homeTeam.setText("Team 1 Name!");
         jTextField_homeTeam.setToolTipText("");
         jTextField_homeTeam.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray));
         jTextField_homeTeam.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 jTextField_homeTeamFocusGained(evt);
-            }
-        });
-        jTextField_homeTeam.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField_homeTeamActionPerformed(evt);
             }
         });
 
@@ -333,7 +325,7 @@ public class Matches_Frame extends javax.swing.JFrame {
         jTextField_awayTeam.setFont(new java.awt.Font("Cambria", 1, 22)); // NOI18N
         jTextField_awayTeam.setForeground(new java.awt.Color(51, 51, 51));
         jTextField_awayTeam.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField_awayTeam.setText("Team 2 Name");
+        jTextField_awayTeam.setText("Team 2 Name!");
         jTextField_awayTeam.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray));
         jTextField_awayTeam.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -582,7 +574,7 @@ public class Matches_Frame extends javax.swing.JFrame {
             jTextField_awayTeam.setForeground(new Color(51,51,51));
             // Wrong Entry Here
             jTextField_Week.setForeground(Color.red);
-            jTextField_Week.setText("0 - 100");
+            jTextField_Week.setText("0 - 100!");
             return;
         }
         // Checking For Wrong Year Entry
@@ -594,7 +586,7 @@ public class Matches_Frame extends javax.swing.JFrame {
             jTextField_awayTeam.setForeground(new Color(51,51,51));
             // Wrong Entry Here
             jTextField_Time.setForeground(Color.red);
-            jTextField_Time.setText("00:00");
+            jTextField_Time.setText("00:00!");
             return;
         }
         // Checking For Wrong Coach First Name Entry
@@ -606,7 +598,7 @@ public class Matches_Frame extends javax.swing.JFrame {
             jTextField_awayTeam.setForeground(new Color(51,51,51));
             // Wrong Entry Here
             jTextField_homeTeam.setForeground(Color.red);
-            jTextField_homeTeam.setText("Team 1 Name");
+            jTextField_homeTeam.setText("Team 1 Name!");
             return;
         }
         // Checking For Wrong Coach Last Name Entry
@@ -618,14 +610,13 @@ public class Matches_Frame extends javax.swing.JFrame {
             jTextField_homeTeam.setForeground(new Color(51,51,51));
             // Wrong Entry Here
             jTextField_awayTeam.setForeground(Color.red);
-            jTextField_awayTeam.setText("Team 2 Name");
+            jTextField_awayTeam.setText("Team 2 Name!");
             return;
         }
         try{
             // addNewTeam(jTextField_Week.getText(), Integer.parseInt(jTextField_Time.getText()), jTextField_homeTeam.getText(), jTextField_awayTeam.getText());
         }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e);
-            System.out.println("is it here?");
             return ;
         }
         this.dispose();
@@ -645,10 +636,6 @@ public class Matches_Frame extends javax.swing.JFrame {
         //*****************************************************************//
     }//GEN-LAST:event_jButton_EditActionPerformed
 
-    private void jTextField_WeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_WeekActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_WeekActionPerformed
-
     private void jTextField_awayTeamFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField_awayTeamFocusGained
         jTextField_awayTeam.setText("");
     }//GEN-LAST:event_jTextField_awayTeamFocusGained
@@ -665,10 +652,6 @@ public class Matches_Frame extends javax.swing.JFrame {
         jTextField_Week.setEditable(true);
         jTextField_Week.setText("");
     }//GEN-LAST:event_jTextField_WeekMouseClicked
-
-    private void jTextField_homeTeamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_homeTeamActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField_homeTeamActionPerformed
 
     /**
      * @param args the command line arguments

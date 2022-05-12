@@ -46,9 +46,7 @@ public class Home extends javax.swing.JFrame {
      * Creates new form Home
      */
     public Home() {
-        super.setTitle("Home");
-        
-        
+        super.setTitle("ADMIN");
         initComponents();
         this.setLocationRelativeTo(null);
         // Calling the rows center aligning function ...
@@ -183,6 +181,7 @@ public class Home extends javax.swing.JFrame {
         jTableLeague.setMinimumSize(new java.awt.Dimension(1024, 720));
         jTableLeague.setPreferredSize(new java.awt.Dimension(1024, 720));
         jTableLeague.setRowHeight(30);
+        jTableLeague.setSelectionForeground(new java.awt.Color(0, 120, 215));
         jTableLeague.setShowVerticalLines(false);
         jTableLeague.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTableLeague);
@@ -477,7 +476,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_addLeague1ActionPerformed
 
     private void jButton_addLeague2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addLeague2ActionPerformed
-        new Coach_Frame().show();
+        // new Coach_Frame().show();
     }//GEN-LAST:event_jButton_addLeague2ActionPerformed
 
     /**
@@ -499,7 +498,6 @@ public class Home extends javax.swing.JFrame {
      * https://coderanch.com/t/680374/java/Center-Alignment-JTABLE-Records
      */
     
-   
          private void setTableCellAlignment(int alignment) {
              tblLeagueRenderer.setHorizontalAlignment(alignment);
              for (int i=0; i<jTableLeague.getColumnCount();i++){
@@ -551,7 +549,7 @@ public class Home extends javax.swing.JFrame {
    private Object[][] getTeams() throws Exception{
         try{  
             Connection con=DriverManager.getConnection( Config.hostName,
-                 Config.username,Config.password);  
+            Config.username,Config.password);  
             Statement stmt=con.createStatement();  
             ResultSet rs=stmt.executeQuery("select * from team where leagueid =" +currentLeagueID);  
             Object[][] teamsList = new Object[1000][1000];
