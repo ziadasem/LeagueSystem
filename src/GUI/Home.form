@@ -93,13 +93,20 @@
                                       <Component id="jLabel1" max="32767" attributes="0"/>
                                       <Component id="jComboBox1" min="-2" pref="144" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton_editSquad" min="-2" pref="230" max="-2" attributes="0"/>
-                                      <Component id="jButton_addLeague1" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                                      <Component id="jButton_standings" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                                      <Component id="jButton_addLeague2" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                                      <Component id="jButton_addLeague3" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jButton_editSquad" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Component id="jButton_addLeague1" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Component id="jButton_standings" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Component id="jButton_addLeague2" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
+                                          <Component id="jButton_addLeague3" min="-2" pref="301" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
@@ -113,7 +120,7 @@
                           <Component id="jButton_addMatches" min="-2" pref="230" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                           <Component id="jButton_addLeague" min="-2" pref="230" max="-2" attributes="0"/>
-                          <EmptySpace pref="48" max="32767" attributes="0"/>
+                          <EmptySpace pref="46" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -166,7 +173,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="156" max="32767" attributes="0"/>
+                  <EmptySpace pref="155" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
