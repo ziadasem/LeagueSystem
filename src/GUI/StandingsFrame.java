@@ -232,12 +232,18 @@ public class StandingsFrame extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1280, 720));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 51));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
 
         jLabel_TeamsClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel_TeamsClose.setForeground(new java.awt.Color(204, 204, 204));
         jLabel_TeamsClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_TeamsClose.setText("X");
         jLabel_TeamsClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel_TeamsClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_TeamsCloseMouseClicked(evt);
+            }
+        });
 
         jScrollPane1.setMinimumSize(new java.awt.Dimension(1024, 720));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1024, 720));
@@ -429,7 +435,7 @@ public class StandingsFrame extends javax.swing.JFrame {
                         .addComponent(jLabel_TeamsClose)))
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         // Removing inner borders inside the button
@@ -506,6 +512,10 @@ public class StandingsFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.toString());
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jLabel_TeamsCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_TeamsCloseMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel_TeamsCloseMouseClicked
 
     /*
     public static void main(String args[]) {
