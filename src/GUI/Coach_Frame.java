@@ -155,7 +155,7 @@ public class Coach_Frame extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1280, 720));
         setType(java.awt.Window.Type.POPUP);
 
-        jPanel_Teams_Frame.setBackground(new java.awt.Color(209, 181, 234));
+        jPanel_Teams_Frame.setBackground(new java.awt.Color(0, 51, 51));
         jPanel_Teams_Frame.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
 
         jPanel_TeamsClose.setBackground(new java.awt.Color(209, 181, 234));
@@ -165,8 +165,9 @@ public class Coach_Frame extends javax.swing.JFrame {
             }
         });
 
+        jLabel_TeamsClose.setBackground(new java.awt.Color(0, 51, 51));
         jLabel_TeamsClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel_TeamsClose.setForeground(new java.awt.Color(77, 20, 54));
+        jLabel_TeamsClose.setForeground(new java.awt.Color(204, 204, 204));
         jLabel_TeamsClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_TeamsClose.setText("X");
         jLabel_TeamsClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -217,7 +218,7 @@ public class Coach_Frame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableTeams);
 
         jLabel_leagueName.setFont(new java.awt.Font("Cambria", 1, 42)); // NOI18N
-        jLabel_leagueName.setForeground(new java.awt.Color(63, 16, 82));
+        jLabel_leagueName.setForeground(new java.awt.Color(204, 204, 204));
         jLabel_leagueName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_leagueName.setText("coach");
         jLabel_leagueName.setPreferredSize(new java.awt.Dimension(130, 43));
@@ -238,21 +239,21 @@ public class Coach_Frame extends javax.swing.JFrame {
         jTextField_Position.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray));
 
         jLabel_firstName.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
-        jLabel_firstName.setForeground(new java.awt.Color(63, 16, 82));
+        jLabel_firstName.setForeground(new java.awt.Color(204, 204, 204));
         jLabel_firstName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_firstName.setText("First Name");
 
         jLabel_lastName.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
-        jLabel_lastName.setForeground(new java.awt.Color(63, 16, 82));
+        jLabel_lastName.setForeground(new java.awt.Color(204, 204, 204));
         jLabel_lastName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_lastName.setText("Last Name");
 
         jLabel_Position.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
-        jLabel_Position.setForeground(new java.awt.Color(63, 16, 82));
+        jLabel_Position.setForeground(new java.awt.Color(204, 204, 204));
         jLabel_Position.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_Position.setText("years of experience");
 
-        jButton_Delete.setBackground(new java.awt.Color(109, 28, 145));
+        jButton_Delete.setBackground(new java.awt.Color(51, 85, 175));
         jButton_Delete.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
         jButton_Delete.setForeground(new java.awt.Color(240, 240, 240));
         jButton_Delete.setText("Delete");
@@ -264,7 +265,7 @@ public class Coach_Frame extends javax.swing.JFrame {
             }
         });
 
-        jButton_Add.setBackground(new java.awt.Color(109, 28, 145));
+        jButton_Add.setBackground(new java.awt.Color(51, 85, 175));
         jButton_Add.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
         jButton_Add.setForeground(new java.awt.Color(240, 240, 240));
         jButton_Add.setText("Add");
@@ -277,7 +278,7 @@ public class Coach_Frame extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 42)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(63, 16, 82));
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("coach");
 
@@ -292,27 +293,27 @@ public class Coach_Frame extends javax.swing.JFrame {
                 .addComponent(jButton_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(242, 242, 242))
             .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                        .addComponent(jLabel_lastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                        .addComponent(jLabel_Position, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField_Position, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                        .addComponent(jLabel_firstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(19, 19, 19)
+                .addContainerGap()
                 .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
                         .addComponent(jPanel_TeamsClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
+                        .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
+                                .addComponent(jLabel_lastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
+                                .addComponent(jLabel_Position, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField_Position, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
+                                .addComponent(jLabel_firstName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_leagueName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -329,14 +330,11 @@ public class Coach_Frame extends javax.swing.JFrame {
                     .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_Delete)
-                            .addComponent(jButton_Add)))
-                    .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                        .addGap(193, 193, 193)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
+                        .addGap(101, 101, 101)
                         .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -347,7 +345,11 @@ public class Coach_Frame extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField_Position, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Position, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel_Position, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(123, 123, 123)))
+                .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_Delete)
+                    .addComponent(jButton_Add))
                 .addGap(54, 54, 54))
         );
 
@@ -375,37 +377,37 @@ public class Coach_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel_TeamsCloseMouseReleased
 
     private void jButton_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_DeleteActionPerformed
-    
-        try{  
+
+        try{
             Connection con=DriverManager.getConnection( Config.hostName,
                 Config.username,Config.password);
             int row = jTableTeams.getSelectedRow();     // For Selected Row in the table
             int coachID =  Integer.parseInt(coachesList[row][2].toString()) ;
-            Statement stmt=con.createStatement();  
+            Statement stmt=con.createStatement();
             int rs=stmt.executeUpdate("DELETE from coach where ID =" + coachID);
             con.close();
             // Updating & Showing the Teams Table Again ...
-        try{
-            updateCoachesTable();
+            try{
+                updateCoachesTable();
             }
             catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
-            coachesList = new Object[][]{};
+                JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
+                coachesList = new Object[][]{};
             }
-        // Restarting the Team_Frame JFrame ...
+            // Restarting the Team_Frame JFrame ...
             this.dispose();
             try{
-            Thread.sleep(250);
-            new Coach_Frame().show();
+                Thread.sleep(250);
+                new Coach_Frame().show();
             }
             catch(InterruptedException e)
             {
                 System.out.println(e.getMessage());
             }
-        }catch(SQLException e){ 
-                System.out.println(e);
-                System.out.println("Error In Delete player Function");
-        }         
+        }catch(SQLException e){
+            System.out.println(e);
+            System.out.println("Error In Delete player Function");
+        }
     }//GEN-LAST:event_jButton_DeleteActionPerformed
 
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
@@ -440,8 +442,8 @@ public class Coach_Frame extends javax.swing.JFrame {
         }
         this.dispose();
         try{
-        Thread.sleep(250);
-        new Coach_Frame().show();
+            Thread.sleep(250);
+            new Coach_Frame().show();
         }
         catch(InterruptedException e)
         {

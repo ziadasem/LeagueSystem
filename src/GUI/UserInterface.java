@@ -139,6 +139,12 @@ public class UserInterface extends javax.swing.JFrame {
         jLabel_TeamsClose = new javax.swing.JLabel();
         jLabel_leagueName = new javax.swing.JLabel();
         jLabel_leagueName1 = new javax.swing.JLabel();
+        jButton_SignIn1 = new javax.swing.JButton();
+        jButton_SignIn2 = new javax.swing.JButton();
+        jButton_SignIn3 = new javax.swing.JButton();
+        jButton_SignIn5 = new javax.swing.JButton();
+        jButton_SignIn6 = new javax.swing.JButton();
+        jButton_SignIn4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
@@ -191,7 +197,7 @@ public class UserInterface extends javax.swing.JFrame {
             }
         });
         getContentPane().add(showPlayers1);
-        showPlayers1.setBounds(130, 420, 210, 50);
+        showPlayers1.setBounds(130, 290, 210, 50);
         jButton_SignIn.setFocusPainted(false);
 
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +211,7 @@ public class UserInterface extends javax.swing.JFrame {
         showPlayers.setBackground(new java.awt.Color(51, 85, 175));
         showPlayers.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         showPlayers.setForeground(new java.awt.Color(204, 204, 204));
-        showPlayers.setText("View Teams");
+        showPlayers.setText("View Squads");
         showPlayers.setBorder(null);
         showPlayers.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         showPlayers.addActionListener(new java.awt.event.ActionListener() {
@@ -214,13 +220,13 @@ public class UserInterface extends javax.swing.JFrame {
             }
         });
         getContentPane().add(showPlayers);
-        showPlayers.setBounds(130, 280, 210, 50);
+        showPlayers.setBounds(130, 200, 210, 50);
         jButton_SignIn.setFocusPainted(false);
 
         jButton_SignIn.setBackground(new java.awt.Color(51, 85, 175));
         jButton_SignIn.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jButton_SignIn.setForeground(new java.awt.Color(204, 204, 204));
-        jButton_SignIn.setText("Latest News");
+        jButton_SignIn.setText("View Teams List");
         jButton_SignIn.setBorder(null);
         jButton_SignIn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton_SignIn.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +235,7 @@ public class UserInterface extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton_SignIn);
-        jButton_SignIn.setBounds(130, 540, 210, 50);
+        jButton_SignIn.setBounds(1070, 660, 210, 50);
         jButton_SignIn.setFocusPainted(false);
 
         jLabel_TeamsClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -259,6 +265,96 @@ public class UserInterface extends javax.swing.JFrame {
         getContentPane().add(jLabel_leagueName1);
         jLabel_leagueName1.setBounds(90, 110, 140, 20);
 
+        jButton_SignIn1.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_SignIn1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton_SignIn1.setForeground(new java.awt.Color(204, 204, 204));
+        jButton_SignIn1.setText("Latest News");
+        jButton_SignIn1.setBorder(null);
+        jButton_SignIn1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_SignIn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SignIn1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_SignIn1);
+        jButton_SignIn1.setBounds(130, 660, 210, 50);
+        jButton_SignIn.setFocusPainted(false);
+
+        jButton_SignIn2.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_SignIn2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton_SignIn2.setForeground(new java.awt.Color(204, 204, 204));
+        jButton_SignIn2.setText("View Trophies");
+        jButton_SignIn2.setBorder(null);
+        jButton_SignIn2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_SignIn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SignIn2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_SignIn2);
+        jButton_SignIn2.setBounds(130, 390, 210, 50);
+        jButton_SignIn.setFocusPainted(false);
+
+        jButton_SignIn3.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_SignIn3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton_SignIn3.setForeground(new java.awt.Color(204, 204, 204));
+        jButton_SignIn3.setText("View Team Trophies");
+        jButton_SignIn3.setBorder(null);
+        jButton_SignIn3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_SignIn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SignIn3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_SignIn3);
+        jButton_SignIn3.setBounds(130, 480, 210, 50);
+        jButton_SignIn.setFocusPainted(false);
+
+        jButton_SignIn5.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_SignIn5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton_SignIn5.setForeground(new java.awt.Color(204, 204, 204));
+        jButton_SignIn5.setText("View Stadiums");
+        jButton_SignIn5.setBorder(null);
+        jButton_SignIn5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_SignIn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SignIn5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_SignIn5);
+        jButton_SignIn5.setBounds(130, 560, 210, 50);
+        jButton_SignIn.setFocusPainted(false);
+
+        jButton_SignIn6.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_SignIn6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton_SignIn6.setForeground(new java.awt.Color(204, 204, 204));
+        jButton_SignIn6.setText("View Matches");
+        jButton_SignIn6.setBorder(null);
+        jButton_SignIn6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_SignIn6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SignIn6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_SignIn6);
+        jButton_SignIn6.setBounds(440, 660, 210, 50);
+        jButton_SignIn.setFocusPainted(false);
+
+        jButton_SignIn4.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_SignIn4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButton_SignIn4.setForeground(new java.awt.Color(204, 204, 204));
+        jButton_SignIn4.setText("View Coaches");
+        jButton_SignIn4.setBorder(null);
+        jButton_SignIn4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_SignIn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SignIn4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton_SignIn4);
+        jButton_SignIn4.setBounds(730, 660, 210, 50);
+        jButton_SignIn.setFocusPainted(false);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Soccer Stadum.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(10, 10, 1440, 750);
@@ -287,13 +383,7 @@ public class UserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel_TeamsCloseMouseClicked
 
     private void jButton_SignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SignInActionPerformed
-          try{
-              String myUrl = "https://www.besoccer.com/news";
-              java.awt.Desktop.getDesktop().browse(java.net.URI.create(myUrl));
-          }
-          catch(Exception e){
-              e.printStackTrace();
-          }
+          new GUI.Teams_View(currentLeague_Name, ThiscurrentLeagueID).setVisible(true);
     }//GEN-LAST:event_jButton_SignInActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
@@ -318,11 +408,41 @@ public class UserInterface extends javax.swing.JFrame {
     private void showPlayers1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPlayers1ActionPerformed
         String league = jComboBox1.getSelectedItem().toString();
         try { 
-            new GUI.LeagueStandings(ThiscurrentLeagueID).setVisible(true);
+            new GUI.Standings_View(ThiscurrentLeagueID).setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(UserInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_showPlayers1ActionPerformed
+
+    private void jButton_SignIn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SignIn1ActionPerformed
+               try{
+                   String myurl = "https://www.besoccer.com/news";
+                   java.awt.Desktop.getDesktop().browse(java.net.URI.create(myurl));
+               }
+               catch(Exception e2){
+                   e2.printStackTrace();
+               }
+    }//GEN-LAST:event_jButton_SignIn1ActionPerformed
+
+    private void jButton_SignIn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SignIn2ActionPerformed
+        new GUI.Trophies_View(currentLeague_Name, ThiscurrentLeagueID).setVisible(true);
+    }//GEN-LAST:event_jButton_SignIn2ActionPerformed
+
+    private void jButton_SignIn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SignIn3ActionPerformed
+        new GUI.Team_Trophies_View(currentLeague_Name, ThiscurrentLeagueID).setVisible(true);
+    }//GEN-LAST:event_jButton_SignIn3ActionPerformed
+
+    private void jButton_SignIn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SignIn4ActionPerformed
+        new GUI.Coach_View().setVisible(true);
+    }//GEN-LAST:event_jButton_SignIn4ActionPerformed
+
+    private void jButton_SignIn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SignIn5ActionPerformed
+        new GUI.Stadium_View(currentLeague_Name, ThiscurrentLeagueID).setVisible(true);
+    }//GEN-LAST:event_jButton_SignIn5ActionPerformed
+
+    private void jButton_SignIn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SignIn6ActionPerformed
+        new GUI.Matches_View(currentLeague_Name, ThiscurrentLeagueID).setVisible(true);
+    }//GEN-LAST:event_jButton_SignIn6ActionPerformed
 
     /** ******************** League Table Renderer Function ********************
      * This function is for configuring the Table League Renderer which is
@@ -422,6 +542,12 @@ public class UserInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_SignIn;
+    private javax.swing.JButton jButton_SignIn1;
+    private javax.swing.JButton jButton_SignIn2;
+    private javax.swing.JButton jButton_SignIn3;
+    private javax.swing.JButton jButton_SignIn4;
+    private javax.swing.JButton jButton_SignIn5;
+    private javax.swing.JButton jButton_SignIn6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_TeamsClose;
