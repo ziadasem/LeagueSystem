@@ -33,26 +33,20 @@ public class StandingsFrame extends javax.swing.JFrame {
     Object[][] teamsList;
     private int currentTeamID = 0;
     private int ThiscurrentLeagueID;
-    /**
-     * Creates new form StandingsFrame
-     */
-    
-              //******************** League Table Renderer ********************//
-        // Necessary For alligning Rows
-        DefaultTableCellRenderer tblLeagueRenderer = new DefaultTableCellRenderer();
+   private String currentLeague_Name;
+    DefaultTableCellRenderer tblLeagueRenderer = new DefaultTableCellRenderer();
     
     public StandingsFrame(String currentLeague_Name, int currentLeagueID) {
         initComponents();
         ThiscurrentLeagueID = currentLeagueID;
          this.setLocationRelativeTo(null);
-        // Calling the rows center aligning function ...
-        // Aligning Rows to the center ...
+        this.currentLeague_Name = currentLeague_Name;
         try{
              updateٍStandingTable();
              buildTeamsComboBoxData();
         }catch(Exception e){
             System.out.println(e);
-            JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
+            JOptionPane.showMessageDialog(rootPane, "Error in connection to DB "  +e.getMessage());
             
         }
         setTableCellAlignment(SwingConstants.CENTER);
@@ -68,9 +62,9 @@ public class StandingsFrame extends javax.swing.JFrame {
             Config.username,Config.password);  
             Statement stmt=con.createStatement();  
             Statement stmt2=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select * from standings where leagueid =" +ThiscurrentLeagueID + " order by points desc");  
+            ResultSet rs=stmt.executeQuery("select * from standings where leagueid =" +ThiscurrentLeagueID + " order by points desc, plays asc");  
             
-            Object[][] teamsList = new Object[1000][1000];
+           standingList = new Object[1000][9];
             int index = 0 ;
             while(rs.next()) { 
                 //getting team
@@ -80,17 +74,21 @@ public class StandingsFrame extends javax.swing.JFrame {
                     _teamName = rs2.getString("name");
                 }
                 
-                teamsList[index][0] = index+1;
-                teamsList[index][1] = _teamName;
-                teamsList[index][2] = rs.getInt("plays");
-                teamsList[index][3] = rs.getInt("wins");
-                teamsList[index][4] = rs.getInt("draws");
-                teamsList[index][5] = rs.getInt("losses");
-                teamsList[index][6] = rs.getInt("points");
+                standingList[index][0] = index+1;
+                standingList[index][1] = _teamName;
+                standingList[index][2] = rs.getInt("plays");
+                standingList[index][3] = rs.getInt("wins");
+                standingList[index][4] = rs.getInt("draws");
+                standingList[index][5] = rs.getInt("losses");
+                standingList[index][6] = rs.getInt("points");
+                
+                standingList[index][7] = rs.getInt("teamid");
+                standingList[index][8] = ThiscurrentLeagueID ;
+
                 index ++ ;
              }
             con.close(); 
-            return teamsList;
+            return standingList;
         }catch(SQLException e){ 
                 System.out.println(e.getMessage());
                 throw e;
@@ -112,31 +110,58 @@ public class StandingsFrame extends javax.swing.JFrame {
         for(int i=0; standingList[i][0] != null; i++)
             tblSquadModel.addRow(standingList[i]);
    }
-    private void addNewStanding(/*String teamName,*/int MP, int wins, int draws, int losses) throws Exception{
+    private void addNewStanding(int MP, int wins, int draws, int losses, boolean isAdd) throws Exception{
         int pts = wins*3 + draws;
         try{  
             Connection con=DriverManager.getConnection( Config.hostName,
                  Config.username,Config.password);  
             Statement stmt=con.createStatement();  
-           // ResultSet rs=stmt.executeQuery("SELECT ID FROM TEAM where Name ='"+teamName+"'");  
-            //int id =  0;
-            //while(rs.next()) {
-            //   id = rs.getInt(1) + 1 ;
-            //}
-           // ResultSet rs2=stmt.executeQuery("SELECT LEAGUEID FROM TEAM where Name ='"+teamName+"'");
-           // int id2 =  0;
-           //while(rs2.next()) {
-            //   id2 = rs2.getInt(1) + 1 ;
-            //}
-            int insertingResult =stmt.executeUpdate("insert into STANDINGS values("+ThiscurrentLeagueID+" ,"+currentTeamID+" ,"+MP+" ," +wins+ "," +draws+ ", " +losses+","+pts+
-                     ")"  );  
+            if (isAdd){
+             int insertingResult =stmt.executeUpdate("insert into STANDINGS values("+ThiscurrentLeagueID+" ,"+currentTeamID+" ,"+MP+" ," +wins+ "," +draws+ ", " +losses+","+pts+")"  );  
+            }else{
+              int insertingResult =stmt.executeUpdate( "update standings set leagueid = " + ThiscurrentLeagueID + ", teamid = "+currentTeamID + ", plays = " + MP
+                      +", wins = "+wins + ",draws=" +draws+ ", losses = " + losses + ",points =" + pts + "where leagueid=" +ThiscurrentLeagueID+"and teamid = " + currentTeamID );                 
+            }
             con.close(); 
         }catch(Exception e){ 
              System.out.println(e);
              throw e;
         }  
     }
-    
+    public void deleteStanding(){
+     try{
+            Connection con=DriverManager.getConnection( Config.hostName,
+                Config.username,Config.password);
+            int row = jTableLeague.getSelectedRow();     // For Selected Row in the table
+            int teamID = (int)  standingList[row][7] ;
+            int leagueID =  (int)  standingList[row][8] ;
+
+            Statement stmt=con.createStatement();
+            int rs=stmt.executeUpdate("DELETE from standings where leagueid =" + leagueID + "and teamID = "+ teamID);
+            con.close();
+            // Updating & Showing the Teams Table Again ...
+            try{
+                updateٍStandingTable();
+            }
+            catch(Exception e){
+                JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
+                standingList = new Object[][]{};
+            }
+            // Restarting the Team_Frame JFrame ...
+            this.dispose();
+            try{
+                Thread.sleep(250);
+                new StandingsFrame(currentLeague_Name, currentTeamID).show();
+            }
+            catch(InterruptedException e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+            System.out.println("Error In Delete player Function");
+        }
+    }
     public void buildTeamsComboBoxData() throws Exception{
         Object[][] _testData ;
         try{
@@ -176,11 +201,85 @@ public class StandingsFrame extends javax.swing.JFrame {
         }  
    }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+   public String isValidMatches(int mp, int w, int d , int l){
+       if (mp == (w + d + l)){
+           return "done";
+       }
+       
+       if (mp < (w + d + l) ){
+           return "matchs is less than wins,draws and losses";
+       }
+      
+       if (mp > (w + d + l) ){
+           return "matchs is more than wins,draws and losses";
+       }
+       
+       return "done";
+   }
+   
+   public void addOrUpdateMatch(boolean isAdd){
+       int matches_played;
+        int wins ;
+        int draws ;
+        int losses  ;
+        try{
+            matches_played = Integer.parseInt(jTextField_MP.getText());
+            wins = Integer.parseInt(jTextField_wins.getText()); 
+            draws = Integer.parseInt(jTextField_draws.getText());
+            losses = Integer.parseInt(jTextField_losses.getText());
+            //int pts = Integer.parseInt(jTextField_pts.getText());
+         }catch(Exception e){
+             JOptionPane.showMessageDialog(this, "enter valid numbers");
+             return ;
+         }
+        DataEntryChecking t1 = new DataEntryChecking();
+        // Checking For Wrong Team Name Entry
+        if(!(t1.isValid_number(matches_played)))
+        {
+            JOptionPane.showMessageDialog(this,"Matches can't be negative", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(!(t1.isValid_number(wins)))
+        {
+            JOptionPane.showMessageDialog(this,"wins can't be negative", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if(!(t1.isValid_number(draws)))
+        {
+            JOptionPane.showMessageDialog(this,"draws can't be negative", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if(!(t1.isValid_number(losses)))
+        {
+            JOptionPane.showMessageDialog(this,"loses can't be negative", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String errorMsg = isValidMatches(matches_played, wins , draws , losses) ;
+        
+        if( !errorMsg.equals("done"))
+        {
+            JOptionPane.showMessageDialog(this,errorMsg, "Data Entry Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        try{
+           addNewStanding(matches_played,wins,draws,losses, isAdd);                    
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e);
+            return ;
+        }
+        this.dispose();
+        try{
+        Thread.sleep(250);
+        new StandingsFrame(jLabel3.getText(), ThiscurrentLeagueID).show();
+        }
+        catch(InterruptedException e)
+        {
+            System.out.println(e.getMessage());
+        }
+   }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -214,7 +313,7 @@ public class StandingsFrame extends javax.swing.JFrame {
         };
         jLabel3 = new javax.swing.JLabel();
         jButton_Add = new javax.swing.JButton();
-        jButton_Add1 = new javax.swing.JButton();
+        jButton_delete = new javax.swing.JButton();
         jLabel_firstName = new javax.swing.JLabel();
         jLabel_firstName1 = new javax.swing.JLabel();
         jLabel_firstName2 = new javax.swing.JLabel();
@@ -225,6 +324,7 @@ public class StandingsFrame extends javax.swing.JFrame {
         jTextField_draws = new javax.swing.JTextField();
         jTextField_losses = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButton_modify = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -285,15 +385,15 @@ public class StandingsFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton_Add1.setBackground(new java.awt.Color(51, 85, 175));
-        jButton_Add1.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
-        jButton_Add1.setForeground(new java.awt.Color(240, 240, 240));
-        jButton_Add1.setText("Modify");
-        jButton_Add1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton_Add1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_Add1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_delete.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_delete.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_delete.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_delete.setText("delete");
+        jButton_delete.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton_delete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Add1ActionPerformed(evt);
+                jButton_deleteActionPerformed(evt);
             }
         });
 
@@ -348,39 +448,44 @@ public class StandingsFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton_modify.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_modify.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_modify.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_modify.setText("Modify");
+        jButton_modify.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton_modify.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_modify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_modifyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_firstName5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel_firstName5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel_firstName3)
-                                    .addComponent(jLabel_firstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel_firstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField_draws, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                                    .addComponent(jTextField_wins, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                                    .addComponent(jTextField_losses, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField_MP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(jLabel_firstName3)
+                            .addComponent(jLabel_firstName1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_firstName2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField_draws, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                            .addComponent(jTextField_wins, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                            .addComponent(jTextField_losses, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_Add1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextField_MP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(110, 110, 110))
@@ -390,6 +495,14 @@ public class StandingsFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel_TeamsClose, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jButton_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton_modify, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -414,10 +527,11 @@ public class StandingsFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField_losses, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
-                .addComponent(jButton_Add1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton_Add)
+                .addGap(120, 120, 120)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton_Add)
+                    .addComponent(jButton_delete)
+                    .addComponent(jButton_modify))
                 .addGap(56, 56, 56))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -432,6 +546,8 @@ public class StandingsFrame extends javax.swing.JFrame {
                 .addContainerGap(122, Short.MAX_VALUE))
         );
 
+        // Removing inner borders inside the button
+        jButton_Add.setFocusPainted(false);
         // Removing inner borders inside the button
         jButton_Add.setFocusPainted(false);
         // Removing inner borders inside the button
@@ -452,49 +568,13 @@ public class StandingsFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
-       // String name = jTextField_name2.getText();
-        int matches_played = Integer.parseInt(jTextField_MP.getText());
-        int wins = Integer.parseInt(jTextField_wins.getText()); 
-        int draws = Integer.parseInt(jTextField_draws.getText());
-        int losses = Integer.parseInt(jTextField_losses.getText());
-        //int pts = Integer.parseInt(jTextField_pts.getText());
+        addOrUpdateMatch(true);
         
-        DataEntryChecking t1 = new DataEntryChecking();
-        // Checking For Wrong Team Name Entry
-       /* if(!(t1.isValid_Name(name)))
-        {
-            JOptionPane.showMessageDialog(this,"Invalid First Name", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }*/
-        // Checking For Wrong Year Entry
-      
-        // Checking For Wrong Coach First Name Entry
-       /* if(!(t1.isValid_Name(name)))
-        {
-            JOptionPane.showMessageDialog(this,"Invalid Position", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
-            return;
-        }*/
-        try{
-            addNewStanding(/*name,*/matches_played,wins,draws,losses);
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e);
-            System.out.println("is it here?");
-            return ;
-        }
-        this.dispose();
-        try{
-        Thread.sleep(250);
-        new StandingsFrame(jLabel3.getText(), ThiscurrentLeagueID).show();
-        }
-        catch(InterruptedException e)
-        {
-            System.out.println(e.getMessage());
-        }
     }//GEN-LAST:event_jButton_AddActionPerformed
 
-    private void jButton_Add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton_Add1ActionPerformed
+    private void jButton_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_deleteActionPerformed
+       deleteStanding();
+    }//GEN-LAST:event_jButton_deleteActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         int idIndex = jComboBox1.getSelectedIndex();
@@ -507,41 +587,11 @@ public class StandingsFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    /*
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-    /*
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StandingsFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StandingsFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StandingsFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StandingsFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jButton_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modifyActionPerformed
+                addOrUpdateMatch(false);
+    }//GEN-LAST:event_jButton_modifyActionPerformed
 
-/*
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new StandingsFrame(currentLeague_Name, ThiscurrentLeagueID).setVisible(true);
-            }
-        });
-    }
-    */
-             private void setTableCellAlignment(int alignment) {
+   private void setTableCellAlignment(int alignment) {
              tblLeagueRenderer.setHorizontalAlignment(alignment);
              for (int i=0; i<jTableLeague.getColumnCount();i++){
                 jTableLeague.setDefaultRenderer(jTableLeague.getColumnClass(i),tblLeagueRenderer);
@@ -552,7 +602,8 @@ public class StandingsFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Add;
-    private javax.swing.JButton jButton_Add1;
+    private javax.swing.JButton jButton_delete;
+    private javax.swing.JButton jButton_modify;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel_TeamsClose;

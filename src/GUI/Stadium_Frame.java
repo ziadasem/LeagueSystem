@@ -445,7 +445,7 @@ public class Stadium_Frame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.PREFERRED_SIZE, 778, Short.MAX_VALUE)
+            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, 778, Short.MAX_VALUE)
         );
 
         pack();
@@ -464,20 +464,17 @@ public class Stadium_Frame extends javax.swing.JFrame {
         try{  
             Connection con=DriverManager.getConnection( Config.hostName,
                 Config.username,Config.password);
-            int row = jTableTeams.getSelectedRow();     // For Selected Row in the table
-            // Variable containing Stadium ID to be deleted ...
-            // Getting the name of the Stadium to be deleted from the DataBase & Table ...
-            String teamName = jTableTeams.getValueAt(row, 3).toString();
-            Statement stmt=con.createStatement();  
-            ResultSet rs=stmt.executeQuery("SELECT ID from TEAM where NAME=" + "'"+teamName+"'");
-            int teamID = 0;
-            if(rs.next())  // Necessary for the SQL Logic ...
-                teamID = rs.getInt("ID");
-            Statement stmt2=con.createStatement();  
-            // Delete the (string) - in single quotations - using SQL Query ...
-            int rs2=stmt2.executeUpdate("DELETE from STADIUM where TEAMID =" + teamID);
+            Statement stmt=con.createStatement(); 
+            Statement stmt2=con.createStatement(); 
+            Statement stmt3=con.createStatement(); 
+
+            int stadiumID = (int) stadiumList[jTableTeams.getSelectedRow()][4];
+            int rs1=stmt.executeUpdate("DELETE from play where matchid = (select id from game where stadiumid =" + stadiumID + ")");
+            System.out.println(rs1);
+            int rs2=stmt2.executeUpdate("DELETE from game where stadiumid =" + stadiumID );
+            int rs3=stmt3.executeUpdate("DELETE from stadium where  id =" + stadiumID );
+
             con.close();
-            // Updating & Showing the Teams Table Again ...
         try{
             updateٍStadiumTable();
             }
@@ -496,30 +493,56 @@ public class Stadium_Frame extends javax.swing.JFrame {
                 System.out.println(e.getMessage());
             }
         }catch(SQLException e){ 
-                System.out.println(e);
+                JOptionPane.showMessageDialog(rootPane, e);
                 System.out.println("Error In Delete Stadium Function");
         }         
     }//GEN-LAST:event_jButton_DeleteActionPerformed
 
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
-        String temp_firstName = jTextField_name.getText();
-        int temp_capacity = Integer.parseInt(jTextField_capacity.getText());
-        String temp_city = jTextField_city.getText();
+        String temp_firstName;
+        int temp_capacity ;
+        String temp_city  ;
         DataEntryChecking t1 = new DataEntryChecking();
+        
+        try{
+            temp_firstName = jTextField_name.getText();
+            temp_capacity = Integer.parseInt(jTextField_capacity.getText());
+            temp_city = jTextField_city.getText();
+       
+         } catch(Exception e){
+             JOptionPane.showMessageDialog(this, "insert valid numbers");
+             return ;
+        }
+        
         // Checking For Wrong Team Name Entry
-        if(!(t1.isValid_Name(temp_firstName)))
+        if(!(t1.isValid_Name(temp_firstName) ||  t1.isValid_Name(temp_city)))
         {
-            JOptionPane.showMessageDialog(this,"Invalid First Name", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Invalid Name", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
-        // Checking For Wrong Year Entry
-      
-        // Checking For Wrong Coach First Name Entry
-        if(!(t1.isValid_Name(temp_firstName)))
+        
+        if(!(t1.isValid_number(temp_capacity)))
         {
-            JOptionPane.showMessageDialog(this,"Invalid Position", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this,"Invalid capacity", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
             return;
         }
+        
+        try{
+          int x=  Integer.parseInt(jTextField_name.getText());
+          JOptionPane.showMessageDialog(this,"Stadium name is letters", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
+          return;
+        }catch(Exception e){
+            
+        }
+       
+        try{
+          int x=  Integer.parseInt(jTextField_city.getText());
+          JOptionPane.showMessageDialog(this,"city name is letters", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
+          return;
+        }catch(Exception e){
+            
+        }
+        
         try{
             addNewStadium(temp_firstName,temp_city,temp_capacity  );
         }catch(Exception e){
@@ -590,7 +613,7 @@ public class Stadium_Frame extends javax.swing.JFrame {
                Config.username,Config.password);  
            
             Statement stmt=con.createStatement();  
-            ResultSet rs=stmt.executeQuery("select * from team");  
+            ResultSet rs=stmt.executeQuery("select * from team where leagueid=" + ThiscurrentLeagueID);  
             teamsList = new Object[1000][5];
             int index = 0 ;
             while(rs.next()) { 

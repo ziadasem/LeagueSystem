@@ -31,7 +31,7 @@ public class DataEntryChecking {
         }
         return true;
     }
-
+    
     public boolean isValid_Name(String temp)
     {
         if(temp.isEmpty())
@@ -44,6 +44,15 @@ public class DataEntryChecking {
                 return false;
             if(temp.length()<2)
                 return false;
+        }
+        return true;
+    }
+    
+    public boolean isValid_number(int temp)
+    {
+       
+        if (temp <= 0){
+            return false ;
         }
         return true;
     }

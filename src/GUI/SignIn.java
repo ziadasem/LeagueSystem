@@ -6,17 +6,21 @@ package GUI;
 
 import Functions.Config;
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Ramy Mohamed
  */
-public class SignIn extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SignIn
-     */
+public class SignIn extends javax.swing.JFrame {
+          
+               
     public SignIn() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -223,6 +227,7 @@ public class SignIn extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_GuestActionPerformed
 
     private void jButton_SignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SignInActionPerformed
+        
         String id = jTextField_ID.getText();
         if(id.equals(Config.get_AdminID())) {
             new GUI.Home().setVisible(true);
