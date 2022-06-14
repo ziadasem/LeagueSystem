@@ -97,7 +97,7 @@ public class Home extends javax.swing.JFrame {
         //******************** League Table Properties ********************//
         jTableLeague.getTableHeader().setFont(new Font("League", Font.BOLD,22));
         //jTableLeague.setOpaque(false);
-        jTableLeague.getTableHeader().setBackground(new Color(63, 16, 82));
+        jTableLeague.getTableHeader().setBackground(new Color(51,85,175));
         jTableLeague.getTableHeader().setForeground(new Color(204,204,204));
         //jTableLeague.setBackground(new Color(244, 244, 244));
         //*****************************************************************//
@@ -144,10 +144,10 @@ public class Home extends javax.swing.JFrame {
         jPanel_TeamsClose = new javax.swing.JPanel();
         jLabel_TeamsClose = new javax.swing.JLabel();
         jButton_editSquad = new javax.swing.JButton();
-        jButton_addLeague1 = new javax.swing.JButton();
+        jButton_addStadium = new javax.swing.JButton();
         jButton_standings = new javax.swing.JButton();
-        jButton_addLeague2 = new javax.swing.JButton();
-        jButton_addLeague3 = new javax.swing.JButton();
+        jButton_addTrophy = new javax.swing.JButton();
+        jButton_assignTrophy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1440, 768));
@@ -288,15 +288,15 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton_addLeague1.setBackground(new java.awt.Color(51, 85, 175));
-        jButton_addLeague1.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
-        jButton_addLeague1.setForeground(new java.awt.Color(240, 240, 240));
-        jButton_addLeague1.setText("Add stadium");
-        jButton_addLeague1.setToolTipText("");
-        jButton_addLeague1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_addLeague1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_addStadium.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_addStadium.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_addStadium.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_addStadium.setText("Add Stadium");
+        jButton_addStadium.setToolTipText("");
+        jButton_addStadium.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_addStadium.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_addLeague1ActionPerformed(evt);
+                jButton_addStadiumActionPerformed(evt);
             }
         });
 
@@ -312,27 +312,27 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton_addLeague2.setBackground(new java.awt.Color(51, 85, 175));
-        jButton_addLeague2.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
-        jButton_addLeague2.setForeground(new java.awt.Color(240, 240, 240));
-        jButton_addLeague2.setText("Add trophy");
-        jButton_addLeague2.setToolTipText("");
-        jButton_addLeague2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_addLeague2.addActionListener(new java.awt.event.ActionListener() {
+        jButton_addTrophy.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_addTrophy.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_addTrophy.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_addTrophy.setText("Add Trophy");
+        jButton_addTrophy.setToolTipText("");
+        jButton_addTrophy.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_addTrophy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_addLeague2ActionPerformed(evt);
+                jButton_addTrophyActionPerformed(evt);
             }
         });
 
-        jButton_addLeague3.setBackground(new java.awt.Color(51, 85, 175));
-        jButton_addLeague3.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
-        jButton_addLeague3.setForeground(new java.awt.Color(240, 240, 240));
-        jButton_addLeague3.setText("Assign trophy");
-        jButton_addLeague3.setToolTipText("");
-        jButton_addLeague3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_addLeague3.addActionListener(new java.awt.event.ActionListener() {
+        jButton_assignTrophy.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_assignTrophy.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_assignTrophy.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_assignTrophy.setText("Assign Trophy");
+        jButton_assignTrophy.setToolTipText("");
+        jButton_assignTrophy.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_assignTrophy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_addLeague3ActionPerformed(evt);
+                jButton_assignTrophyActionPerformed(evt);
             }
         });
 
@@ -363,12 +363,12 @@ public class Home extends javax.swing.JFrame {
                                         .addGap(134, 134, 134)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jButton_editSquad, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton_addLeague1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButton_addStadium, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jButton_standings, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton_addLeague2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(jButton_addTrophy, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(103, 103, 103)
-                                        .addComponent(jButton_addLeague3, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jButton_assignTrophy, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -402,13 +402,13 @@ public class Home extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(jButton_editSquad)
                         .addGap(53, 53, 53)
-                        .addComponent(jButton_addLeague1)
+                        .addComponent(jButton_addStadium)
                         .addGap(54, 54, 54)
                         .addComponent(jButton_standings)
                         .addGap(39, 39, 39)
-                        .addComponent(jButton_addLeague2)
+                        .addComponent(jButton_addTrophy)
                         .addGap(37, 37, 37)
-                        .addComponent(jButton_addLeague3))
+                        .addComponent(jButton_assignTrophy))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,13 +430,13 @@ public class Home extends javax.swing.JFrame {
         // Removing inner borders inside the button
         jButton_editSquad.setFocusPainted(false);
         // Removing inner borders inside the button
-        jButton_addLeague.setFocusPainted(false);
+        jButton_addStadium.setFocusPainted(false);
         // Removing inner borders inside the button
-        jButton_addLeague.setFocusPainted(false);
+        jButton_standings.setFocusPainted(false);
         // Removing inner borders inside the button
-        jButton_addLeague.setFocusPainted(false);
+        jButton_addTrophy.setFocusPainted(false);
         // Removing inner borders inside the button
-        jButton_addLeague.setFocusPainted(false);
+        jButton_assignTrophy.setFocusPainted(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -490,21 +490,21 @@ public class Home extends javax.swing.JFrame {
         new Squad_Frame(currentLeague_Name, currentLeagueID).show();
     }//GEN-LAST:event_jButton_editSquadActionPerformed
 
-    private void jButton_addLeague1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addLeague1ActionPerformed
+    private void jButton_addStadiumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addStadiumActionPerformed
        new Stadium_Frame(currentLeague_Name, currentLeagueID).show();
-    }//GEN-LAST:event_jButton_addLeague1ActionPerformed
+    }//GEN-LAST:event_jButton_addStadiumActionPerformed
 
     private void jButton_standingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_standingsActionPerformed
       new StandingsFrame(currentLeague_Name, currentLeagueID).show();
     }//GEN-LAST:event_jButton_standingsActionPerformed
 
-    private void jButton_addLeague2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addLeague2ActionPerformed
+    private void jButton_addTrophyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addTrophyActionPerformed
       new Trophies_Frame(currentLeague_Name, currentLeagueID).show();
-    }//GEN-LAST:event_jButton_addLeague2ActionPerformed
+    }//GEN-LAST:event_jButton_addTrophyActionPerformed
 
-    private void jButton_addLeague3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_addLeague3ActionPerformed
+    private void jButton_assignTrophyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_assignTrophyActionPerformed
       new Team_Trophies_Frame(currentLeague_Name, currentLeagueID).show();
-    }//GEN-LAST:event_jButton_addLeague3ActionPerformed
+    }//GEN-LAST:event_jButton_assignTrophyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -598,11 +598,11 @@ public class Home extends javax.swing.JFrame {
          
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_addLeague;
-    private javax.swing.JButton jButton_addLeague1;
-    private javax.swing.JButton jButton_addLeague2;
-    private javax.swing.JButton jButton_addLeague3;
     private javax.swing.JButton jButton_addMatches;
+    private javax.swing.JButton jButton_addStadium;
     private javax.swing.JButton jButton_addTeams;
+    private javax.swing.JButton jButton_addTrophy;
+    private javax.swing.JButton jButton_assignTrophy;
     private javax.swing.JButton jButton_editSquad;
     private javax.swing.JButton jButton_standings;
     private javax.swing.JComboBox<String> jComboBox1;

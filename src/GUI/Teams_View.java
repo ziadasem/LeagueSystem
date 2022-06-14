@@ -75,7 +75,7 @@ public class Teams_View extends javax.swing.JFrame {
         jTableTeams.getColumnModel().getColumn(1).setPreferredWidth(10);
         jTableTeams.getColumnModel().getColumn(2).setPreferredWidth(75);
         
-        jTableTeams.getTableHeader().setBackground(new Color(63, 16, 82));
+        jTableTeams.getTableHeader().setBackground(new Color(51,85,175));
         jTableTeams.getTableHeader().setForeground(new Color(255,255,255));
         jTableTeams.setBackground(new Color(244, 244, 244));
         //*****************************************************************//
@@ -116,6 +116,7 @@ public class Teams_View extends javax.swing.JFrame {
 
         jPanel_Teams_Frame.setBackground(new java.awt.Color(0, 51, 51));
         jPanel_Teams_Frame.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
+        jPanel_Teams_Frame.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jPanel_TeamsClose.setBackground(new java.awt.Color(0, 51, 51));
         jPanel_TeamsClose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,9 +142,11 @@ public class Teams_View extends javax.swing.JFrame {
             .addComponent(jLabel_TeamsClose, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setBackground(new java.awt.Color(63, 16, 82));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
+        jScrollPane1.setBackground(new java.awt.Color(51, 85, 175));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175)));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setToolTipText("");
+        jScrollPane1.setColumnHeaderView(null);
         jScrollPane1.setMinimumSize(new java.awt.Dimension(1024, 720));
         jScrollPane1.setOpaque(false);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1024, 720));
@@ -186,29 +189,28 @@ public class Teams_View extends javax.swing.JFrame {
         jPanel_Teams_FrameLayout.setHorizontalGroup(
             jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                .addGap(269, 269, 269)
-                .addComponent(jLabel_leagueName, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-                .addGap(327, 327, 327)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel_leagueName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel_TeamsClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         jPanel_Teams_FrameLayout.setVerticalGroup(
             jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel_TeamsClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel_leagueName, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96))
+                .addContainerGap()
+                .addComponent(jPanel_TeamsClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(676, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel_leagueName, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

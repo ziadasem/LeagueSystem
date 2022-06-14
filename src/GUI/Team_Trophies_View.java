@@ -160,6 +160,7 @@ public class Team_Trophies_View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(1280, 720));
         setType(java.awt.Window.Type.POPUP);
 
@@ -317,7 +318,7 @@ public class Team_Trophies_View extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.PREFERRED_SIZE, 753, Short.MAX_VALUE)
+            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.PREFERRED_SIZE, 720, Short.MAX_VALUE)
         );
 
         pack();

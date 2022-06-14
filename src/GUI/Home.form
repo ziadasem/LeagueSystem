@@ -98,14 +98,14 @@
                                           <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jButton_editSquad" min="-2" pref="230" max="-2" attributes="0"/>
-                                              <Component id="jButton_addLeague1" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Component id="jButton_addStadium" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
                                               <Component id="jButton_standings" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                                              <Component id="jButton_addLeague2" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                              <Component id="jButton_addTrophy" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                                          <Component id="jButton_addLeague3" min="-2" pref="301" max="-2" attributes="0"/>
+                                          <Component id="jButton_assignTrophy" min="-2" pref="301" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -152,13 +152,13 @@
                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                           <Component id="jButton_editSquad" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                          <Component id="jButton_addLeague1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton_addStadium" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                           <Component id="jButton_standings" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="jButton_addLeague2" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton_addTrophy" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jButton_addLeague3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton_assignTrophy" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -420,7 +420,7 @@
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_editSquad.setFocusPainted(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_addLeague1">
+        <Component class="javax.swing.JButton" name="jButton_addStadium">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="af" green="55" red="33" type="rgb"/>
@@ -431,15 +431,15 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Add stadium"/>
+            <Property name="text" type="java.lang.String" value="Add Stadium"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_addLeague1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_addStadiumActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_addLeague.setFocusPainted(false);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_addStadium.setFocusPainted(false);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="jButton_standings">
@@ -461,10 +461,10 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_standingsActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_addLeague.setFocusPainted(false);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_standings.setFocusPainted(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_addLeague2">
+        <Component class="javax.swing.JButton" name="jButton_addTrophy">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="af" green="55" red="33" type="rgb"/>
@@ -475,18 +475,18 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Add trophy"/>
+            <Property name="text" type="java.lang.String" value="Add Trophy"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_addLeague2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_addTrophyActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_addLeague.setFocusPainted(false);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_addTrophy.setFocusPainted(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_addLeague3">
+        <Component class="javax.swing.JButton" name="jButton_assignTrophy">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="af" green="55" red="33" type="rgb"/>
@@ -497,15 +497,15 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Assign trophy"/>
+            <Property name="text" type="java.lang.String" value="Assign Trophy"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_addLeague3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_assignTrophyActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_addLeague.setFocusPainted(false);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_assignTrophy.setFocusPainted(false);"/>
           </AuxValues>
         </Component>
       </SubComponents>

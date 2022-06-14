@@ -7,6 +7,9 @@
       <Dimension value="[1286, 720]"/>
     </Property>
     <Property name="undecorated" type="boolean" value="true"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[1280, 720]"/>
+    </Property>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1280, 720]"/>
     </Property>
@@ -33,7 +36,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel_Matches_Frame" alignment="0" pref="1286" max="32767" attributes="0"/>
+          <Component id="jPanel_Matches_Frame" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -93,9 +96,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="526" max="-2" attributes="0"/>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="11" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
@@ -103,10 +106,10 @@
                               <Component id="jLabel_leagueName_Matches" pref="624" max="32767" attributes="0"/>
                               <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="38" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="663" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="661" max="32767" attributes="0"/>
                           <Component id="jPanel_MatchesClose" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>

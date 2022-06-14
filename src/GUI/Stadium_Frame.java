@@ -62,13 +62,18 @@ public class Stadium_Frame extends javax.swing.JFrame {
         }
         
         jLabel3.setText(currentLeague_Name);
-        
-        //******************** League Table Properties ********************//
+        setTableCellAlignment(SwingConstants.CENTER);
+        //******************** League Table Model ********************//
+        //******************** Teams Table Properties ********************//
         jTableTeams.getTableHeader().setFont(new Font("League", Font.BOLD,22));
         jTableTeams.setOpaque(false);
-        jTableTeams.getTableHeader().setBackground(new Color(63, 16, 82));
+        jTableTeams.getTableHeader().setBackground(new Color(51,85,175));
         jTableTeams.getTableHeader().setForeground(new Color(255,255,255));
         jTableTeams.setBackground(new Color(244, 244, 244));
+        // Setting Colmuns Width
+        jTableTeams.getColumnModel().getColumn(0).setPreferredWidth(85);
+        jTableTeams.getColumnModel().getColumn(1).setPreferredWidth(30);
+        jTableTeams.getColumnModel().getColumn(2).setPreferredWidth(10);
         //*****************************************************************//
     }
 
@@ -157,17 +162,6 @@ public class Stadium_Frame extends javax.swing.JFrame {
                 // Setting Alternating Colors
                 if(rw %2 == 0)
                 c.setBackground(new Color(225, 225, 225));
-                // Setting Colors Of First 3 Champions Qualified Teams
-                if((rw == 0 && col == 0) || (rw == 1 && col == 0) || (rw == 2 && col == 0))
-                c.setBackground(new Color(66, 133, 244));
-
-                // Setting Colors Of Second 2 2-Champions Qualified Teams
-                if((rw == 3 && col == 0) || (rw == 4 && col == 0))
-                c.setBackground(new Color(251, 150, 68));
-
-                // Setting color of last 3 (Descending Teams) ...
-                if((rw == jTableTeams.getRowCount() - 1 && col == 0) || (rw == jTableTeams.getRowCount() - 2 && col == 0) || (rw == jTableTeams.getRowCount() - 3 && col == 0))
-                c.setBackground(new Color(243, 64, 54));
                 return c;
             }
         };
@@ -231,11 +225,11 @@ public class Stadium_Frame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "name", "city", "capacity", "team"
+                "Name", "City", "Capacity", "Team"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, true, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -282,17 +276,17 @@ public class Stadium_Frame extends javax.swing.JFrame {
         jLabel_firstName.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
         jLabel_firstName.setForeground(new java.awt.Color(204, 204, 204));
         jLabel_firstName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_firstName.setText("name");
+        jLabel_firstName.setText("Name");
 
         jLabel_lastName.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
         jLabel_lastName.setForeground(new java.awt.Color(204, 204, 204));
         jLabel_lastName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_lastName.setText("capacity");
+        jLabel_lastName.setText("Capacity");
 
         jLabel_Position.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
         jLabel_Position.setForeground(new java.awt.Color(204, 204, 204));
         jLabel_Position.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_Position.setText("city");
+        jLabel_Position.setText("City");
 
         jButton_Delete.setBackground(new java.awt.Color(51, 85, 175));
         jButton_Delete.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
@@ -321,7 +315,7 @@ public class Stadium_Frame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Cambria", 1, 42)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("stadium");
+        jLabel1.setText("Stadium");
 
         jLabel2.setFont(new java.awt.Font("Cambria", 1, 26)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
@@ -343,21 +337,21 @@ public class Stadium_Frame extends javax.swing.JFrame {
         jPanel_Teams_Frame.setLayout(jPanel_Teams_FrameLayout);
         jPanel_Teams_FrameLayout.setHorizontalGroup(
             jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                .addGap(248, 248, 248)
-                .addComponent(jButton_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(386, 386, 386)
-                .addComponent(jButton_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(478, 478, 478)
+                .addComponent(jPanel_TeamsClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                 .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                         .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                                .addGap(45, 45, 45)
+                                .addGap(35, 35, 35)
                                 .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                                        .addComponent(jLabel_lastName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel_lastName, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jTextField_capacity, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
@@ -373,21 +367,25 @@ public class Stadium_Frame extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(169, 169, 169)))
-                        .addGap(19, 19, 19))
+                        .addGap(25, 25, 25))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(153, 153, 153)))
-                .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_leagueName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(31, 31, 31))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(478, 478, 478)
-                .addComponent(jPanel_TeamsClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(153, 153, 153))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
+                                .addComponent(jButton_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(156, 156, 156)))))
+                .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
+                        .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_leagueName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
+                        .addComponent(jButton_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(235, 235, 235))))
         );
         jPanel_Teams_FrameLayout.setVerticalGroup(
             jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -398,7 +396,7 @@ public class Stadium_Frame extends javax.swing.JFrame {
                         .addComponent(jPanel_TeamsClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(18, Short.MAX_VALUE)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,12 +408,10 @@ public class Stadium_Frame extends javax.swing.JFrame {
                     .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_Delete)
-                            .addComponent(jButton_Add)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton_Delete))
                     .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                        .addGap(137, 137, 137)
+                        .addGap(90, 90, 90)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -428,7 +424,9 @@ public class Stadium_Frame extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField_city, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel_Position, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel_Position, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(68, 68, 68)
+                        .addComponent(jButton_Add)))
                 .addGap(54, 54, 54))
         );
 

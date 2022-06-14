@@ -62,13 +62,14 @@ public class Matches_Frame extends javax.swing.JFrame {
         
         
         
-        //******************** League Table Properties ********************//
+        //******************** Team/Coach Table Properties ********************//
         jTableTeams.getTableHeader().setFont(new Font("League", Font.BOLD,22));
         jTableTeams.setOpaque(false);
-        jTableTeams.getTableHeader().setBackground(new Color(63, 16, 82));
+        jTableTeams.getTableHeader().setBackground(new Color(51,85,175));
         jTableTeams.getTableHeader().setForeground(new Color(255,255,255));
         jTableTeams.getColumnModel().getColumn(0).setPreferredWidth(150);
         jTableTeams.setBackground(new Color(244, 244, 244));
+        jTableTeams.setCellSelectionEnabled(false);
         //*****************************************************************//
         
         //******************** League Matches Properties ********************//
@@ -79,7 +80,7 @@ public class Matches_Frame extends javax.swing.JFrame {
         jTableMatches.getColumnModel().getColumn(1).setPreferredWidth(100);
         jTableMatches.getColumnModel().getColumn(2).setPreferredWidth(100);
         
-        jTableMatches.getTableHeader().setBackground(new Color(63, 16, 82));
+        jTableMatches.getTableHeader().setBackground(new Color(51,85,175));
         jTableMatches.getTableHeader().setForeground(new Color(255,255,255));
         jTableMatches.setBackground(new Color(244, 244, 244));
         //*****************************************************************//
@@ -103,17 +104,6 @@ public class Matches_Frame extends javax.swing.JFrame {
                 // Setting Alternating Colors
                 if(rw %2 == 0)
                 c.setBackground(new Color(225, 225, 225));
-                // Setting Colors Of First 3 Champions Qualified Teams
-                if((rw == 0 && col == 0) || (rw == 1 && col == 0) || (rw == 2 && col == 0))
-                c.setBackground(new Color(66, 133, 244));
-
-                // Setting Colors Of Second 2 2-Champions Qualified Teams
-                if((rw == 3 && col == 0) || (rw == 4 && col == 0))
-                c.setBackground(new Color(251, 150, 68));
-
-                // Setting color of last 3 (Descending Teams) ...
-                if((rw == jTableTeams.getRowCount() - 1 && col == 0) || (rw == jTableTeams.getRowCount() - 2 && col == 0) || (rw == jTableTeams.getRowCount() - 3 && col == 0))
-                c.setBackground(new Color(243, 64, 54));
                 return c;
             }
         };
@@ -138,17 +128,6 @@ public class Matches_Frame extends javax.swing.JFrame {
                 // Setting Alternating Colors
                 if(rw %2 == 0)
                 c.setBackground(new Color(225, 225, 225));
-                // Setting Colors Of First 3 Champions Qualified Teams
-                if((rw == 0 && col == 0) || (rw == 1 && col == 0) || (rw == 2 && col == 0))
-                c.setBackground(new Color(66, 133, 244));
-
-                // Setting Colors Of Second 2 2-Champions Qualified Teams
-                if((rw == 3 && col == 0) || (rw == 4 && col == 0))
-                c.setBackground(new Color(251, 150, 68));
-
-                // Setting color of last 3 (Descending Teams) ...
-                if((rw == jTableTeams.getRowCount() - 1 && col == 0) || (rw == jTableTeams.getRowCount() - 2 && col == 0) || (rw == jTableTeams.getRowCount() - 3 && col == 0))
-                c.setBackground(new Color(243, 64, 54));
                 return c;
             }
         };
@@ -566,7 +545,7 @@ public class Matches_Frame extends javax.swing.JFrame {
             int awayTeamID = (int) teamsList[away_team_combo_box.getSelectedIndex()][2];
             int stadiumID =  (int) stadiumList[stadium_combo_box.getSelectedIndex()][1];
             if (homeTeamID == awayTeamID){
-                JOptionPane.showMessageDialog(this, "you can't insert this record");
+                JOptionPane.showMessageDialog(this,"The Two Teams Cannot Be The Same !!!", "Invalid Trophies",JOptionPane.ERROR_MESSAGE);
                 return ;
             }
             addNewGame(jTextField_Week.getText(), jTextField_Time.getText(),

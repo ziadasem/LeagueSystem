@@ -63,7 +63,7 @@ public class Squad_Frame extends javax.swing.JFrame {
         //******************** League Table Properties ********************//
         jTableSquad.getTableHeader().setFont(new Font("League", Font.BOLD,22));
         jTableSquad.setOpaque(false);
-        jTableSquad.getTableHeader().setBackground(new Color(63, 16, 82));
+        jTableSquad.getTableHeader().setBackground(new Color(51,85,175));
         jTableSquad.getTableHeader().setForeground(new Color(255,255,255));
         jTableSquad.setBackground(new Color(244, 244, 244));
         //*****************************************************************//
@@ -462,7 +462,7 @@ public class Squad_Frame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.PREFERRED_SIZE, 753, Short.MAX_VALUE)
+            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
         );
 
         pack();

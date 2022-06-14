@@ -159,11 +159,13 @@ public class Squad_View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(1280, 720));
         setType(java.awt.Window.Type.POPUP);
 
         jPanel_Teams_Frame.setBackground(new java.awt.Color(0, 51, 51));
         jPanel_Teams_Frame.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
+        jPanel_Teams_Frame.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jPanel_TeamsClose.setBackground(new java.awt.Color(0, 51, 51));
         jPanel_TeamsClose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -261,7 +263,7 @@ public class Squad_View extends javax.swing.JFrame {
                             .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                                 .addGap(267, 267, 267)
                                 .addComponent(jLabel_squadName, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 189, Short.MAX_VALUE)))
+                        .addGap(0, 185, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel_Teams_FrameLayout.setVerticalGroup(
@@ -276,7 +278,7 @@ public class Squad_View extends javax.swing.JFrame {
                         .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jLabel_squadName, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)

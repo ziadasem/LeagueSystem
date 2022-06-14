@@ -46,13 +46,27 @@ public class StandingsFrame extends javax.swing.JFrame {
              buildTeamsComboBoxData();
         }catch(Exception e){
             System.out.println(e);
-            JOptionPane.showMessageDialog(rootPane, "Error in connection to DB "  +e.getMessage());
-            
+            JOptionPane.showMessageDialog(rootPane, "Error in connection to DB "  +e.getMessage()); 
         }
+        
+        jLabel3.setText(currentLeague_Name);
         setTableCellAlignment(SwingConstants.CENTER);
         //******************** League Table Model ********************//
-        // Necessary For Adding Rows
-        // Method 1 For Adding
+        //******************** Teams Table Properties ********************//
+        jTableLeague.getTableHeader().setFont(new Font("League", Font.BOLD,22));
+        jTableLeague.setOpaque(false);
+        jTableLeague.getTableHeader().setBackground(new Color(51,85,175));
+        jTableLeague.getTableHeader().setForeground(new Color(255,255,255));
+        jTableLeague.setBackground(new Color(244, 244, 244));
+        // Setting Colmuns Width
+        jTableLeague.getColumnModel().getColumn(0).setPreferredWidth(3);
+        jTableLeague.getColumnModel().getColumn(1).setPreferredWidth(250);
+        jTableLeague.getColumnModel().getColumn(2).setPreferredWidth(10);
+        jTableLeague.getColumnModel().getColumn(3).setPreferredWidth(3);
+        jTableLeague.getColumnModel().getColumn(4).setPreferredWidth(3);
+        jTableLeague.getColumnModel().getColumn(5).setPreferredWidth(3);
+        jTableLeague.getColumnModel().getColumn(2).setPreferredWidth(10);
+        //*****************************************************************//
 
 
     }
@@ -338,6 +352,11 @@ public class StandingsFrame extends javax.swing.JFrame {
         jLabel_TeamsClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_TeamsClose.setText("X");
         jLabel_TeamsClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel_TeamsClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel_TeamsCloseMouseReleased(evt);
+            }
+        });
 
         jScrollPane1.setMinimumSize(new java.awt.Dimension(1024, 720));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1024, 720));
@@ -487,12 +506,12 @@ public class StandingsFrame extends javax.swing.JFrame {
                             .addComponent(jTextField_MP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(110, 110, 110))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(80, 80, 80))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(617, 617, 617)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
                 .addComponent(jLabel_TeamsClose, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -590,6 +609,10 @@ public class StandingsFrame extends javax.swing.JFrame {
     private void jButton_modifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_modifyActionPerformed
                 addOrUpdateMatch(false);
     }//GEN-LAST:event_jButton_modifyActionPerformed
+
+    private void jLabel_TeamsCloseMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_TeamsCloseMouseReleased
+        this.dispose();
+    }//GEN-LAST:event_jLabel_TeamsCloseMouseReleased
 
    private void setTableCellAlignment(int alignment) {
              tblLeagueRenderer.setHorizontalAlignment(alignment);

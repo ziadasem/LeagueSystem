@@ -332,9 +332,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
                     .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel_squadName1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel_squadName1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
             .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                 .addGap(183, 183, 183)
@@ -409,10 +407,26 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_DeleteActionPerformed
 
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
-        int count = Integer.parseInt(jTextField_name.getText()) ;
         try{
+            int count = Integer.parseInt(jTextField_name.getText()) ;
+            if(count <=0 || count >= 120)
+            {
+                JOptionPane.showMessageDialog(this,"Data Entry Error ... Invalid Trophies Number", "Invalid Trophies",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
             assignNewTrophy(count);
-        }catch(Exception e){
+        }
+        catch(NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(this,"Data Entry Error ... Trophies Must Be Integers", "Invalid Trophies",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(this,"You Cannot Insert New Trophies For The Same Team !!!", "Invalid Team",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e);
             System.out.println("is it here?");
             return ;

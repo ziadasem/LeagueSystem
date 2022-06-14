@@ -16,6 +16,8 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
@@ -26,12 +28,15 @@ import javax.swing.table.TableCellRenderer;
 public class Standings_View extends javax.swing.JFrame {
     private int ThiscurrentLeagueID;
     private int id=0;
+    DefaultTableCellRenderer tblLeagueRenderer = new DefaultTableCellRenderer();
     /**
      * Creates new form LeagueStandings
      */
-    public Standings_View( int currentLeagueID) throws SQLException {
+    public Standings_View(String currentLeague_Name, int currentLeagueID) throws SQLException {
         ThiscurrentLeagueID = currentLeagueID ;
         initComponents();
+        
+        this.setLocationRelativeTo(null);
         
         try {
             updateStandingsTable();
@@ -52,6 +57,27 @@ public class Standings_View extends javax.swing.JFrame {
             Logger.getLogger(Standings_View.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
+        
+        jLabel_leagueName.setText(currentLeague_Name);
+        
+                setTableCellAlignment(SwingConstants.CENTER);
+        //******************** League Table Model ********************//
+        //******************** Teams Table Properties ********************//
+        jTableLeague.getTableHeader().setFont(new Font("League", Font.BOLD,22));
+        jTableLeague.setOpaque(false);
+        jTableLeague.getTableHeader().setBackground(new Color(51,85,175));
+        jTableLeague.getTableHeader().setForeground(new Color(255,255,255));
+        jTableLeague.setBackground(new Color(244, 244, 244));
+        // Setting Colmuns Width
+        jTableLeague.getColumnModel().getColumn(0).setPreferredWidth(3);
+        jTableLeague.getColumnModel().getColumn(1).setPreferredWidth(250);
+        jTableLeague.getColumnModel().getColumn(2).setPreferredWidth(10);
+        jTableLeague.getColumnModel().getColumn(3).setPreferredWidth(3);
+        jTableLeague.getColumnModel().getColumn(4).setPreferredWidth(3);
+        jTableLeague.getColumnModel().getColumn(5).setPreferredWidth(3);
+        jTableLeague.getColumnModel().getColumn(2).setPreferredWidth(10);
+        //*****************************************************************//
+        
     }
     public void updateStandingsTable() throws Exception{
        DefaultTableModel tblLeagueModel = (DefaultTableModel)jTableLeague.getModel();
@@ -104,6 +130,16 @@ public class Standings_View extends javax.swing.JFrame {
                 throw e;
         }  
    }
+   
+      private void setTableCellAlignment(int alignment) {
+             tblLeagueRenderer.setHorizontalAlignment(alignment);
+             for (int i=0; i<jTableLeague.getColumnCount();i++){
+                jTableLeague.setDefaultRenderer(jTableLeague.getColumnClass(i),tblLeagueRenderer);
+                }
+            // repaint to show table cell changes
+            jTableLeague.updateUI();
+        }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,6 +149,8 @@ public class Standings_View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel_leagueName = new javax.swing.JLabel();
+        jLabel_TeamsClose = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLeague = new javax.swing.JTable(){
 
@@ -138,15 +176,34 @@ public class Standings_View extends javax.swing.JFrame {
                 return c;
             }
         };
-        jLabel_leagueName = new javax.swing.JLabel();
-        jLabel_TeamsClose = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1440, 768));
+        setMinimumSize(new java.awt.Dimension(1280, 720));
         setUndecorated(true);
+        setSize(new java.awt.Dimension(1280, 720));
         getContentPane().setLayout(null);
+
+        jLabel_leagueName.setFont(new java.awt.Font("Cambria", 1, 42)); // NOI18N
+        jLabel_leagueName.setForeground(new java.awt.Color(108, 147, 59));
+        jLabel_leagueName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_leagueName.setText("League");
+        getContentPane().add(jLabel_leagueName);
+        jLabel_leagueName.setBounds(10, 20, 1220, 50);
+
+        jLabel_TeamsClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel_TeamsClose.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel_TeamsClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_TeamsClose.setText("X");
+        jLabel_TeamsClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel_TeamsClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_TeamsCloseMouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel_TeamsClose);
+        jLabel_TeamsClose.setBounds(1240, 10, 25, 29);
 
         jScrollPane1.setMinimumSize(new java.awt.Dimension(1024, 720));
         jScrollPane1.setPreferredSize(new java.awt.Dimension(1024, 720));
@@ -156,7 +213,7 @@ public class Standings_View extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Rank", "Name", "MP", "W", "D", "L", "Pts"
+                "Pos", "Name", "MP", "W", "D", "L", "Pts"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -178,27 +235,7 @@ public class Standings_View extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableLeague);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(120, 70, 1170, 520);
-
-        jLabel_leagueName.setFont(new java.awt.Font("Cambria", 1, 36)); // NOI18N
-        jLabel_leagueName.setForeground(new java.awt.Color(108, 147, 59));
-        jLabel_leagueName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_leagueName.setText("League");
-        getContentPane().add(jLabel_leagueName);
-        jLabel_leagueName.setBounds(120, 10, 600, 50);
-
-        jLabel_TeamsClose.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel_TeamsClose.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel_TeamsClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_TeamsClose.setText("X");
-        jLabel_TeamsClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel_TeamsClose.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel_TeamsCloseMouseClicked(evt);
-            }
-        });
-        getContentPane().add(jLabel_TeamsClose);
-        jLabel_TeamsClose.setBounds(1380, 10, 25, 29);
+        jScrollPane1.setBounds(110, 100, 1100, 590);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Soccer Stadum.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
