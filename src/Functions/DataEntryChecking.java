@@ -31,6 +31,15 @@ public class DataEntryChecking {
         }
         return true;
     }
+    public boolean containsNumbers(String inp){
+      char[] chars = inp.toCharArray();
+      for(char c : chars){
+         if(Character.isDigit(c)){
+             return true;
+         }
+        }
+      return false;
+    }
     
     public boolean isValid_Name(String temp)
     {
@@ -93,15 +102,25 @@ public class DataEntryChecking {
     
     public boolean isValid_Time(String temp)
     {
-        if(temp.isEmpty())
-            return false;
-        try{
-            //LocalTime.parse(temp);
-        }
-        catch(DateTimeParseException | NullPointerException e)
-        {
+        if(temp.isEmpty()){
             return false;
         }
+        if (!temp.contains(":")){
+            return false;
+        }
+        if (!temp.contains(":")){
+            return false;
+        }
+        String[] time = temp.split(":");
+        if (time[0].length() !=  2 || time[1].length() !=  2 ){
+            return false ;
+        }
+        
+        if ( Integer.parseInt(time[0]) >  12 || Integer.parseInt(time[0]) <  0 
+             || Integer.parseInt(time[1]) >  59  || Integer.parseInt(time[1]) <  0 ){
+            return false ;
+        }
+        
         return true;
     }
     

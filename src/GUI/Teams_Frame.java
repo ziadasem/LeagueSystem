@@ -415,6 +415,11 @@ public class Teams_Frame extends javax.swing.JFrame {
         String temp_firstName = jTextField_firstName.getText();
         String temp_lastName = jTextField_lastName.getText();
         DataEntryChecking t1 = new DataEntryChecking();
+        if(t1.containsNumbers(temp_firstName)||t1.containsNumbers(temp_lastName)){
+            JOptionPane.showMessageDialog(this, "Coach name cannot conatin numbers");
+            return;
+        }
+        
         // Checking For Wrong Team Name Entry
         if(!(t1.isValid_Team(temp_teamName)))
         {
@@ -437,6 +442,10 @@ public class Teams_Frame extends javax.swing.JFrame {
         if(!(t1.isValid_Name(temp_lastName)))
         {
             JOptionPane.showMessageDialog(this,"Invalid Coach Last Name", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if(Integer.parseInt(temp_Year)>2022||Integer.parseInt(temp_Year)<1750){
+            JOptionPane.showMessageDialog(this, "Foundation year must be reasonable");
             return;
         }
         try{

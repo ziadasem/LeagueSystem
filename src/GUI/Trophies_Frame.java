@@ -408,6 +408,10 @@ public class Trophies_Frame extends javax.swing.JFrame {
     private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
         String temp_firstName = jTextField_name.getText();
         DataEntryChecking t1 = new DataEntryChecking();
+        if(t1.containsNumbers(temp_firstName)){
+            JOptionPane.showMessageDialog(this, "Trophy name cannot contain numbers");
+            return;
+        }
         // Checking For Wrong Team Name Entry
         if(!(t1.isValid_Name(temp_firstName)))
         {

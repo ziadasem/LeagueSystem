@@ -41,6 +41,8 @@ public class Matches_Frame extends javax.swing.JFrame {
     
     public Matches_Frame(String currentLeague_Name, int currentLeagueID) {
         initComponents();
+        jRadioButton1.setForeground(new Color(222,222,222));
+        jRadioButton2.setForeground(new Color(222,222,222));
         this.setLocationRelativeTo(null);
         this.currentLeagueID = currentLeagueID;
         this.currentLeague_Name = currentLeague_Name;
@@ -53,7 +55,7 @@ public class Matches_Frame extends javax.swing.JFrame {
           buildStadiumComboBoxData(-1); //inital id is -1 , to get all stadiums
        
         }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
             _matchsList = new Object[][]{};
         }
         
@@ -90,6 +92,7 @@ public class Matches_Frame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel_Matches_Frame = new javax.swing.JPanel();
         jPanel_MatchesClose = new javax.swing.JPanel();
         jLabel_MatchesClose = new javax.swing.JLabel();
@@ -135,6 +138,8 @@ public class Matches_Frame extends javax.swing.JFrame {
         stadium_combo_box = new javax.swing.JComboBox<>();
         away_team_combo_box = new javax.swing.JComboBox<>();
         home_team_combo_box = new javax.swing.JComboBox<>();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1286, 720));
@@ -306,11 +311,11 @@ public class Matches_Frame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Time", "Team 1", "Team 2"
+                "Time", "Team 1", "Team 2", "stadium"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -328,6 +333,13 @@ public class Matches_Frame extends javax.swing.JFrame {
         jTableMatches.getTableHeader().setResizingAllowed(false);
         jTableMatches.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTableMatches);
+        if (jTableMatches.getColumnModel().getColumnCount() > 0) {
+            jTableMatches.getColumnModel().getColumn(0).setResizable(false);
+            jTableMatches.getColumnModel().getColumn(0).setPreferredWidth(120);
+            jTableMatches.getColumnModel().getColumn(1).setResizable(false);
+            jTableMatches.getColumnModel().getColumn(2).setResizable(false);
+            jTableMatches.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jLabel_awayTeam1.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
         jLabel_awayTeam1.setForeground(new java.awt.Color(204, 204, 204));
@@ -352,6 +364,20 @@ public class Matches_Frame extends javax.swing.JFrame {
             }
         });
 
+        jRadioButton1.setBackground(new java.awt.Color(0, 51, 51));
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("PM");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        jRadioButton2.setBackground(new java.awt.Color(0, 51, 51));
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("AM");
+
         javax.swing.GroupLayout jPanel_Matches_FrameLayout = new javax.swing.GroupLayout(jPanel_Matches_Frame);
         jPanel_Matches_Frame.setLayout(jPanel_Matches_FrameLayout);
         jPanel_Matches_FrameLayout.setHorizontalGroup(
@@ -370,9 +396,13 @@ public class Matches_Frame extends javax.swing.JFrame {
                         .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
                                 .addGap(9, 9, 9)
-                                .addComponent(jTextField_Time, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField_Time, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jRadioButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jLabel_Time, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE))
                     .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
                         .addGap(78, 78, 78)
                         .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -394,14 +424,12 @@ public class Matches_Frame extends javax.swing.JFrame {
                     .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)))
                 .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel_leagueName_Matches, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addContainerGap())
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel_leagueName_Matches, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(41, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Matches_FrameLayout.createSequentialGroup()
                         .addGap(0, 130, Short.MAX_VALUE)
                         .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,7 +440,8 @@ public class Matches_Frame extends javax.swing.JFrame {
                                 .addComponent(jButton_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(55, 55, 55)
                                 .addComponent(jButton_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(110, 110, 110))))))
+                                .addGap(110, 110, 110))))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         jPanel_Matches_FrameLayout.setVerticalGroup(
             jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -430,13 +459,19 @@ public class Matches_Frame extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
             .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_Week, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_Time, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_Week, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_Time, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
+                        .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel_Week, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_Time, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField_Week, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_Time, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Matches_FrameLayout.createSequentialGroup()
+                        .addComponent(jRadioButton1)
+                        .addGap(8, 8, 8)
+                        .addComponent(jRadioButton2)))
                 .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
                         .addGap(70, 70, 70)
@@ -504,6 +539,7 @@ public class Matches_Frame extends javax.swing.JFrame {
             jTextField_Week.setText("0 - 100!");
             return;
         }
+        
         // Checking For Wrong Year Entry
         if(!(t1.isValid_Time(temp_Time)))
         {
@@ -516,39 +552,17 @@ public class Matches_Frame extends javax.swing.JFrame {
             jTextField_Time.setText("00:00!");
             return;
         }
-        // Checking For Wrong Coach First Name Entry
-        /*if(!(t1.isValid_Team(temp_homeTeam)))
-        {
-            JOptionPane.showMessageDialog(this,"Invalid Team Name ... Please choose an existing team", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
-            jTextField_Week.setForeground(new Color(51,51,51));
-            jTextField_Time.setForeground(new Color(51,51,51));
-            jTextField_awayTeam.setForeground(new Color(51,51,51));
-            // Wrong Entry Here
-            jTextField_homeTeam.setForeground(Color.red);
-            jTextField_homeTeam.setText("Team 1 Name!");
-            return;
-        }
-        // Checking For Wrong Coach Last Name Entry
-        if(!(t1.isValid_Team(temp_awayTeam)))
-        {
-            JOptionPane.showMessageDialog(this,"Invalid Team Name ... Please choose an existing team", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
-            jTextField_Week.setForeground(new Color(51,51,51));
-            jTextField_Time.setForeground(new Color(51,51,51));
-            jTextField_homeTeam.setForeground(new Color(51,51,51));
-            // Wrong Entry Here
-            jTextField_awayTeam.setForeground(Color.red);
-            jTextField_awayTeam.setText("Team 2 Name!");
-            return;
-        }*/
+        
         try{
             int homeTeamID = (int) teamsList[home_team_combo_box.getSelectedIndex()][2];
             int awayTeamID = (int) teamsList[away_team_combo_box.getSelectedIndex()][2];
             int stadiumID =  (int) stadiumList[stadium_combo_box.getSelectedIndex()][1];
+            int week  = Integer.parseInt(temp_Week);
             if (homeTeamID == awayTeamID){
                 JOptionPane.showMessageDialog(this,"The Two Teams Cannot Be The Same !!!", "Invalid Trophies",JOptionPane.ERROR_MESSAGE);
                 return ;
             }
-            addNewGame(jTextField_Week.getText(), jTextField_Time.getText(),
+            addNewGame(week, jTextField_Time.getText(),
                      homeTeamID, awayTeamID, stadiumID);
         }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, e);
@@ -600,6 +614,10 @@ public class Matches_Frame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_home_team_combo_boxActionPerformed
 
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -617,7 +635,7 @@ public class Matches_Frame extends javax.swing.JFrame {
         }
     
      
-    private void addNewGame(String week, String Time, int homeTeamID, int awayTeamID, int stadiumID) throws Exception{
+    private void addNewGame(int week , String Time, int homeTeamID, int awayTeamID, int stadiumID) throws Exception{
         try{  
             Connection con=DriverManager.getConnection( Config.hostName,
                  Config.username,Config.password);  
@@ -631,9 +649,9 @@ public class Matches_Frame extends javax.swing.JFrame {
             while(rs.next()) {
                id = rs.getInt(1) + 1 ;
             }
-            
-            insertionToGameStatment.executeUpdate("INSERT INTO game (id,  \"Date\", leagueid, stadiumid) VALUES"
-                    + " ("+id+",'"+ Time+ " week# "+week+"',"+ currentLeagueID+","+ stadiumID+")");
+            Time = jRadioButton1.isSelected()? (Time + " pm") : (Time + " am");
+            insertionToGameStatment.executeUpdate("INSERT INTO game (id, time, week, leagueid, stadiumid) VALUES"
+                    + " ("+id+",'"+ Time+ "', "+week+","+ currentLeagueID+","+ stadiumID+")");
             
             insertionToPlayStatment1.executeUpdate("INSERT INTO play  (Teamid, Matchid)  VALUES"
                     + " ("+homeTeamID+","+ id+")");
@@ -677,22 +695,29 @@ public class Matches_Frame extends javax.swing.JFrame {
             Statement stmt=con.createStatement();  
             Statement stmt2=con.createStatement();  
             Statement stmt3=con.createStatement();  
-       
+            Statement stmt4=con.createStatement();  
+      
 
             ResultSet gamesStatement=stmt.executeQuery("select * from game where Leagueid =" +currentLeagueID);  
 
-            Object[][] gamesList = new Object[1000][4];
+            Object[][] gamesList = new Object[1000][5];
             int index = 0 ;
             while(gamesStatement.next()) { 
-                gamesList[index][0] = gamesStatement.getString("date");
+                gamesList[index][0] = "week #"+gamesStatement.getInt("week")+ " " + gamesStatement.getString("time");
                 int matchID = gamesStatement.getInt("id");
                 ResultSet teamsStamtment=stmt3.executeQuery("select name from team where id in (select teamid from play where Matchid =" +matchID +" )");
+                ResultSet stadiumStatment =stmt4.executeQuery("select name from stadium where id = (select stadiumid from game where id  =" +matchID +" )");
+
                 int teamsIndex = 1 ;
                 while(teamsStamtment.next()){
                      gamesList[index][teamsIndex] = teamsStamtment.getString("name");
                      teamsIndex++ ;
                 }
-               gamesList[index][3] = gamesStatement.getInt("id");
+                while(stadiumStatment.next()){
+                     gamesList[index][3] = stadiumStatment.getString("name");
+                }
+                
+               gamesList[index][4] = gamesStatement.getInt("id");
                index ++ ;
              }
             con.close(); 
@@ -818,7 +843,7 @@ public class Matches_Frame extends javax.swing.JFrame {
             Connection con=DriverManager.getConnection( Config.hostName,
                  Config.username,Config.password);
             int row = jTableMatches.getSelectedRow();     // For Selected Row in the table
-            int gameID =(int) _matchsList[row][3];  
+            int gameID =(int) _matchsList[row][4];  
           
             Statement stmt=con.createStatement();  
             int rs=stmt.executeUpdate("DELETE from play where matchid =" + gameID);
@@ -853,6 +878,7 @@ public class Matches_Frame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> away_team_combo_box;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> home_team_combo_box;
     private javax.swing.JButton jButton_Add;
     private javax.swing.JButton jButton_Delete;
@@ -866,6 +892,8 @@ public class Matches_Frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel_leagueName_Matches;
     private javax.swing.JPanel jPanel_MatchesClose;
     private javax.swing.JPanel jPanel_Matches_Frame;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableMatches;

@@ -42,6 +42,8 @@ public class Team_Trophies_View extends javax.swing.JFrame {
     
     public Team_Trophies_View(String currentLeague_Name, int currentLeagueID) {
         initComponents();
+        jLabel4.setVisible(false);
+        jTrophy.setVisible(false);
         this.setLocationRelativeTo(null);
         ThiscurrentLeagueID = currentLeagueID;
         // Calling the rows center aligning function ...
@@ -318,7 +320,7 @@ public class Team_Trophies_View extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.PREFERRED_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, 756, Short.MAX_VALUE)
         );
 
         pack();

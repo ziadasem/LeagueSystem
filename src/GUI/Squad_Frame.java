@@ -462,7 +462,7 @@ public class Squad_Frame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.PREFERRED_SIZE, 753, Short.MAX_VALUE)
         );
 
         pack();
@@ -520,6 +520,10 @@ public class Squad_Frame extends javax.swing.JFrame {
         String temp_lastName = jTextField_lastName.getText();
         String temp_Position = jTextField_Position.getText();
         DataEntryChecking t1 = new DataEntryChecking();
+        if(t1.containsNumbers(temp_firstName)||t1.containsNumbers(temp_lastName)){
+            JOptionPane.showMessageDialog(this,"Player name cannot contain numbers");
+            return;
+        }
         // Checking For Wrong Player First Name Entry
         if(!(t1.isValid_firstName(temp_firstName)))
         {

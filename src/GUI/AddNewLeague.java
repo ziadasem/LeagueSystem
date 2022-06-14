@@ -178,6 +178,14 @@ public class AddNewLeague extends javax.swing.JFrame {
             return ;
         }
         this.dispose();
+        try{
+        Thread.sleep(250);
+        new GUI.Home().show();
+        }
+        catch(InterruptedException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }//GEN-LAST:event_jButton_saveActionPerformed
 
     private void jPanel_LeagueCloseMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_LeagueCloseMouseReleased
