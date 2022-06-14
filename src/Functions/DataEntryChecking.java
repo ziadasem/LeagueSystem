@@ -22,9 +22,7 @@ public class DataEntryChecking {
             return false;
         for(int i=0; i<constraints.length; i++)
         {
-            if(temp.startsWith(Character.toString(constraints[i])))
-                return false;
-            if(temp.endsWith(Character.toString(constraints[i])))
+            if(temp.contains(Character.toString(constraints[i])))
                 return false;
             if(temp.length()<4)
                 return false;
@@ -47,9 +45,7 @@ public class DataEntryChecking {
             return false;
         for(int i=0; i<constraints.length; i++)
         {
-            if(temp.startsWith(Character.toString(constraints[i])))
-                return false;
-            if(temp.endsWith(Character.toString(constraints[i])))
+            if(temp.contains(Character.toString(constraints[i])))
                 return false;
             if(temp.length()<2)
                 return false;
@@ -73,9 +69,7 @@ public class DataEntryChecking {
         temp = temp.strip();
         for(int i=0; i<constraints.length; i++)
         {
-            if(temp.startsWith(Character.toString(constraints[i])))
-                return false;
-            if(temp.endsWith(Character.toString(constraints[i])))
+            if(temp.contains(Character.toString(constraints[i])))
                 return false;
             if(temp.length()<2)
                 return false;
@@ -108,15 +102,12 @@ public class DataEntryChecking {
         if (!temp.contains(":")){
             return false;
         }
-        if (!temp.contains(":")){
-            return false;
-        }
         String[] time = temp.split(":");
         if (time[0].length() !=  2 || time[1].length() !=  2 ){
             return false ;
         }
         
-        if ( Integer.parseInt(time[0]) >  12 || Integer.parseInt(time[0]) <  0 
+        if ( Integer.parseInt(time[0]) >  23 || Integer.parseInt(time[0]) <  0 
              || Integer.parseInt(time[1]) >  59  || Integer.parseInt(time[1]) <  0 ){
             return false ;
         }

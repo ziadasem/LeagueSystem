@@ -91,7 +91,7 @@ public class Squad_Frame extends javax.swing.JFrame {
             Config.username,Config.password);  
             Statement stmt=con.createStatement();  
             ResultSet rs=stmt.executeQuery("select * from player where TEAMID =" +currentTeamID);  
-            squadList = new Object[1000][3];
+            squadList = new Object[50][3];
             int index = 0 ;
             while(rs.next()) { 
                 squadList[index][0] = rs.getString("firstname") + " " + rs.getString("lastname");
@@ -462,7 +462,7 @@ public class Squad_Frame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.PREFERRED_SIZE, 753, Short.MAX_VALUE)
+            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
         );
 
         pack();

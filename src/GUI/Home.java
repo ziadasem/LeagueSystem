@@ -418,7 +418,7 @@ public class Home extends javax.swing.JFrame {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         // Removing inner borders inside the button
@@ -541,7 +541,7 @@ public class Home extends javax.swing.JFrame {
             Statement stmt=con.createStatement();  
             ResultSet rs=stmt.executeQuery("select * from league");  
             // ResultSet rs=stmt.executeUpdate("insert into league ...");  
-            Object[][] leagueList = new Object[1000][1000];
+            Object[][] leagueList = new Object[30][2];
             int index = 0 ;
             while(rs.next()) { 
                 leagueList[index][0] = rs.getInt("ID");
@@ -579,7 +579,7 @@ public class Home extends javax.swing.JFrame {
             Config.username,Config.password);  
             Statement stmt=con.createStatement();  
             ResultSet rs=stmt.executeQuery("select * from team where leagueid =" +currentLeagueID);  
-            Object[][] teamsList = new Object[1000][1000];
+            Object[][] teamsList = new Object[30][3];
             int index = 0 ;
             while(rs.next()) { 
                 teamsList[index][0] = rs.getString("name");
