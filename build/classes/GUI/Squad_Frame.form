@@ -214,6 +214,10 @@
                 <Property name="text" type="java.lang.String" value="X"/>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel_TeamsCloseMousePressed"/>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel_TeamsCloseMouseReleased"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

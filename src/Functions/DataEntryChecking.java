@@ -107,7 +107,7 @@ public class DataEntryChecking {
             return false ;
         }
         
-        if ( Integer.parseInt(time[0]) >  23 || Integer.parseInt(time[0]) <  0 
+        if ( Integer.parseInt(time[0]) >  12 || Integer.parseInt(time[0]) <  0 
              || Integer.parseInt(time[1]) >  59  || Integer.parseInt(time[1]) <  0 ){
             return false ;
         }

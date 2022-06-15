@@ -19,12 +19,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-// import Functions.SharedData;
 
-/**
- *
- * @author hosam
- */
+
 public class Matches_View extends javax.swing.JFrame {
 
   
@@ -32,25 +28,24 @@ public class Matches_View extends javax.swing.JFrame {
     private int currentLeagueID;
     String currentLeague_Name;
     Object[][] teamsList;
-    Object[][] stadiumList;
+    Object[][] stadiumList;    
+    int currentWeek = -1 ;
+
 
  
     DefaultTableCellRenderer tblTeamsRenderer = new DefaultTableCellRenderer();
     
 
     
-    public Matches_View(String currentLeague_Name, int currentLeagueID) {
+    public Matches_View(String currentLeague_Name, int currentLeagueID, int currentWeekId) {
         initComponents();
         this.setLocationRelativeTo(null);
         this.currentLeagueID = currentLeagueID;
         this.currentLeague_Name = currentLeague_Name;
+        this.currentWeek = currentWeekId ;
         
-        setTableCellAlignment(SwingConstants.CENTER);
         try{
-          updateTeamsTable();
           updateMatchesTable();
-          buildTeamsComboBoxData();
-          buildStadiumComboBoxData(-1); //inital id is -1 , to get all stadiums
        
         }catch(Exception e){
             JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
@@ -60,16 +55,7 @@ public class Matches_View extends javax.swing.JFrame {
             // Setting the label name for corresponding League Name
         jLabel_leagueName_Matches.setText(currentLeague_Name + " Matches");
         
-        
-        
-        //******************** League Table Properties ********************//
-        jTableTeams.getTableHeader().setFont(new Font("League", Font.BOLD,22));
-        jTableTeams.setOpaque(false);
-        jTableTeams.getTableHeader().setBackground(new Color(63, 16, 82));
-        jTableTeams.getTableHeader().setForeground(new Color(255,255,255));
-        jTableTeams.getColumnModel().getColumn(0).setPreferredWidth(150);
-        jTableTeams.setBackground(new Color(244, 244, 244));
-        //*****************************************************************//
+       
         
         //******************** League Matches Properties ********************//
         jTableMatches.getTableHeader().setFont(new Font("League", Font.BOLD,22));
@@ -92,34 +78,7 @@ public class Matches_View extends javax.swing.JFrame {
         jPanel_Matches_Frame = new javax.swing.JPanel();
         jPanel_MatchesClose = new javax.swing.JPanel();
         jLabel_MatchesClose = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableTeams = new javax.swing.JTable(){
-
-            public Component prepareRenderer(TableCellRenderer r, int rw, int col)
-            {
-                Component c = super.prepareRenderer(r, rw, col);
-                c.setBackground(Color.WHITE);
-                c.setFont(new Font("League", Font.BOLD,18));
-                // Setting Alternating Colors
-                if(rw %2 == 0)
-                c.setBackground(new Color(225, 225, 225));
-                // Setting Colors Of First 3 Champions Qualified Teams
-                if((rw == 0 && col == 0) || (rw == 1 && col == 0) || (rw == 2 && col == 0))
-                c.setBackground(new Color(66, 133, 244));
-
-                // Setting Colors Of Second 2 2-Champions Qualified Teams
-                if((rw == 3 && col == 0) || (rw == 4 && col == 0))
-                c.setBackground(new Color(251, 150, 68));
-
-                // Setting color of last 3 (Descending Teams) ...
-                if((rw == jTableTeams.getRowCount() - 1 && col == 0) || (rw == jTableTeams.getRowCount() - 2 && col == 0) || (rw == jTableTeams.getRowCount() - 3 && col == 0))
-                c.setBackground(new Color(243, 64, 54));
-                return c;
-            }
-        };
         jLabel_leagueName_Matches = new javax.swing.JLabel();
-        jLabel_homeTeam = new javax.swing.JLabel();
-        jLabel_awayTeam = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableMatches = new javax.swing.JTable(){
 
@@ -140,20 +99,19 @@ public class Matches_View extends javax.swing.JFrame {
                 c.setBackground(new Color(251, 150, 68));
 
                 // Setting color of last 3 (Descending Teams) ...
-                if((rw == jTableTeams.getRowCount() - 1 && col == 0) || (rw == jTableTeams.getRowCount() - 2 && col == 0) || (rw == jTableTeams.getRowCount() - 3 && col == 0))
-                c.setBackground(new Color(243, 64, 54));
+                //if((rw == jTableTeams.getRowCount() - 1 && col == 0) || (rw == jTableTeams.getRowCount() - 2 && col == 0) || (rw == jTableTeams.getRowCount() - 3 && col == 0))
+                //c.setBackground(new Color(243, 64, 54));
                 return c;
             }
         };
-        jLabel_awayTeam1 = new javax.swing.JLabel();
-        stadium_combo_box = new javax.swing.JComboBox<>();
-        away_team_combo_box = new javax.swing.JComboBox<>();
-        home_team_combo_box = new javax.swing.JComboBox<>();
+        jLabel_Week = new javax.swing.JLabel();
+        jTextField_Week = new javax.swing.JTextField();
+        jButton_Add4 = new javax.swing.JButton();
+        jButton_Add5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1286, 720));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(1280, 720));
         setType(java.awt.Window.Type.POPUP);
 
@@ -186,56 +144,11 @@ public class Matches_View extends javax.swing.JFrame {
             .addComponent(jLabel_MatchesClose, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jScrollPane1.setBackground(new java.awt.Color(63, 16, 82));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
-        jScrollPane1.setToolTipText("");
-        jScrollPane1.setMinimumSize(new java.awt.Dimension(1024, 720));
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(1024, 720));
-
-        jTableTeams.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Name", "Coach Name"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTableTeams.setFocusable(false);
-        jTableTeams.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        jTableTeams.setMinimumSize(new java.awt.Dimension(1024, 720));
-        jTableTeams.setPreferredSize(new java.awt.Dimension(1024, 720));
-        jTableTeams.setRowHeight(30);
-        jTableTeams.setSelectionForeground(new java.awt.Color(0, 120, 215));
-        jTableTeams.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTableTeams.setShowVerticalLines(false);
-        jTableTeams.getTableHeader().setResizingAllowed(false);
-        jTableTeams.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTableTeams);
-
         jLabel_leagueName_Matches.setFont(new java.awt.Font("Cambria", 1, 38)); // NOI18N
         jLabel_leagueName_Matches.setForeground(new java.awt.Color(204, 204, 204));
         jLabel_leagueName_Matches.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_leagueName_Matches.setText("League");
         jLabel_leagueName_Matches.setPreferredSize(new java.awt.Dimension(130, 43));
-
-        jLabel_homeTeam.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
-        jLabel_homeTeam.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel_homeTeam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_homeTeam.setText("Team 1");
-
-        jLabel_awayTeam.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
-        jLabel_awayTeam.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel_awayTeam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_awayTeam.setText("Team 2");
 
         jScrollPane2.setBackground(new java.awt.Color(63, 16, 82));
         jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
@@ -249,11 +162,11 @@ public class Matches_View extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Time", "Team 1", "Team 2"
+                "Time", "Team 1", "Team 2", "Stadium"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -272,26 +185,45 @@ public class Matches_View extends javax.swing.JFrame {
         jTableMatches.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTableMatches);
 
-        jLabel_awayTeam1.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
-        jLabel_awayTeam1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel_awayTeam1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_awayTeam1.setText("stadium");
+        jLabel_Week.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
+        jLabel_Week.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel_Week.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_Week.setText("Week");
 
-        stadium_combo_box.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stadium_combo_boxActionPerformed(evt);
+        jTextField_Week.setEditable(false);
+        jTextField_Week.setBackground(new java.awt.Color(209, 204, 192));
+        jTextField_Week.setFont(new java.awt.Font("Cambria", 1, 24)); // NOI18N
+        jTextField_Week.setForeground(new java.awt.Color(51, 51, 51));
+        jTextField_Week.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField_Week.setText("1");
+        jTextField_Week.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray));
+        jTextField_Week.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField_WeekMouseClicked(evt);
             }
         });
 
-        away_team_combo_box.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Add4.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_Add4.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_Add4.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_Add4.setText("filter");
+        jButton_Add4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton_Add4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_Add4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                away_team_combo_boxActionPerformed(evt);
+                jButton_Add4ActionPerformed(evt);
             }
         });
 
-        home_team_combo_box.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Add5.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_Add5.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_Add5.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_Add5.setText("clear filters");
+        jButton_Add5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton_Add5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_Add5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                home_team_combo_boxActionPerformed(evt);
+                jButton_Add5ActionPerformed(evt);
             }
         });
 
@@ -300,37 +232,30 @@ public class Matches_View extends javax.swing.JFrame {
         jPanel_Matches_FrameLayout.setHorizontalGroup(
             jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
+                .addGap(231, 231, 231)
                 .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
-                                .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel_homeTeam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel_awayTeam, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(away_team_combo_box, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(home_team_combo_box, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
-                                .addComponent(jLabel_awayTeam1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(stadium_combo_box, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel_leagueName_Matches, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addContainerGap(38, Short.MAX_VALUE))
+                        .addGap(239, 239, 239)
+                        .addComponent(jLabel_leagueName_Matches, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 172, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Matches_FrameLayout.createSequentialGroup()
-                        .addGap(0, 661, Short.MAX_VALUE)
-                        .addComponent(jPanel_MatchesClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanel_MatchesClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel_Week, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField_Week, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(jButton_Add4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jButton_Add5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Matches_FrameLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_Matches_FrameLayout.setVerticalGroup(
             jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,27 +266,19 @@ public class Matches_View extends javax.swing.JFrame {
                 .addComponent(jLabel_leagueName_Matches, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 99, Short.MAX_VALUE))
-            .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(away_team_combo_box, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
-                        .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel_homeTeam, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(home_team_combo_box, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel_awayTeam, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(stadium_combo_box, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_awayTeam1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(104, 104, 104)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel_Week, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField_Week, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Add4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Add5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28))
         );
+
+        // Removing inner borders inside the button
+        //jButton_Add.setFocusPainted(false);
+        // Removing inner borders inside the button
+        //jButton_Add.setFocusPainted(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -381,82 +298,54 @@ public class Matches_View extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jPanel_MatchesCloseMouseReleased
 
-    private void home_team_combo_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_home_team_combo_boxActionPerformed
+    private void jTextField_WeekMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField_WeekMouseClicked
+        jTextField_Week.setEditable(true);
+        jTextField_Week.setText("");
+    }//GEN-LAST:event_jTextField_WeekMouseClicked
+
+    private void jButton_Add4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add4ActionPerformed
+        String temp_Week = jTextField_Week.getText();      
+        DataEntryChecking t1 = new DataEntryChecking();
+        if(!(t1.isValid_Week(temp_Week)))
+        {
+            JOptionPane.showMessageDialog(this,"Invalid Week ... Please Choose a Valid Week", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
+           
+            jTextField_Week.setForeground(Color.red);
+            jTextField_Week.setText("0 - 100!");
+            return;
+        }
         try{
-            int homeTeamID = (int) teamsList[home_team_combo_box.getSelectedIndex()][2];
-            buildStadiumComboBoxData(homeTeamID);
-            System.out.println("called");
+            currentWeek  = Integer.parseInt(temp_Week);
+            this.dispose();
+            try{
+                Thread.sleep(250);
+                new Matches_View(this.currentLeague_Name, currentLeagueID , currentWeek).show();
+             }catch(InterruptedException e){
+                System.out.println(e.getMessage());
+              }
         }catch(Exception e){
-            System.out.println("can't get stadium + \n" + e.toString());
-            JOptionPane.showMessageDialog(rootPane, "can't get stadium + \n" + e.toString());
+            JOptionPane.showMessageDialog(rootPane, e);
+            return ;
         }
+      
+    }//GEN-LAST:event_jButton_Add4ActionPerformed
 
-    }//GEN-LAST:event_home_team_combo_boxActionPerformed
+    private void jButton_Add5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add5ActionPerformed
+      
+            this.dispose();
+            try{
+                Thread.sleep(250);
+                new Matches_View(this.currentLeague_Name, currentLeagueID , -1).show();
+             }catch(InterruptedException e){
+                System.out.println(e.getMessage());
+              }
 
-    private void away_team_combo_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_away_team_combo_boxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_away_team_combo_boxActionPerformed
+    }//GEN-LAST:event_jButton_Add5ActionPerformed
 
-    private void stadium_combo_boxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stadium_combo_boxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_stadium_combo_boxActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        
-    }
-
-    private void setTableCellAlignment(int alignment) {
-            tblTeamsRenderer.setHorizontalAlignment(alignment);
-            for (int i=0; i<jTableTeams.getColumnCount();i++){
-               jTableTeams.setDefaultRenderer(jTableTeams.getColumnClass(i),tblTeamsRenderer);
-               }
-             // repaint to show table cell changes
-            jTableTeams.updateUI();
-        }
     
-     
-    private void addNewGame(String week, String Time, int homeTeamID, int awayTeamID, int stadiumID) throws Exception{
-        try{  
-            Connection con=DriverManager.getConnection( Config.hostName,
-                 Config.username,Config.password);  
-            Statement stmt=con.createStatement();  
-            Statement insertionToGameStatment=con.createStatement();  
-            Statement insertionToPlayStatment1=con.createStatement();  
-            Statement insertionToPlayStatment2=con.createStatement();  
-
-            ResultSet rs=stmt.executeQuery("SELECT MAX(ID) FROM GAME");  
-            int id =  0;
-            while(rs.next()) {
-               id = rs.getInt(1) + 1 ;
-            }
-            
-            insertionToGameStatment.executeUpdate("INSERT INTO game (id,  \"Date\", leagueid, stadiumid) VALUES"
-                    + " ("+id+",'"+ Time+ " week# "+week+"',"+ currentLeagueID+","+ stadiumID+")");
-            
-            insertionToPlayStatment1.executeUpdate("INSERT INTO play  (Teamid, Matchid)  VALUES"
-                    + " ("+homeTeamID+","+ id+")");
-            
-            insertionToPlayStatment2.executeUpdate("INSERT INTO play  (Teamid, Matchid)  VALUES"
-                    + " ("+awayTeamID+","+ id+")");
-            
-            con.close(); 
-        }catch(Exception e){ 
-             System.out.println(e);
-             System.out.println("HERE");
-             throw e;
-        }  
-    }
-            
-            
-       
-            
-            
-            
+  
     public void updateMatchesTable() throws Exception{
-       DefaultTableModel tblMatchesModel = (DefaultTableModel)jTableMatches.getModel();
+      DefaultTableModel tblMatchesModel = (DefaultTableModel)jTableMatches.getModel();
         try{
            _matchsList = getMatches();
         }catch(Exception e){
@@ -471,29 +360,40 @@ public class Matches_View extends javax.swing.JFrame {
    }
             
             
-    private Object[][] getMatches() throws Exception{
+private Object[][] getMatches() throws Exception{
         try{  
             Connection con=DriverManager.getConnection( Config.hostName,
              Config.username,Config.password);  
             Statement stmt=con.createStatement();  
             Statement stmt2=con.createStatement();  
             Statement stmt3=con.createStatement();  
-       
+            Statement stmt4=con.createStatement();  
+      
+            String condition = "";
+            if (currentWeek == -1){
+                condition = " and week = " + currentWeek + " ";
+            }
+            ResultSet gamesStatement=stmt.executeQuery("select distinct id, time,leagueid,stadiumid,week from game, play where Leagueid =" +currentLeagueID + "and play.matchid = game.id "+condition+" order by week");  
 
-            ResultSet gamesStatement=stmt.executeQuery("select * from game where Leagueid =" +currentLeagueID);  
-
-            Object[][] gamesList = new Object[1000][4];
+            Object[][] gamesList = new Object[1000][5];
             int index = 0 ;
             while(gamesStatement.next()) { 
-                gamesList[index][0] = gamesStatement.getString("date");
-                int matchID = gamesStatement.getInt("id");
+                int matchID = gamesStatement.getInt("id");        
+                gamesList[index][0] = "week #"+gamesStatement.getInt("week")+ " " + gamesStatement.getString("time");
+
                 ResultSet teamsStamtment=stmt3.executeQuery("select name from team where id in (select teamid from play where Matchid =" +matchID +" )");
+                ResultSet stadiumStatment =stmt4.executeQuery("select name from stadium where id = (select stadiumid from game where id  =" +matchID +" )");
+
                 int teamsIndex = 1 ;
                 while(teamsStamtment.next()){
                      gamesList[index][teamsIndex] = teamsStamtment.getString("name");
                      teamsIndex++ ;
                 }
-               gamesList[index][3] = gamesStatement.getInt("id");
+                while(stadiumStatment.next()){
+                     gamesList[index][3] = stadiumStatment.getString("name");
+                }
+                
+               gamesList[index][4] = gamesStatement.getInt("id");
                index ++ ;
              }
             con.close(); 
@@ -504,168 +404,18 @@ public class Matches_View extends javax.swing.JFrame {
                 throw e;
         }  
    }
-    
-    
-    public void buildTeamsComboBoxData() throws Exception{
-        Object[][] _testData ;
-        try{
-           _testData = getTeams();
-        }catch(Exception e){
-          throw e ;
-        } 
-      
-        // jComboBox1.removeAllItems();
-        for (int i = 0 ;_testData[i][0] != null  ; i++ ){
-            home_team_combo_box.addItem(_testData[i][0].toString());
-            away_team_combo_box.addItem(_testData[i][0].toString());
-        } 
-   }
-   public void updateTeamsTable() throws Exception{
-       DefaultTableModel tblLeagueModel = (DefaultTableModel)jTableTeams.getModel();
-        Object[][] _testData ;
-        try{
-           _testData = getTeams();
-        }catch(Exception e){
-          throw e ;
-        }     
-        for (int i = 0 ;i < tblLeagueModel.getRowCount() ; i++ ){
-            tblLeagueModel.removeRow(i);
-        }
-        
-        for(int i=0; _testData[i][0] != null; i++)
-            tblLeagueModel.addRow(_testData[i]);
-   }
-   
-     private Object[][] getTeams() throws Exception{
-        try{  
-            Connection con=DriverManager.getConnection( Config.hostName,
-               Config.username,Config.password);  
-           
-            Statement stmt=con.createStatement();  
-            Statement stmt2=con.createStatement();  
-
-            ResultSet rs=stmt.executeQuery("select * from team WHERE LEAGUEID ="+ currentLeagueID);  
-
-            teamsList = new Object[1000][5];
-            int index = 0 ;
-            while(rs.next()) { 
-                 teamsList[index][0] = rs.getString("name");
-                 ResultSet rs2=stmt2.executeQuery("select * from coach WHERE id ="+ rs.getInt("coachid"));  
-                 while(rs2.next()){
-                     teamsList[index][1] = rs2.getString("firstname") + " " + rs2.getString("lastname");
-                 } 
-                 teamsList[index][2] = rs.getInt("id");
-                index ++ ;
-             }
-            con.close(); 
-            return teamsList;
-        }catch(SQLException e){ 
-                System.out.println(e);
-                System.out.println("Error In getting Teams Function");
-                throw e;
-        }  
-   }
-     
-     public void buildStadiumComboBoxData(int homeID) throws Exception{
-        try{
-           stadiumList = getStadium(homeID);
-           stadium_combo_box.removeAllItems();
-           for (int i = 0 ;stadiumList[i][0] != null  ; i++ ){
-            stadium_combo_box.addItem(stadiumList[i][0].toString());
-        } 
-        }catch(Exception e){
-          throw e ;
-          
-        } 
-  
-   }
-     
-    
-     private Object[][] getStadium(int homeTeamStadium) throws Exception{
-        try{  
-            Connection con=DriverManager.getConnection( Config.hostName,
-               Config.username,Config.password);  
-           
-            Statement stmt=con.createStatement();  
-            ResultSet rs=stmt.executeQuery("select * from stadium where teamid ="+ homeTeamStadium);  
-            stadiumList = new Object[1000][2];
-            int index = 0 ;
-            while(rs.next()) { 
-                 stadiumList[index][0] = rs.getString("name");
-                 stadiumList[index][1] = rs.getInt("id");
-                index ++ ;
-             }
-            System.out.println("home stad " + homeTeamStadium + " index "+ index);
-            if (index == 0){ //team has no stadium, team can play in any stadium
-                Statement stmt2=con.createStatement();  
-                ResultSet rs2=stmt2.executeQuery("select * from stadium"); 
-                while(rs2.next()) { 
-                    stadiumList[index][0] = rs2.getString("name");
-                    stadiumList[index][1] = rs2.getInt("id");
-                    index ++ ;
-             }
-            }
-            con.close(); 
-            return stadiumList;
-        }catch(SQLException e){ 
-                System.out.println(e);
-                System.out.println("Error In getting Teams Function");
-                throw e;
-        } 
-     }
-        
-        private void deleteMatch(){
-            try{  
-            Connection con=DriverManager.getConnection( Config.hostName,
-                 Config.username,Config.password);
-            int row = jTableMatches.getSelectedRow();     // For Selected Row in the table
-            int gameID =(int) _matchsList[row][3];  
-          
-            Statement stmt=con.createStatement();  
-            int rs=stmt.executeUpdate("DELETE from play where matchid =" + gameID);
-            Statement stmt2=con.createStatement();  
-            int rs2=stmt2.executeUpdate("DELETE from game where ID =" + gameID);
-            con.close();
-            // Updating & Showing the Teams Table Again ...
-        try{
-            updateMatchesTable();
-            }
-            catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
-            _matchsList = new Object[][]{};
-            }
-        // Restarting the Team_Frame JFrame ...
-            this.dispose();
-            try{
-            Thread.sleep(250);
-            new Matches_View(jLabel_leagueName_Matches.getText(), currentLeagueID).show();
-            }
-            catch(InterruptedException e)
-            {
-                System.out.println(e.getMessage());
-            }
-        }catch(SQLException e){ 
-                System.out.println(e);
-                JOptionPane.showMessageDialog(this, e.getMessage());
-        }
-  
-   }
         
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> away_team_combo_box;
-    private javax.swing.JComboBox<String> home_team_combo_box;
+    private javax.swing.JButton jButton_Add4;
+    private javax.swing.JButton jButton_Add5;
     private javax.swing.JLabel jLabel_MatchesClose;
-    private javax.swing.JLabel jLabel_awayTeam;
-    private javax.swing.JLabel jLabel_awayTeam1;
-    private javax.swing.JLabel jLabel_homeTeam;
+    private javax.swing.JLabel jLabel_Week;
     private javax.swing.JLabel jLabel_leagueName_Matches;
     private javax.swing.JPanel jPanel_MatchesClose;
     private javax.swing.JPanel jPanel_Matches_Frame;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableMatches;
-    private javax.swing.JTable jTableTeams;
-    private javax.swing.JComboBox<String> stadium_combo_box;
+    private javax.swing.JTextField jTextField_Week;
     // End of variables declaration//GEN-END:variables
 }

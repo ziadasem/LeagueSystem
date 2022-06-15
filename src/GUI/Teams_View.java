@@ -27,18 +27,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Teams_View extends javax.swing.JFrame {
 
-    //******************** Declaration of Variables, to be used for the Entire Class ********************//
- //   SharedData data = new SharedData();
     Object[][] _leaguesList ;
     private int ThiscurrentLeagueID;
-    //*****************************************************************//
-    
-    /**
-     * Creates new form Teams_Frame
-     */
-    
-              //******************** Teams Table Renderer ********************//
-        // Necessary For alligning Rows
     DefaultTableCellRenderer tblTeamsRenderer = new DefaultTableCellRenderer();
     
 

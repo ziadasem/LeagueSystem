@@ -325,7 +325,7 @@ public class Stadium_View extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.PREFERRED_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
         );
 
         pack();

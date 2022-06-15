@@ -212,6 +212,14 @@ public class Squad_Frame extends javax.swing.JFrame {
         jLabel_TeamsClose.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel_TeamsClose.setText("X");
         jLabel_TeamsClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel_TeamsClose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel_TeamsCloseMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jLabel_TeamsCloseMouseReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel_TeamsCloseLayout = new javax.swing.GroupLayout(jPanel_TeamsClose);
         jPanel_TeamsClose.setLayout(jPanel_TeamsCloseLayout);
@@ -598,6 +606,14 @@ public class Squad_Frame extends javax.swing.JFrame {
         jTextField_Position.setText("");
     }//GEN-LAST:event_jTextField_PositionFocusGained
 
+    private void jLabel_TeamsCloseMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_TeamsCloseMouseReleased
+        this.dispose();
+    }//GEN-LAST:event_jLabel_TeamsCloseMouseReleased
+
+    private void jLabel_TeamsCloseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_TeamsCloseMousePressed
+      this.dispose();
+    }//GEN-LAST:event_jLabel_TeamsCloseMousePressed
+
    
     public static void main(String args[]) {
        
@@ -655,6 +671,8 @@ public class Squad_Frame extends javax.swing.JFrame {
                 throw e;
         }  
    }
+    
+    
         
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

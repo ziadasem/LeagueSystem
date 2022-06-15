@@ -31,19 +31,12 @@ public class Coach_View extends javax.swing.JFrame {
     //******************** Declaration of Variables, to be used for the Entire Class ********************//
     Object[][] coachesList ;
 
-    //*****************************************************************//
-    
-    /**
-     * Creates new form Teams_Frame
-     */
-    
-              //******************** Teams Table Renderer ********************//
-        // Necessary For alligning Rows
     DefaultTableCellRenderer tblTeamsRenderer = new DefaultTableCellRenderer();
-    
+    private int currentLeagueId ;
 
     
-    public Coach_View() {
+    public Coach_View(int currentLeagueId) {
+        this.currentLeagueId = currentLeagueId ;
         initComponents();
         this.setLocationRelativeTo(null);
         // Calling the rows center aligning function ...
@@ -53,7 +46,7 @@ public class Coach_View extends javax.swing.JFrame {
              updateCoachesTable();
         }catch(Exception e){
             System.out.println(e);
-            JOptionPane.showMessageDialog(rootPane, "Error in connection to DB");
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
             coachesList = new Object[][]{};
         }
         
@@ -88,13 +81,13 @@ public class Coach_View extends javax.swing.JFrame {
             Connection con=DriverManager.getConnection( Config.hostName,
                  Config.username,Config.password);  
             Statement stmt=con.createStatement();  
-            ResultSet rs=stmt.executeQuery("select * from coach");  
+            ResultSet rs=stmt.executeQuery("select * from coach, team where team.id  = coach.id and team.leagueid =  " + currentLeagueId);  
             coachesList = new Object[1000][3];
             int index = 0 ;
             while(rs.next()) { 
                 coachesList[index][2] = rs.getInt("id");
                 coachesList[index][0] = rs.getString("firstname") + " " + rs.getString("lastname");
-                coachesList[index][1] = rs.getInt("yearsOfExperince");
+                coachesList[index][1] = rs.getString("name");
                 index ++ ;
              }
             con.close(); 
@@ -186,7 +179,7 @@ public class Coach_View extends javax.swing.JFrame {
 
             },
             new String [] {
-                "name", "position"
+                "name", "team"
             }
         ) {
             boolean[] canEdit = new boolean [] {

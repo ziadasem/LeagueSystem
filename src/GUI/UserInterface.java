@@ -331,7 +331,7 @@ public class UserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton_viewSquadsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_viewSquadsActionPerformed
-        new GUI.Squad_View(currentLeague_Name, ThiscurrentLeagueID).setVisible(true);
+        new GUI.Squad_View(currentLeague_Name, ThiscurrentLeagueID , "" , "").setVisible(true);
     }//GEN-LAST:event_jButton_viewSquadsActionPerformed
 
     private void jButtons_StandingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtons_StandingsActionPerformed
@@ -362,7 +362,7 @@ public class UserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_viewTeam_TrophiesActionPerformed
 
     private void jButton_viewCoachesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_viewCoachesActionPerformed
-        new GUI.Coach_View().setVisible(true);
+        new GUI.Coach_View(ThiscurrentLeagueID).setVisible(true);
     }//GEN-LAST:event_jButton_viewCoachesActionPerformed
 
     private void jButton_viewStadiumsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_viewStadiumsActionPerformed
@@ -370,7 +370,7 @@ public class UserInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton_viewStadiumsActionPerformed
 
     private void jButton_viewMatchesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_viewMatchesActionPerformed
-        new GUI.Matches_View(currentLeague_Name, ThiscurrentLeagueID).setVisible(true);
+        new GUI.Matches_View(currentLeague_Name, ThiscurrentLeagueID , -1).setVisible(true);
     }//GEN-LAST:event_jButton_viewMatchesActionPerformed
 
     
