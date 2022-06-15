@@ -175,7 +175,7 @@ public class AddNewLeague extends javax.swing.JFrame {
         try{           
             addNewLeague(jTextField1.getText());
         }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e);
+            JOptionPane.showMessageDialog(rootPane, "An Error Ocurred");
             return ;
         }
         this.dispose();

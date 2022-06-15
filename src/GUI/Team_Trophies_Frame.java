@@ -56,7 +56,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
 
         }catch(Exception e){
             System.out.println(e);
-            JOptionPane.showMessageDialog(rootPane,e.getMessage());
+            JOptionPane.showMessageDialog(rootPane,"An Error Ocurred");
             trophiesList = new Object[][]{};
         }
         
@@ -427,7 +427,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
             return;
         }
         catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e);
+            JOptionPane.showMessageDialog(rootPane, "An Error Ocurred");
             System.out.println("is it here?");
             return ;
         }
@@ -448,7 +448,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
         try{
            updateTrophiesTable();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.toString());
+            JOptionPane.showMessageDialog(this, "An Error Ocurred");
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 

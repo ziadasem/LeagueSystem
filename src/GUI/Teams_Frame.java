@@ -346,11 +346,11 @@ public class Teams_Frame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, 1287, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
+            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.PREFERRED_SIZE, 749, Short.MAX_VALUE)
         );
 
         pack();
@@ -452,7 +452,7 @@ public class Teams_Frame extends javax.swing.JFrame {
         try{
             addNewTeam(jTextField_teamName.getText(), Integer.parseInt(jTextField_foundedYear.getText()), jTextField_firstName.getText(), jTextField_lastName.getText());
         }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e);
+            JOptionPane.showMessageDialog(rootPane, "An Error Ocurred");
             System.out.println("is it here?");
             return ;
         }

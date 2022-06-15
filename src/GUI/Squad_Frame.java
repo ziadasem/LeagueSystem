@@ -469,7 +469,7 @@ public class Squad_Frame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, 753, Short.MAX_VALUE)
+            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.PREFERRED_SIZE, 753, Short.MAX_VALUE)
         );
 
         pack();
@@ -567,7 +567,7 @@ public class Squad_Frame extends javax.swing.JFrame {
         try{
             addNewPlayer(temp_firstName ,temp_lastName,temp_Position  );
         }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e);
+            JOptionPane.showMessageDialog(rootPane, "An Error Ocurred");
             System.out.println("is it here?");
             return ;
         }
@@ -589,7 +589,7 @@ public class Squad_Frame extends javax.swing.JFrame {
             jLabel_squadName.setText(jComboBox1.getItemAt(jComboBox1.getSelectedIndex()) + " Squad");
             updateٍSquadTable();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.toString());
+            JOptionPane.showMessageDialog(this, "An Error Ocurred");
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 

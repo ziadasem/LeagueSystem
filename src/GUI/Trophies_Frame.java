@@ -410,7 +410,7 @@ public class Trophies_Frame extends javax.swing.JFrame {
         try{
             addNewTrophy(temp_firstName );
         }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e);
+            JOptionPane.showMessageDialog(rootPane, "An Error Ocurred");
             System.out.println("is it here?");
             return ;
         }

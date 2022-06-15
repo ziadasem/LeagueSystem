@@ -436,7 +436,7 @@ public class Coach_Frame extends javax.swing.JFrame {
         try{
             addNewCoach(temp_firstName ,temp_lastName,temp_yearsOfExp  );
         }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e);
+            JOptionPane.showMessageDialog(rootPane, "An Error Ocurred");
             System.out.println("is it here?");
             return ;
         }

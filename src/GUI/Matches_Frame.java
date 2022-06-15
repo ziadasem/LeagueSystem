@@ -55,7 +55,7 @@ public class Matches_Frame extends javax.swing.JFrame {
           buildStadiumComboBoxData(-1); //inital id is -1 , to get all stadiums
        
         }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            JOptionPane.showMessageDialog(rootPane, "An Error Ocurred");
             _matchsList = new Object[][]{};
         }
         
@@ -549,7 +549,7 @@ public class Matches_Frame extends javax.swing.JFrame {
             addNewGame(week, jTextField_Time.getText(),
                      homeTeamID, awayTeamID, stadiumID);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e);
+            JOptionPane.showMessageDialog(rootPane, "An Error Ocurred");
             return ;
         }
         this.dispose();
@@ -853,7 +853,7 @@ public class Matches_Frame extends javax.swing.JFrame {
             }
         }catch(SQLException e){ 
                 System.out.println(e);
-                JOptionPane.showMessageDialog(this, e.getMessage());
+                JOptionPane.showMessageDialog(this, "An Error Ocurred");
         }
   
    }

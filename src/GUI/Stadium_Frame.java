@@ -491,7 +491,7 @@ public class Stadium_Frame extends javax.swing.JFrame {
                 System.out.println(e.getMessage());
             }
         }catch(SQLException e){ 
-                JOptionPane.showMessageDialog(rootPane, e);
+                JOptionPane.showMessageDialog(rootPane, "An Error Ocurred");
                 System.out.println("Error In Delete Stadium Function");
         }         
     }//GEN-LAST:event_jButton_DeleteActionPerformed
@@ -544,7 +544,7 @@ public class Stadium_Frame extends javax.swing.JFrame {
         try{
             addNewStadium(temp_firstName,temp_city,temp_capacity  );
         }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e);
+            JOptionPane.showMessageDialog(rootPane, "An Error Ocurred");
             System.out.println("is it here?");
             return ;
         }
@@ -565,7 +565,7 @@ public class Stadium_Frame extends javax.swing.JFrame {
         try{
             updateٍStadiumTable();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.toString());
+            JOptionPane.showMessageDialog(this, "An Error Ocurred");
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 

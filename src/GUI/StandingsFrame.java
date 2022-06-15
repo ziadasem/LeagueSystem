@@ -281,7 +281,7 @@ public class StandingsFrame extends javax.swing.JFrame {
         try{
            addNewStanding(matches_played,wins,draws,losses, isAdd);                    
         }catch(Exception e){
-            JOptionPane.showMessageDialog(rootPane, e);
+            JOptionPane.showMessageDialog(rootPane, "An Error Ocurred");
             return ;
         }
         this.dispose();
@@ -604,7 +604,7 @@ public class StandingsFrame extends javax.swing.JFrame {
             //jLabel_squadName.setText(jComboBox1.getItemAt(jComboBox1.getSelectedIndex()) + " Squad");
             //updateٍSquadTable();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, e.toString());
+            JOptionPane.showMessageDialog(this, "An Error Ocurred");
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
