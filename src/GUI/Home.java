@@ -14,9 +14,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -69,38 +66,12 @@ public class Home extends javax.swing.JFrame {
         for (int i = 0 ;_leaguesList[i][1] != null ; i++){
                jComboBox1.addItem(_leaguesList[i][1].toString());
         }
-       /* Object testData[] = {1, "Liverpool", "5", "5", "0", "0", "15", "W - W - W"};
-        tblLeagueModel.addRow(testData);
-        Object testData2[] = {2, "Manchester City", "5", "4", "1", "0", "13", "W - W - W"};
-        tblLeagueModel.addRow(testData2);
-        // Method 2 For Adding
-        Object[][] _testData = new Object[][]
-        {
-            {"3", "Chelsea", "5", "3", "2", "0", "11", "W - D - W" },
-            {"4", "Manchester United", "5", "3", "1", "1", "10", "W - W - D" },
-            {"5", "Tottenham", "5", "2", "3", "0", "9", "D - D - W" },
-            {"6", "Arsenal", "5", "3", "0", "2", "9", "L - W - W" },
-            {"7", "West Ham United", "5", "2", "0", "3", "6", "W - W - L" },
-            {"8", "Wolves", "5", "2", "0", "3", "6", "L - L - W" },
-            {"9", "Leicester City", "5", "1", "1", "3", "4", "L - D - L" },
-            {"10", "Everton", "5", "1", "0", "4", "3", "L - L - L" },
-            {"11", "Crystal Palace", "5", "0", "1", "4", "1", "D - L - L" },
-            {"12", "Al Zamalek", "5", "0", "0", "5", "0", "L - L - L" },
-        };*/
       
-        //*****************************************************************//
-        
-        
-
-
-        
         //******************** League Table Properties ********************//
         jTableLeague.getTableHeader().setFont(new Font("League", Font.BOLD,22));
-        //jTableLeague.setOpaque(false);
         jTableLeague.getTableHeader().setBackground(new Color(51,85,175));
         jTableLeague.getTableHeader().setForeground(new Color(204,204,204));
-        //jTableLeague.setBackground(new Color(244, 244, 244));
-        //*****************************************************************//
+        
     }
 
 

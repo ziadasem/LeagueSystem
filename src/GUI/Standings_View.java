@@ -40,19 +40,7 @@ public class Standings_View extends javax.swing.JFrame {
         
         try {
             updateStandingsTable();
-            /* Connection con=DriverManager.getConnection( Config.hostName,
-            Config.username,Config.password);
-            Statement stmt=con.createStatement();
-            ResultSet rs=stmt.executeQuery("select id from league where leaguename = '"+leagueName+"'");
-            System.out.println("iam heres");
-            id = 0 ;
-            // id = rs.getInt("ID");
-            try {
-            updateTeamsTable();
-            } catch (Exception ex) {
-            Logger.getLogger(Standings_View.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage());
-            }*/
+            
         } catch (Exception ex) {
             Logger.getLogger(Standings_View.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -267,18 +255,7 @@ public class Standings_View extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    /*public static void main(String args[]) {
-       
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    new Standings_View("Premiere League").setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Standings_View.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }*/
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

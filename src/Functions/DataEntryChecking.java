@@ -4,9 +4,6 @@
  */
 package Functions;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeParseException;
-
 /**
  *
  * @author hosam
@@ -15,7 +12,7 @@ public class DataEntryChecking {
     private final char constraints[] = {'?', '!', '@', '#'};
     private final String positionConstraints[] = { "GK", "CB", "LB", "RB", "CM", "AM", "DM", "LW", "RW", "ST", "CF" };
     
-    // private final String constraints_str = "?!@#";
+    
     public boolean isValid_Team(String temp)
     {
         if(temp.isEmpty())

@@ -11,7 +11,6 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
-import Functions.DataEntryChecking;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -251,23 +250,7 @@ public class Teams_View extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
-    //    java.awt.EventQueue.invokeLater(new Runnable() {
-    //        public void run() {
-    //            new Teams_Frame().setVisible(true);
-    //        }
-    //   });
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-    //    java.awt.EventQueue.invokeLater(new Runnable() {
-    //        public void run() {
-    //            new Teams_Frame().setVisible(true);
-    //        }
-    //   });
+       
     }
     
     

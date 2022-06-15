@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import Functions.DataEntryChecking;
-import java.awt.Color;
 
 /**
  *

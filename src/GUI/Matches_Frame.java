@@ -516,8 +516,7 @@ public class Matches_Frame extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this,"Invalid Week ... Please Choose a Valid Week", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
             jTextField_Time.setForeground(new Color(51,51,51));
-            //jTextField_homeTeam.setForeground(new Color(51,51,51));
-            //jTextField_awayTeam.setForeground(new Color(51,51,51));
+           
             // Wrong Entry Here
             jTextField_Week.setForeground(Color.red);
             jTextField_Week.setText("0 - 100!");
@@ -529,8 +528,7 @@ public class Matches_Frame extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(this,"Invalid Time ... Please Choose a Valid Time", "Data Entry Error",JOptionPane.ERROR_MESSAGE);
             jTextField_Week.setForeground(new Color(51,51,51));
-            //jTextField_homeTeam.setForeground(new Color(51,51,51));
-            //jTextField_awayTeam.setForeground(new Color(51,51,51));
+            
             // Wrong Entry Here
             jTextField_Time.setForeground(Color.red);
             jTextField_Time.setText("00:00!");

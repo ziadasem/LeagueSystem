@@ -11,13 +11,11 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
-import Functions.DataEntryChecking;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.ComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 // import Functions.SharedData;
@@ -51,8 +49,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
              updateTrophiesTable();
              buildTeamsComboBoxData();
              buildTrophiesComboBoxData();
-             //currentTrophyID = Integer.parseInt(totalTrophiesList[0][1].toString()) ;
-             //currentTeamID = Integer.parseInt(teamsList[0][2].toString()) ;
+           
 
         }catch(Exception e){
             System.out.println(e);
@@ -61,7 +58,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
         }
         
             // Setting the label name for corresponding League Name
-       // jLabel33.setText(currentLeague_Name);
+      
         
         
         //******************** League Table Properties ********************//
@@ -489,7 +486,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
           throw e ;
         } 
       
-        // jComboBox1.removeAllItems();
+        
         for (int i = 0 ;_testData[i][0] != null  ; i++ ){
             jComboBox1.addItem(_testData[i][0].toString());
         }
