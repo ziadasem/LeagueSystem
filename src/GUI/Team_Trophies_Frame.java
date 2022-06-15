@@ -67,7 +67,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
         //******************** League Table Properties ********************//
         jTableSquad.getTableHeader().setFont(new Font("League", Font.BOLD,22));
         jTableSquad.setOpaque(false);
-        jTableSquad.getTableHeader().setBackground(new Color(63, 16, 82));
+        jTableSquad.getTableHeader().setBackground(new Color(51,85,175));
         jTableSquad.getTableHeader().setForeground(new Color(255,255,255));
         jTableSquad.setBackground(new Color(244, 244, 244));
         //*****************************************************************//
@@ -168,7 +168,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
         setType(java.awt.Window.Type.POPUP);
 
         jPanel_Teams_Frame.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel_Teams_Frame.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
+        jPanel_Teams_Frame.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175)));
         jPanel_Teams_Frame.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jPanel_TeamsClose.setBackground(new java.awt.Color(0, 51, 51));
@@ -196,7 +196,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
         );
 
         jScrollPane1.setBackground(new java.awt.Color(63, 16, 82));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175)));
         jScrollPane1.setToolTipText("");
         jScrollPane1.setMinimumSize(new java.awt.Dimension(1024, 720));
         jScrollPane1.setOpaque(false);
@@ -207,7 +207,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "count"
+                "Name", "Count"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -289,7 +289,7 @@ public class Team_Trophies_Frame extends javax.swing.JFrame {
         jLabel_firstName.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
         jLabel_firstName.setForeground(new java.awt.Color(204, 204, 204));
         jLabel_firstName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel_firstName.setText("count");
+        jLabel_firstName.setText("Count");
 
         jTextField_name.setBackground(new java.awt.Color(209, 204, 192));
         jTextField_name.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

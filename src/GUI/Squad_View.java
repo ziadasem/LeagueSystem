@@ -66,7 +66,7 @@ public class Squad_View extends javax.swing.JFrame {
         //******************** League Table Properties ********************//
         jTableSquad.getTableHeader().setFont(new Font("League", Font.BOLD,22));
         jTableSquad.setOpaque(false);
-        jTableSquad.getTableHeader().setBackground(new Color(63, 16, 82));
+        jTableSquad.getTableHeader().setBackground(new Color(51,85,175));
         jTableSquad.getTableHeader().setForeground(new Color(255,255,255));
         jTableSquad.setBackground(new Color(244, 244, 244));
         //*****************************************************************//
@@ -139,16 +139,17 @@ public class Squad_View extends javax.swing.JFrame {
         jTextField_firstName = new javax.swing.JTextField();
         jLabel_lastName = new javax.swing.JLabel();
         jTextField_lastName = new javax.swing.JTextField();
-        jButton_Add = new javax.swing.JButton();
-        jButton_Add1 = new javax.swing.JButton();
+        jButton_Search = new javax.swing.JButton();
+        jButton_Clear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1280, 720));
         setSize(new java.awt.Dimension(1280, 720));
         setType(java.awt.Window.Type.POPUP);
 
         jPanel_Teams_Frame.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel_Teams_Frame.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
+        jPanel_Teams_Frame.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175)));
         jPanel_Teams_Frame.setPreferredSize(new java.awt.Dimension(1280, 720));
 
         jPanel_TeamsClose.setBackground(new java.awt.Color(0, 51, 51));
@@ -176,7 +177,7 @@ public class Squad_View extends javax.swing.JFrame {
         );
 
         jScrollPane1.setBackground(new java.awt.Color(63, 16, 82));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175)));
         jScrollPane1.setToolTipText("");
         jScrollPane1.setMinimumSize(new java.awt.Dimension(1024, 720));
         jScrollPane1.setOpaque(false);
@@ -240,6 +241,11 @@ public class Squad_View extends javax.swing.JFrame {
                 jTextField_firstNameFocusGained(evt);
             }
         });
+        jTextField_firstName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField_firstNameActionPerformed(evt);
+            }
+        });
 
         jLabel_lastName.setFont(new java.awt.Font("Cambria", 1, 28)); // NOI18N
         jLabel_lastName.setForeground(new java.awt.Color(204, 204, 204));
@@ -251,27 +257,27 @@ public class Squad_View extends javax.swing.JFrame {
         jTextField_lastName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField_lastName.setBorder(javax.swing.BorderFactory.createEtchedBorder(java.awt.Color.darkGray, java.awt.Color.lightGray));
 
-        jButton_Add.setBackground(new java.awt.Color(51, 85, 175));
-        jButton_Add.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
-        jButton_Add.setForeground(new java.awt.Color(240, 240, 240));
-        jButton_Add.setText("filter");
-        jButton_Add.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton_Add.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_Add.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Search.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_Search.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_Search.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_Search.setText("Search");
+        jButton_Search.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton_Search.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_AddActionPerformed(evt);
+                jButton_SearchActionPerformed(evt);
             }
         });
 
-        jButton_Add1.setBackground(new java.awt.Color(51, 85, 175));
-        jButton_Add1.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
-        jButton_Add1.setForeground(new java.awt.Color(240, 240, 240));
-        jButton_Add1.setText("clear ");
-        jButton_Add1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton_Add1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_Add1.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Clear.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_Clear.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_Clear.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_Clear.setText("Clear");
+        jButton_Clear.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton_Clear.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Add1ActionPerformed(evt);
+                jButton_ClearActionPerformed(evt);
             }
         });
 
@@ -284,32 +290,31 @@ public class Squad_View extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Teams_FrameLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(127, 127, 127)
+                        .addGap(32, 32, 32)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(343, 343, 343)
+                        .addGap(270, 270, 270)
                         .addComponent(jPanel_TeamsClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                         .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                                .addGap(267, 267, 267)
-                                .addComponent(jLabel_squadName, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                                 .addGap(146, 146, 146)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 935, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 935, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel_squadName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jLabel_firstName)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextField_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(21, 21, 21)
                                 .addComponent(jLabel_lastName)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62)
-                                .addComponent(jButton_Add)
-                                .addGap(34, 34, 34)
-                                .addComponent(jButton_Add1)))
-                        .addGap(0, 132, Short.MAX_VALUE)))
+                                .addComponent(jTextField_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41)
+                                .addComponent(jButton_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(jButton_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 87, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel_Teams_FrameLayout.setVerticalGroup(
@@ -324,28 +329,29 @@ public class Squad_View extends javax.swing.JFrame {
                         .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel_squadName, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel_lastName)
+                .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel_firstName, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextField_lastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel_lastName))
                     .addGroup(jPanel_Teams_FrameLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton_Add1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(7, 7, 7)
+                        .addGroup(jPanel_Teams_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(jButton_Search, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(166, 166, 166))
         );
 
         // Removing inner borders inside the button
-        jButton_Add.setFocusPainted(false);
+        jButton_Search.setFocusPainted(false);
         // Removing inner borders inside the button
-        jButton_Add.setFocusPainted(false);
+        jButton_Clear.setFocusPainted(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -355,7 +361,7 @@ public class Squad_View extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)
+            .addComponent(jPanel_Teams_Frame, javax.swing.GroupLayout.DEFAULT_SIZE, 868, Short.MAX_VALUE)
         );
 
         pack();
@@ -380,7 +386,7 @@ public class Squad_View extends javax.swing.JFrame {
         jTextField_firstName.setText("");
     }//GEN-LAST:event_jTextField_firstNameFocusGained
 
-    private void jButton_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddActionPerformed
+    private void jButton_SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SearchActionPerformed
         String temp_firstName = jTextField_firstName.getText();
         String temp_lastName = jTextField_lastName.getText();
         DataEntryChecking t1 = new DataEntryChecking();
@@ -419,9 +425,9 @@ public class Squad_View extends javax.swing.JFrame {
         {
             System.out.println(e.getMessage());
         }
-    }//GEN-LAST:event_jButton_AddActionPerformed
+    }//GEN-LAST:event_jButton_SearchActionPerformed
 
-    private void jButton_Add1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add1ActionPerformed
+    private void jButton_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ClearActionPerformed
        
         this.dispose();
         try{
@@ -432,7 +438,11 @@ public class Squad_View extends javax.swing.JFrame {
         {
             System.out.println(e.getMessage());
         }
-    }//GEN-LAST:event_jButton_Add1ActionPerformed
+    }//GEN-LAST:event_jButton_ClearActionPerformed
+
+    private void jTextField_firstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField_firstNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField_firstNameActionPerformed
 
 
     private void setTableCellAlignment(int alignment) {
@@ -534,8 +544,8 @@ public class Squad_View extends javax.swing.JFrame {
         
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_Add;
-    private javax.swing.JButton jButton_Add1;
+    private javax.swing.JButton jButton_Clear;
+    private javax.swing.JButton jButton_Search;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel_TeamsClose;

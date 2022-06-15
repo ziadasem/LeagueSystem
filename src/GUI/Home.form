@@ -56,8 +56,8 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder bevelType="0">
-              <Color PropertyName="highlight" blue="40" green="40" id="darkGray" palette="1" red="40" type="palette"/>
-              <Color PropertyName="shadow" blue="40" green="40" id="darkGray" palette="1" red="40" type="palette"/>
+              <Color PropertyName="highlight" blue="af" green="55" red="33" type="rgb"/>
+              <Color PropertyName="shadow" blue="af" green="55" red="33" type="rgb"/>
             </EtchetBorder>
           </Border>
         </Property>
@@ -73,56 +73,58 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="650" max="-2" attributes="0"/>
                       <Component id="jLabel_leagueName" min="-2" pref="650" max="-2" attributes="0"/>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="736" max="32767" attributes="0"/>
+                          <Component id="jPanel_TeamsClose" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jPanel_TeamsClose" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jButton_editSquad" min="-2" pref="230" max="-2" attributes="0"/>
+                                      <Component id="jButton_addTrophy" min="-2" pref="230" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jButton_addStadium" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                      <Component id="jButton_standings" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
                                   <Component id="jLabel2" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel1" max="32767" attributes="0"/>
-                                      <Component id="jComboBox1" min="-2" pref="144" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jButton_editSquad" min="-2" pref="230" max="-2" attributes="0"/>
-                                              <Component id="jButton_addStadium" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                                              <Component id="jButton_standings" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                                              <Component id="jButton_addTrophy" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
+                                  <Component id="jComboBox1" min="-2" pref="165" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jLabel1" alignment="1" min="-2" pref="163" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                                          <Component id="jButton_assignTrophy" min="-2" pref="301" max="-2" attributes="0"/>
+                                          <Component id="jButton_addTeams" min="-2" pref="230" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                          <Component id="jButton_addMatches" min="-2" pref="230" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                  <Component id="jButton_addLeague" min="-2" pref="230" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
+                                  <Component id="jButton_assignTrophy" min="-2" pref="301" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton_addTeams" min="-2" pref="230" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="jButton_addMatches" min="-2" pref="230" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="jButton_addLeague" min="-2" pref="230" max="-2" attributes="0"/>
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -137,7 +139,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel_TeamsClose" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="20" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jButton_addMatches" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton_addLeague" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -145,23 +147,9 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jScrollPane1" min="-2" pref="500" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jButton_editSquad" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                          <Component id="jButton_addStadium" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                          <Component id="jButton_standings" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                          <Component id="jButton_addTrophy" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jButton_assignTrophy" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel2" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
@@ -171,9 +159,25 @@
                                   <Component id="jComboBox1" min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButton_editSquad" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton_addStadium" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jButton_addTrophy" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButton_standings" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="jButton_assignTrophy" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="530" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="156" max="32767" attributes="0"/>
+                  <EmptySpace pref="116" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -181,6 +185,16 @@
       <SubComponents>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
+                <BevelBorder>
+                  <Color PropertyName="highlightOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="highlightInner" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowInner" blue="af" green="55" red="33" type="rgb"/>
+                </BevelBorder>
+              </Border>
+            </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[1024, 720]"/>
             </Property>
@@ -236,7 +250,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;&#xa;    public Component prepareRenderer(TableCellRenderer r, int rw, int col)&#xa;    {&#xa;        Component c = super.prepareRenderer(r, rw, col);&#xa;        c.setBackground(Color.WHITE);&#xa;        c.setFont(new Font(&quot;League&quot;, Font.BOLD,18));&#xa;        // Setting Alternating Colors&#xa;        if(rw %2 == 0)&#xa;        c.setBackground(new Color(225, 225, 225));&#xa;        // Setting Colors Of First 3 Champions Qualified Teams&#xa;        if((rw == 0 &amp;&amp; col == 0) || (rw == 1 &amp;&amp; col == 0) || (rw == 2 &amp;&amp; col == 0))&#xa;        c.setBackground(new Color(66, 133, 244));&#xa;&#xa;        // Setting Colors Of Second 2 2-Champions Qualified Teams&#xa;        if((rw == 3 &amp;&amp; col == 0) || (rw == 4 &amp;&amp; col == 0))&#xa;        c.setBackground(new Color(251, 150, 68));&#xa;&#xa;        // Setting color of last 3 (Descending Teams) ...&#xa;        if((rw == jTableLeague.getRowCount() - 1 &amp;&amp; col == 0) || (rw == jTableLeague.getRowCount() - 2 &amp;&amp; col == 0) || (rw == jTableLeague.getRowCount() - 3 &amp;&amp; col == 0))&#xa;        c.setBackground(new Color(243, 64, 54));&#xa;        return c;&#xa;    }&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;&#xa;    public Component prepareRenderer(TableCellRenderer r, int rw, int col)&#xa;    {&#xa;        Component c = super.prepareRenderer(r, rw, col);&#xa;        c.setBackground(Color.WHITE);&#xa;        c.setFont(new Font(&quot;League&quot;, Font.BOLD,18));&#xa;        // Setting Alternating Colors&#xa;        if(rw %2 == 0)&#xa;        c.setBackground(new Color(225, 225, 225));&#xa;        return c;&#xa;    }&#xa;}"/>
               </AuxValues>
             </Component>
           </SubComponents>

@@ -48,8 +48,8 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder bevelType="0">
-              <Color PropertyName="highlight" blue="91" green="1c" red="6d" type="rgb"/>
-              <Color PropertyName="shadow" blue="91" green="1c" red="6d" type="rgb"/>
+              <Color PropertyName="highlight" blue="af" green="55" red="33" type="rgb"/>
+              <Color PropertyName="shadow" blue="af" green="55" red="33" type="rgb"/>
             </EtchetBorder>
           </Border>
         </Property>
@@ -198,10 +198,10 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder>
-                  <Color PropertyName="highlightOuter" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="highlightInner" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="shadowOuter" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="shadowInner" blue="91" green="1c" red="6d" type="rgb"/>
+                  <Color PropertyName="highlightOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="highlightInner" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowInner" blue="af" green="55" red="33" type="rgb"/>
                 </BevelBorder>
               </Border>
             </Property>
@@ -225,7 +225,7 @@
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="0">
                     <Column editable="false" title="Name" type="java.lang.Object"/>
-                    <Column editable="false" title="count" type="java.lang.Object"/>
+                    <Column editable="false" title="Count" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -402,7 +402,7 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="count"/>
+            <Property name="text" type="java.lang.String" value="Count"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextField_name">

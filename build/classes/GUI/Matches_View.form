@@ -51,8 +51,8 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder bevelType="0">
-              <Color PropertyName="highlight" blue="91" green="1c" red="6d" type="rgb"/>
-              <Color PropertyName="shadow" blue="91" green="1c" red="6d" type="rgb"/>
+              <Color PropertyName="highlight" blue="af" green="55" red="33" type="rgb"/>
+              <Color PropertyName="shadow" blue="af" green="55" red="33" type="rgb"/>
             </EtchetBorder>
           </Border>
         </Property>
@@ -68,18 +68,8 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="231" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="239" max="-2" attributes="0"/>
-                          <Component id="jLabel_leagueName_Matches" min="-2" pref="624" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="172" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jPanel_MatchesClose" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace pref="1241" max="32767" attributes="0"/>
+                  <Component id="jPanel_MatchesClose" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
@@ -88,14 +78,17 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jTextField_Week" min="-2" pref="77" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                  <Component id="jButton_Add4" min="-2" pref="163" max="-2" attributes="0"/>
+                  <Component id="jButton_Filter" min="-2" pref="163" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                  <Component id="jButton_Add5" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton_Clear" min="-2" pref="225" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" min="-2" pref="1192" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="jScrollPane2" pref="1192" max="32767" attributes="0"/>
+                      <Component id="jLabel_leagueName_Matches" max="32767" attributes="0"/>
+                  </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -113,8 +106,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel_Week" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="jTextField_Week" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton_Add4" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="jButton_Add5" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="jButton_Filter" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="jButton_Clear" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               </Group>
@@ -183,10 +176,10 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder>
-                  <Color PropertyName="highlightOuter" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="highlightInner" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="shadowOuter" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="shadowInner" blue="91" green="1c" red="6d" type="rgb"/>
+                  <Color PropertyName="highlightOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="highlightInner" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowInner" blue="af" green="55" red="33" type="rgb"/>
                 </BevelBorder>
               </Border>
             </Property>
@@ -260,7 +253,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;&#xa;    public Component prepareRenderer(TableCellRenderer r, int rw, int col)&#xa;    {&#xa;        Component c = super.prepareRenderer(r, rw, col);&#xa;        c.setBackground(Color.WHITE);&#xa;        c.setFont(new Font(&quot;League&quot;, Font.BOLD,18));&#xa;        // Setting Alternating Colors&#xa;        if(rw %2 == 0)&#xa;        c.setBackground(new Color(225, 225, 225));&#xa;        // Setting Colors Of First 3 Champions Qualified Teams&#xa;        if((rw == 0 &amp;&amp; col == 0) || (rw == 1 &amp;&amp; col == 0) || (rw == 2 &amp;&amp; col == 0))&#xa;        c.setBackground(new Color(66, 133, 244));&#xa;&#xa;        // Setting Colors Of Second 2 2-Champions Qualified Teams&#xa;        if((rw == 3 &amp;&amp; col == 0) || (rw == 4 &amp;&amp; col == 0))&#xa;        c.setBackground(new Color(251, 150, 68));&#xa;&#xa;        // Setting color of last 3 (Descending Teams) ...&#xa;        if((rw == jTableTeams.getRowCount() - 1 &amp;&amp; col == 0) || (rw == jTableTeams.getRowCount() - 2 &amp;&amp; col == 0) || (rw == jTableTeams.getRowCount() - 3 &amp;&amp; col == 0))&#xa;        c.setBackground(new Color(243, 64, 54));&#xa;        return c;&#xa;    }&#xa;}"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable(){&#xa;&#xa;    public Component prepareRenderer(TableCellRenderer r, int rw, int col)&#xa;    {&#xa;        Component c = super.prepareRenderer(r, rw, col);&#xa;        c.setBackground(Color.WHITE);&#xa;        c.setFont(new Font(&quot;League&quot;, Font.BOLD,18));&#xa;        // Setting Alternating Colors&#xa;        if(rw %2 == 0)&#xa;        c.setBackground(new Color(225, 225, 225));&#xa;        return c;&#xa;    }&#xa;}"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -304,7 +297,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextField_WeekMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_Add4">
+        <Component class="javax.swing.JButton" name="jButton_Filter">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="af" green="55" red="33" type="rgb"/>
@@ -315,20 +308,20 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="filter"/>
+            <Property name="text" type="java.lang.String" value="Filter"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Default Cursor"/>
             </Property>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_Add4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_FilterActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_Add.setFocusPainted(false);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_Filter.setFocusPainted(false);"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton_Add5">
+        <Component class="javax.swing.JButton" name="jButton_Clear">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="af" green="55" red="33" type="rgb"/>
@@ -339,17 +332,17 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="f0" green="f0" red="f0" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="clear filters"/>
+            <Property name="text" type="java.lang.String" value="Clear Filters"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Default Cursor"/>
             </Property>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_Add5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton_ClearActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_Add.setFocusPainted(false);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="// Removing inner borders inside the button&#xa;jButton_Clear.setFocusPainted(false);"/>
           </AuxValues>
         </Component>
       </SubComponents>

@@ -51,8 +51,8 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder bevelType="0">
-              <Color PropertyName="highlight" blue="91" green="1c" red="6d" type="rgb"/>
-              <Color PropertyName="shadow" blue="91" green="1c" red="6d" type="rgb"/>
+              <Color PropertyName="highlight" blue="af" green="55" red="33" type="rgb"/>
+              <Color PropertyName="shadow" blue="af" green="55" red="33" type="rgb"/>
             </EtchetBorder>
           </Border>
         </Property>
@@ -236,10 +236,10 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder>
-                  <Color PropertyName="highlightOuter" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="highlightInner" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="shadowOuter" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="shadowInner" blue="91" green="1c" red="6d" type="rgb"/>
+                  <Color PropertyName="highlightOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="highlightInner" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowInner" blue="af" green="55" red="33" type="rgb"/>
                 </BevelBorder>
               </Border>
             </Property>

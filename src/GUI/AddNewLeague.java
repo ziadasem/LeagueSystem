@@ -55,6 +55,7 @@ public class AddNewLeague extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(480, 340));
 
         jPanel_AddNewLeague.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel_AddNewLeague.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel_AddNewLeague.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel_AddNewLeague.setPreferredSize(new java.awt.Dimension(480, 340));
 
@@ -126,7 +127,7 @@ public class AddNewLeague extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_AddNewLeagueLayout.createSequentialGroup()
                         .addComponent(jButton_save, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(69, 69, 69)))
-                .addGap(0, 98, Short.MAX_VALUE))
+                .addGap(0, 96, Short.MAX_VALUE))
         );
         jPanel_AddNewLeagueLayout.setVerticalGroup(
             jPanel_AddNewLeagueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -43,7 +43,7 @@ public class Matches_View extends javax.swing.JFrame {
         this.currentLeagueID = currentLeagueID;
         this.currentLeague_Name = currentLeague_Name;
         this.currentWeek = currentWeekId ;
-        
+        setTableCellAlignment(SwingConstants.CENTER);
         try{
           updateMatchesTable();
        
@@ -61,11 +61,11 @@ public class Matches_View extends javax.swing.JFrame {
         jTableMatches.getTableHeader().setFont(new Font("League", Font.BOLD,22));
         jTableMatches.setOpaque(false);
         // Setting Colmuns Width
-        jTableMatches.getColumnModel().getColumn(0).setPreferredWidth(10);
+        jTableMatches.getColumnModel().getColumn(0).setPreferredWidth(50);
         jTableMatches.getColumnModel().getColumn(1).setPreferredWidth(100);
         jTableMatches.getColumnModel().getColumn(2).setPreferredWidth(100);
         
-        jTableMatches.getTableHeader().setBackground(new Color(63, 16, 82));
+        jTableMatches.getTableHeader().setBackground(new Color(51,85,175));
         jTableMatches.getTableHeader().setForeground(new Color(255,255,255));
         jTableMatches.setBackground(new Color(244, 244, 244));
         //*****************************************************************//
@@ -90,24 +90,13 @@ public class Matches_View extends javax.swing.JFrame {
                 // Setting Alternating Colors
                 if(rw %2 == 0)
                 c.setBackground(new Color(225, 225, 225));
-                // Setting Colors Of First 3 Champions Qualified Teams
-                if((rw == 0 && col == 0) || (rw == 1 && col == 0) || (rw == 2 && col == 0))
-                c.setBackground(new Color(66, 133, 244));
-
-                // Setting Colors Of Second 2 2-Champions Qualified Teams
-                if((rw == 3 && col == 0) || (rw == 4 && col == 0))
-                c.setBackground(new Color(251, 150, 68));
-
-                // Setting color of last 3 (Descending Teams) ...
-                //if((rw == jTableTeams.getRowCount() - 1 && col == 0) || (rw == jTableTeams.getRowCount() - 2 && col == 0) || (rw == jTableTeams.getRowCount() - 3 && col == 0))
-                //c.setBackground(new Color(243, 64, 54));
                 return c;
             }
         };
         jLabel_Week = new javax.swing.JLabel();
         jTextField_Week = new javax.swing.JTextField();
-        jButton_Add4 = new javax.swing.JButton();
-        jButton_Add5 = new javax.swing.JButton();
+        jButton_Filter = new javax.swing.JButton();
+        jButton_Clear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1286, 720));
@@ -116,7 +105,7 @@ public class Matches_View extends javax.swing.JFrame {
         setType(java.awt.Window.Type.POPUP);
 
         jPanel_Matches_Frame.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel_Matches_Frame.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
+        jPanel_Matches_Frame.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175)));
         jPanel_Matches_Frame.setMinimumSize(new java.awt.Dimension(1280, 720));
         jPanel_Matches_Frame.setPreferredSize(new java.awt.Dimension(1280, 720));
 
@@ -151,7 +140,7 @@ public class Matches_View extends javax.swing.JFrame {
         jLabel_leagueName_Matches.setPreferredSize(new java.awt.Dimension(130, 43));
 
         jScrollPane2.setBackground(new java.awt.Color(63, 16, 82));
-        jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145), new java.awt.Color(109, 28, 145)));
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175), new java.awt.Color(51, 85, 175)));
         jScrollPane2.setToolTipText("");
         jScrollPane2.setMinimumSize(new java.awt.Dimension(1024, 720));
         jScrollPane2.setOpaque(false);
@@ -203,27 +192,27 @@ public class Matches_View extends javax.swing.JFrame {
             }
         });
 
-        jButton_Add4.setBackground(new java.awt.Color(51, 85, 175));
-        jButton_Add4.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
-        jButton_Add4.setForeground(new java.awt.Color(240, 240, 240));
-        jButton_Add4.setText("filter");
-        jButton_Add4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton_Add4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_Add4.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Filter.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_Filter.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_Filter.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_Filter.setText("Filter");
+        jButton_Filter.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton_Filter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_Filter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Add4ActionPerformed(evt);
+                jButton_FilterActionPerformed(evt);
             }
         });
 
-        jButton_Add5.setBackground(new java.awt.Color(51, 85, 175));
-        jButton_Add5.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
-        jButton_Add5.setForeground(new java.awt.Color(240, 240, 240));
-        jButton_Add5.setText("clear filters");
-        jButton_Add5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton_Add5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton_Add5.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Clear.setBackground(new java.awt.Color(51, 85, 175));
+        jButton_Clear.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
+        jButton_Clear.setForeground(new java.awt.Color(240, 240, 240));
+        jButton_Clear.setText("Clear Filters");
+        jButton_Clear.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButton_Clear.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton_Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_Add5ActionPerformed(evt);
+                jButton_ClearActionPerformed(evt);
             }
         });
 
@@ -232,15 +221,8 @@ public class Matches_View extends javax.swing.JFrame {
         jPanel_Matches_FrameLayout.setHorizontalGroup(
             jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
-                .addGap(231, 231, 231)
-                .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
-                        .addGap(239, 239, 239)
-                        .addComponent(jLabel_leagueName_Matches, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 172, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Matches_FrameLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jPanel_MatchesClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(1241, Short.MAX_VALUE)
+                .addComponent(jPanel_MatchesClose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
@@ -248,13 +230,15 @@ public class Matches_View extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField_Week, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addComponent(jButton_Add4, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton_Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jButton_Add5)
+                .addComponent(jButton_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_Matches_FrameLayout.createSequentialGroup()
+            .addGroup(jPanel_Matches_FrameLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1192, Short.MAX_VALUE)
+                    .addComponent(jLabel_leagueName_Matches, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_Matches_FrameLayout.setVerticalGroup(
@@ -270,15 +254,15 @@ public class Matches_View extends javax.swing.JFrame {
                 .addGroup(jPanel_Matches_FrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_Week, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField_Week, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Add4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton_Add5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_Filter, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton_Clear, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28))
         );
 
         // Removing inner borders inside the button
-        //jButton_Add.setFocusPainted(false);
+        jButton_Filter.setFocusPainted(false);
         // Removing inner borders inside the button
-        //jButton_Add.setFocusPainted(false);
+        jButton_Clear.setFocusPainted(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -303,7 +287,7 @@ public class Matches_View extends javax.swing.JFrame {
         jTextField_Week.setText("");
     }//GEN-LAST:event_jTextField_WeekMouseClicked
 
-    private void jButton_Add4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add4ActionPerformed
+    private void jButton_FilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_FilterActionPerformed
         String temp_Week = jTextField_Week.getText();      
         DataEntryChecking t1 = new DataEntryChecking();
         if(!(t1.isValid_Week(temp_Week)))
@@ -328,9 +312,9 @@ public class Matches_View extends javax.swing.JFrame {
             return ;
         }
       
-    }//GEN-LAST:event_jButton_Add4ActionPerformed
+    }//GEN-LAST:event_jButton_FilterActionPerformed
 
-    private void jButton_Add5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_Add5ActionPerformed
+    private void jButton_ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ClearActionPerformed
       
             this.dispose();
             try{
@@ -340,7 +324,7 @@ public class Matches_View extends javax.swing.JFrame {
                 System.out.println(e.getMessage());
               }
 
-    }//GEN-LAST:event_jButton_Add5ActionPerformed
+    }//GEN-LAST:event_jButton_ClearActionPerformed
 
     
   
@@ -359,6 +343,16 @@ public class Matches_View extends javax.swing.JFrame {
             tblMatchesModel.addRow(_matchsList[i]);
    }
             
+    
+        private void setTableCellAlignment(int alignment) {
+            tblTeamsRenderer.setHorizontalAlignment(alignment);
+            for (int i=0; i<jTableMatches.getColumnCount();i++){
+               jTableMatches.setDefaultRenderer(jTableMatches.getColumnClass(i),tblTeamsRenderer);
+               }
+             // repaint to show table cell changes
+            jTableMatches.updateUI();
+        }
+    
             
 private Object[][] getMatches() throws Exception{
         try{  
@@ -407,8 +401,8 @@ private Object[][] getMatches() throws Exception{
         
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_Add4;
-    private javax.swing.JButton jButton_Add5;
+    private javax.swing.JButton jButton_Clear;
+    private javax.swing.JButton jButton_Filter;
     private javax.swing.JLabel jLabel_MatchesClose;
     private javax.swing.JLabel jLabel_Week;
     private javax.swing.JLabel jLabel_leagueName_Matches;

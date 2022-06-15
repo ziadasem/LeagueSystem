@@ -58,8 +58,8 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder bevelType="0">
-              <Color PropertyName="highlight" blue="91" green="1c" red="6d" type="rgb"/>
-              <Color PropertyName="shadow" blue="91" green="1c" red="6d" type="rgb"/>
+              <Color PropertyName="highlight" blue="af" green="55" red="33" type="rgb"/>
+              <Color PropertyName="shadow" blue="af" green="55" red="33" type="rgb"/>
             </EtchetBorder>
           </Border>
         </Property>
@@ -76,7 +76,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
@@ -100,57 +100,63 @@
                               </Group>
                               <Component id="jLabel_Time" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="103" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jLabel_homeTeam" max="32767" attributes="0"/>
-                                      <Component id="jLabel_awayTeam" min="-2" pref="173" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" min="-2" pref="526" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="away_team_combo_box" min="-2" pref="241" max="-2" attributes="0"/>
-                                      <Component id="home_team_combo_box" min="-2" pref="241" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="jLabel_homeTeam" max="32767" attributes="0"/>
+                                              <Component id="jLabel_awayTeam" min="-2" pref="173" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="away_team_combo_box" min="-2" pref="241" max="-2" attributes="0"/>
+                                              <Component id="home_team_combo_box" min="-2" pref="241" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabel_awayTeam1" min="-2" pref="173" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Component id="stadium_combo_box" min="-2" pref="241" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel_awayTeam1" min="-2" pref="173" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                  <Component id="stadium_combo_box" min="-2" pref="241" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
+                                  <Component id="jButton_Add" min="-2" pref="203" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
-                          <Component id="jButton_Add" min="-2" pref="203" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="526" max="-2" attributes="0"/>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           <Component id="jLabel_leagueName_Matches" min="-2" pref="624" max="-2" attributes="0"/>
-                          <EmptySpace pref="41" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jButton_Delete" min="-2" pref="203" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="251" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
                                   <Component id="jPanel_MatchesClose" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jButton_Delete" min="-2" pref="203" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane2" min="-2" pref="700" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jScrollPane2" alignment="1" min="-2" pref="700" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -166,14 +172,14 @@
                   <Component id="jLabel_leagueName_Matches" min="-2" pref="52" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="495" max="-2" attributes="0"/>
-                  <EmptySpace pref="27" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton_Delete" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel_Week" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                               <Component id="jLabel_Time" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
@@ -213,7 +219,7 @@
                   <Component id="jButton_Add" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="283" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="26" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -265,10 +271,10 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder>
-                  <Color PropertyName="highlightOuter" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="highlightInner" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="shadowOuter" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="shadowInner" blue="91" green="1c" red="6d" type="rgb"/>
+                  <Color PropertyName="highlightOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="highlightInner" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowInner" blue="af" green="55" red="33" type="rgb"/>
                 </BevelBorder>
               </Border>
             </Property>
@@ -493,10 +499,10 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
                 <BevelBorder>
-                  <Color PropertyName="highlightOuter" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="highlightInner" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="shadowOuter" blue="91" green="1c" red="6d" type="rgb"/>
-                  <Color PropertyName="shadowInner" blue="91" green="1c" red="6d" type="rgb"/>
+                  <Color PropertyName="highlightOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="highlightInner" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowOuter" blue="af" green="55" red="33" type="rgb"/>
+                  <Color PropertyName="shadowInner" blue="af" green="55" red="33" type="rgb"/>
                 </BevelBorder>
               </Border>
             </Property>
@@ -584,7 +590,7 @@
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="stadium"/>
+            <Property name="text" type="java.lang.String" value="Stadium"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="stadium_combo_box">
